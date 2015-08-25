@@ -1,0 +1,126 @@
+/*
+
+Main Styling Script
+
+*/
+
+body{
+	background: #CCC;
+}
+
+/*
+	Rules below heavily rely on
+	the Bootstrap Grid Framework
+*/
+
+
+/*
+	Rules for the div wrapper
+*/
+@media only screen and (max-width: 600px){
+	#wrapper{
+		width: 100%;
+		margin: 2rem auto;
+	}
+}
+
+@media only screen and (min-width: 601px){
+	#wrapper{
+		width: 80%;
+		margin: 2rem auto;
+	}
+}
+
+
+/*
+	Rules for the masthead
+*/
+#masthead {
+	margin: 15px auto 20px;
+}
+
+/*
+	Rules for the search input section
+*/
+
+#search_container ul{
+	list-style-type: none;
+}
+
+@media only screen and (max-width: 600px){
+	#search_container ul{
+		float: none;
+	}
+}
+
+@media only screen and (min-width: 601px){
+	#search_container ul{
+		float: right;
+	}
+}
+
+#search_container ul *{
+	display: inline;
+}
+
+/*
+	Rules for the weeks_carousel_menu
+*/
+#weeks_carousel_menu {
+	margin: 15px 35px;
+}
+
+/*
+	Rules for the per_week_list
+*/
+#per_wk_list {
+	list-style-type: none;
+	text-align: center;
+}
+
+#per_wk_list li{
+	display: inline;
+}
+
+
+/*
+	Rules for the video player section
+*/
+
+ @media only screen and (max-width: 700px){
+	#video_player_container{
+		width: 100%;
+		min-width: 320px;
+		height: auto; 
+		margin: 3rem auto;
+		padding: 5px 0;
+		background: #000;
+	}
+}
+
+@media only screen and (min-width: 701px){
+	#video_player_container {
+		width: 51.7381%;
+		height: auto;
+		margin: 3rem auto;
+		padding: 5px 0px;
+		background: #000 none repeat scroll 0% 0%;
+	}
+}
+
+
+/*rule for all slick carousels*/
+.slick-list {
+	cursor: pointer;
+}
+
+/*rule for the slick videos_carousel*/
+#videos_carousel {
+	padding-left: 0px;
+}
+
+/*rule for the videos list*/
+#videos_list li img,
+#videos_list li h3{
+	cursor: pointer;
+}
