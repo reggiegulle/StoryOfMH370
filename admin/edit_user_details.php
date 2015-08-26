@@ -1,75 +1,35 @@
 <?php
 
-require_once '../includes/init.php';
+	require_once '../includes/init.php';
 
-$user = new User();
+	$user = new User();
 
-//if $user not logged in,
-//back to index.php	
-if (!$user->isLoggedIn()){
-	Redirect::to('../index.php');
-} else {
-	
-	if(!$user_id = Input::get('user_id')){
+	//if $user not logged in,
+	//back to index.php	
+	if (!$user->isLoggedIn()){
 		Redirect::to('../index.php');
 	} else {
-		//assign variable $user to the User Object
-		$user = new User($user_id);
-		//check if $user exists in database
-		if(!$user->exists()){
-			//if $user is not in database,
-			//back to index.php
+		foreach($_GET as $key => $value){
+			if ($value === ""){
+				Redirect::to('../index.php');
+			}
+		}
+		
+		if(!$user_id = Input::get('user_id')){
 			Redirect::to('../index.php');
 		} else {
-			$data = $user->data();	
-		}
-	}
-}
-
-if(Input::exists()){
-	if(Token::check(Input::get('token'))){
-		//echo 'OK!';
-		$validate = new Validate();
-		$validation = $validate->check($_POST, [
-			'username' =>[
-				'required' => true,
-				'min' => 2,
-				'max' => 50,
-				'editnotduplicate'	=> 'users'
-			],
-			'name' =>[
-				'required' => true,
-				'min' => 2,
-				'max' => 50
-			]
-		]);
-		
-		if($validation->passed()){
-			if(Hash::make(Input::get('password'), $data->salt) !== $data->password){
-				Session::flash('edit_user_pwd_error', 'Password is blank/incorrect.');
-			} else{
-				//update
-				try{
-					$user->update([
-						'username'	=>	Input::get('username'),
-						'name' => Input::get('name')
-					], $data->id);
-					
-					Session::flash('edit_user_success', 'Your details have been updated.');
-					
-				} catch(Exception $e){
-					die($e->getMessage());
-				}
+			//assign variable $user to the User Object
+			$user = new User($user_id);
+			//check if $user exists in database
+			if(!$user->exists()){
+				//if $user is not in database,
+				//back to index.php
+				Redirect::to('../index.php');
+			} else {
+				$data = $user->data();	
 			}
-		
-		} else {
-			//echo errors
-			foreach($validation->errors() as $error){
-					echo '<p class="error">' . $error . '</p><br />';
-				}
 		}
 	}
-}
 ?>
 	<div id="wrapper">
 		
@@ -83,7 +43,7 @@ if(Input::exists()){
 
 		<p>To modify your existing details, fill-in your new details in the fields below.  Then type your password in the field provided and click "Submit".</p>
 		
-		<form action="" method="POST">
+		<form action="edit_user_details_post.php?user_id=<?php echo escape($data->id)?>" method="POST">
 			<div class="field">
 				<article>
 					<?php

@@ -10,7 +10,11 @@
 	} else {
 		if(!$user->isLoggedIn() && !$user->hasPermission('admin')){
 			Redirect::to('../index.php');
-		} else {    
+		} else {
+			
+			//The code below holds true
+			//if the form registering a new user
+			//is submitted
 			if(Input::exists()){
 
 				if(Token::check(Input::get('token'))){
@@ -71,6 +75,13 @@
 					}
 				}
 			}
+			
+			//The code below holds true
+			//even if no submission is made
+			//to register a new user
+			$all_users_obj = new User();
+			$all_users_obj->find_all();
+			$all_users_data = $all_users_obj->data();
 		}
 	}
 ?>
@@ -133,3 +144,31 @@
 	<article>
 		<h5><a href="../index.php">Cancel</a></h5>
 	</article>
+	
+	<section id="all_users_list_container">
+		<h2>Registered Users</h2>
+		<ul id="all_users_list">
+			<?php
+				foreach($all_users_data as $user_data){
+					$li_item = '';
+					$li_item .= '<li>';
+					$li_item .= '<h6>Database ID: ' . $user_data->id . '</h6>';
+					$li_item .= '<h6>Username: ' . $user_data->username . '</h6>';
+					$li_item .= '<h6>Full Name: ' . $user_data->name . '</h6>';
+					$li_item .= '<p>Date Joined: ' . $user_data->joined . '</p>';
+					$li_item .= '<p>Group: ';
+					if($user_data->group == 1){
+						$li_item .= 'Standard User';
+					} else {
+						$li_item .= 'Administrator';
+					} 
+					$li_item .= '</p>';
+					$li_item .= '<a href="edit_user.php?id=' . escape($user_data->id) . '">Edit User</a>';
+					$li_item .= '<br />';
+					$li_item .= '<a href="delete_user.php?id='. escape($user_data->id) . '" onclick="return confirm(\'Are You Sure?\')">Delete User</a>';
+					$li_item .= '</li>';
+					echo $li_item;
+				}
+			?>
+		</ul>
+	</section>

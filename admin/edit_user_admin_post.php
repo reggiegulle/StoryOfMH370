@@ -1,0 +1,69 @@
+<?php
+
+require_once '../includes/init.php';
+
+$user = new User();
+
+	//if $user not logged in,
+	//back to index.php	
+	if (!$user->exists()){
+		Redirect::to('../index.php');
+	} else {
+		if(!$user->isLoggedIn() && !$user->hasPermission('admin')){
+			Redirect::to('../index.php');
+		} else {
+			if(Input::exists()){
+				//echo 'OK!';
+				$validate = new Validate();
+				$validation = $validate->check($_POST, [
+					'username'	=> [
+						'required'	=> true,
+						'min'		=> 2,
+						'max' 		=> 20,
+						'unique'	=> 'users'
+					],
+					'name' => [
+						'required'	=> true,
+						'min'		=> 2,
+						'max'		=> 50
+					],
+					'password'	=> [
+						'required'	=> true,
+						'min'		=> 6
+					]
+				]);
+				
+				if($validation->passed()){
+					$salt = Hash::salt(32);
+					//update
+					try{
+						$user_id = $_GET['id'];
+						$user_to_be_edited = new User($user_id);
+						$user_data = $user_to_be_edited->data();
+						
+						$user_to_be_edited->update([
+							'username'	=>	Input::get('username'),
+							'name' => Input::get('name'),
+							'password' => Hash::make(Input::get('password'), $salt),
+							'salt' => $salt	
+						], $user_data->id);
+						
+						Session::flash('edit_user_success', 'User details have been updated.');
+						Redirect::to('edit_user.php?id=' . $user_data->id);
+						
+					} catch(Exception $e){
+						die($e->getMessage());
+					}
+				} else {
+					//echo errors
+					foreach($validation->errors() as $error){
+						echo '<p class="error">' . $error . '</p><br />';
+					}
+				}
+			}
+		}
+	}
+		
+
+	
+?>

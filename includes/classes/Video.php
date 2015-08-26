@@ -54,66 +54,6 @@
 			return false;
 		}
 
-		/* public function search_by($order, $string, $tags=[]){
-			$sql = 'SELECT * FROM videos WHERE string_date_pub LIKE "%' . $string . '%"';
-			if(count($tags) === 1){
-				$sql .= ' AND tag = "' . $tags[0] . '"';
-			}
-			if(count($tags) > 1){
-				$sql .= ' AND (';
-				$sql .= 'tag = "' . $tags[0] . '"';
-				for($t = 1, $tlen = count($tags); $t < $tlen; $t++){
-					$sql .= ' OR tag = "' . $tags[$t] .'"';
-				}
-				$sql .= ')';
-			}
-			$sql .= ' UNION ';
-			$sql .= 'SELECT * FROM videos WHERE video_title LIKE "%' . $string . '%"';
-			if(count($tags) === 1){
-				$sql .= ' AND tag = "' . $tags[0] . '"';
-			}
-			if(count($tags) > 1){
-				$sql .= ' AND (';
-				$sql .= 'tag = "' . $tags[0] . '"';
-				for($t = 1, $tlen = count($tags); $t < $tlen; $t++){
-					$sql .= ' OR tag = "' . $tags[$t] .'"';
-				}
-				$sql .= ')';
-			}
-			$sql .= ' UNION ';
-			$sql .= 'SELECT * FROM videos WHERE video_desc LIKE "%' . $string . '%"';
-			if(count($tags) === 1){
-				$sql .= ' AND tag = "' . $tags[0] . '"';
-			}
-			if(count($tags) > 1){
-				$sql .= ' AND (';
-				$sql .= 'tag = "' . $tags[0] . '"';
-				for($t = 1, $tlen = count($tags); $t < $tlen; $t++){
-					$sql .= ' OR tag = "' . $tags[$t] .'"';
-				}
-				$sql .= ')';
-			}
-			$sql .= ' UNION ';
-			$sql .= 'SELECT * FROM videos WHERE video_uploader LIKE "%' . $string . '%"';
-			if(count($tags) === 1){
-				$sql .= ' AND tag = "' . $tags[0] . '"';
-			}
-			if(count($tags) > 1){
-				$sql .= ' AND (';
-				$sql .= 'tag = "' . $tags[0] . '"';
-				for($t = 1, $tlen = count($tags); $t < $tlen; $t++){
-					$sql .= ' OR tag = "' . $tags[$t] .'"';
-				}
-				$sql .= ')';
-			}
-			$sql .= ' ORDER BY date_published ' . $order;
-			if(!$this->_db->query($sql)->error()){
-				$this->_data = $this->_db->results();
-				return true;
-			}
-			return false;
-		} */
-
 		//public function exists
 		public function exists(){
 			return(!empty($this->_data)) ? true : false;

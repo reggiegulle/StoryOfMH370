@@ -59,6 +59,16 @@ class User{
 		return false;
 	}
 	
+	public function find_all(){
+		$sql_all_users = 'SELECT * FROM users ORDER BY id ASC';
+		if($this->_db->query($sql_all_users)){
+			$this->_data = $this->_db->results();
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	public function login($username = null, $password = null, $remember = false){
 		
 		if(!$username && !$password && $this->exists()){
@@ -133,7 +143,14 @@ class User{
 	public function isLoggedIn(){
 		return $this->_isLoggedIn;
 	}
-
+	
+	//function to delete
+	//a user from the database
+	public function delete($fields = []){
+		if(!$this->_db->delete('users', $fields)){
+			throw new Exception('There was a problem deleting the user.');
+		}
+	}
 }
 
 ?>
