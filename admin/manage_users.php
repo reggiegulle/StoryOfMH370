@@ -67,11 +67,6 @@
 						} catch (Exception $e){
 							die($e->getMessage());
 						}
-					} else {
-						//echo errors
-						foreach($validation->errors() as $error){
-							echo '<p class="error">' . $error . '</p><br />';
-						}
 					}
 				}
 			}
@@ -98,6 +93,9 @@
 			if(Session::exists('register')){
 				echo '<p>' . Session::flash('register') . '</p>';
 			}
+			if(Session::exists('delete_user')){
+				echo '<p>' . Session::flash('delete_user') . '</p>';
+			}
 		?>
 	</article>
 
@@ -108,12 +106,26 @@
 		<div class="field">
 			<label for="username">Username</label>
 			<input type="text" name="username" id="username" value="" autocomplete="off" />
+			<article>
+				<?php
+					if(Session::exists('username')){
+						echo '<p class="error">' . Session::flash('username') . '</p>';
+					}
+				?>
+			</article>
 		</div>
 		
 		<div class="field">
 			<article>
 			<label for="name">User's Full Name</label>
 			<input type="text" name="name" id="name" value="" />
+			<article>
+				<?php
+					if(Session::exists('name')){
+						echo '<p class="error">' . Session::flash('name') . '</p>';
+					}
+				?>
+			</article>
 		</div>
 		
 		<div class="field">
@@ -121,16 +133,38 @@
 			<input type="radio" name="group" value="1" />Standard User
 			&nbsp;
 			<input type="radio" name="group" value="2" />Site Admin
+			<br />
+			<article>
+				<?php
+					if(Session::exists('group')){
+						echo '<p class="error">' . Session::flash('group') . '</p>';
+					}
+				?>
+			</article>
 		</div>
 		
 		<div class="field">
 			<label for="password">Choose a password</label>
 			<input type="password" name="password" id="password" value="" />
+			<article>
+				<?php
+					if(Session::exists('password')){
+						echo '<p class="error">' . Session::flash('password') . '</p>';
+					}
+				?>
+			</article>
 		</div>
 		
 		<div class="field">
 			<label for="password_again">Enter password again</label>
 			<input type="password" name="password_again" id="password_again" value="" />
+			<article>
+				<?php
+					if(Session::exists('password_again')){
+						echo '<p class="error">' . Session::flash('password_again') . '</p>';
+					}
+				?>
+			</article>
 		</div>
 		
 		<div class="field">

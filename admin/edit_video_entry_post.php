@@ -109,10 +109,7 @@
 						}
 						
 					} else {
-						$form_errors = $validate->errors();
-						foreach($form_errors as $error){
-							echo "<p> {$error} </p>";
-						}
+						Redirect::to('edit_video_entry.php?id=' . $video_entry_index);
 					}
 				} else {
 					Redirect::to('../index.php');

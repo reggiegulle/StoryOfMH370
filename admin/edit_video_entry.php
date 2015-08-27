@@ -41,11 +41,11 @@
 
 <div id="wrapper"> 
 		
-	
+	<section>
 		<article>
 			<?php
 			if(Session::exists('edit_video_entry')){
-				echo '<p>' . Session::flash('edit_video_entry') . '</p>';
+				echo '<p class="phpnotif">' . Session::flash('edit_video_entry') . '</p>';
 			}
 			?>
 		</article>
@@ -148,7 +148,14 @@
 			</div>
 			<div class="field">
 				<label for="video_id"><p>Video Id:</p></label>
-				<input type="text" id="video_id" name="video_id" form="editvideoentry" value="<?php echo escape($video_entry_data->video_id); ?>" />	
+				<input type="text" id="video_id" name="video_id" form="editvideoentry" value="<?php echo escape($video_entry_data->video_id); ?>" />
+				<article>
+					<?php
+						if(Session::exists('video_id')){
+							echo '<p class="error">' . Session::flash('video_id') . '</p>';
+						}
+					?>
+				</article>				
 			</div>
 			<div class="field">
 				<label for="video_title"><p>Video Title:</p></label>
@@ -157,10 +164,24 @@
 			<div class="field">
 				<label for="video_desc"><p>Video Description:</p></label>
 				<textarea id="video_desc" name="video_desc" cols="50" rows="8"><?php echo escape($video_entry_data->video_desc); ?></textarea>
+				<article>
+					<?php
+						if(Session::exists('video_desc')){
+							echo '<p class="error">' . Session::flash('video_desc') . '</p>';
+						}
+					?>
+				</article>
 			</div>
 			<div class="field">
 				<label for="video_uploader"><p>Video Uploaded By:</p></label>
-				<input type="text" id="video_uploader" name="video_uploader" form="editvideoentry" value="<?php echo escape($video_entry_data->video_uploader); ?>" />	
+				<input type="text" id="video_uploader" name="video_uploader" form="editvideoentry" value="<?php echo escape($video_entry_data->video_uploader); ?>" />
+				<article>
+					<?php
+						if(Session::exists('video_uploader')){
+							echo '<p class="error">' . Session::flash('video_uploader') . '</p>';
+						}
+					?>
+				</article>				
 			</div>
 			<div class="field">
 				<label for="tag"><p>Tag:</p></label>
@@ -177,4 +198,5 @@
 			<input type="submit" value="Edit Entry" />
 		</form>
 		<div id="cancel"><a href="../index.php">Cancel</a></div>
+	</section>
 </div>
