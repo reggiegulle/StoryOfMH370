@@ -19,33 +19,39 @@
 					$item = escape($item);
 					
 					if($rule === 'required' && empty($value)){
-						$this->addError("{$item} is required");
+						$this->addError("{$item} cannot be blank.");
+						Session::flash('' . $item . '', '' . $this->clean_item_output($item) . ' cannot be blank.');
 					} else if(!empty($value)){
 						switch($rule){
 							case 'min':
 								if(strlen($value) < $rule_value){
-									$this->addError(ucfirst("{$item} must be a minimum of {$rule_value} characters."));
+									$this->addError(ucfirst("{$item} must be at least {$rule_value} characters long."));
+									Session::flash('' . $item . '', '' . $this->clean_item_output($item) . ' must be at least ' . $this->clean_item_output($rule_value) . ' characters long.');
 								}
 							break;
 							case 'exactly':
 								if(strlen($value) != $rule_value){
-									$this->addError(ucfirst("{$item} must be exactly {$rule_value} characters."));
+									$this->addError(ucfirst("{$item} must be exactly {$rule_value} characters long."));
+									Session::flash('' . $item . '', '' . $this->clean_item_output($item) . ' must be exactly ' . $this->clean_item_output($rule_value) . ' characters long.');
 								}
 							break;
 							case 'max':
 								if(strlen($value) > $rule_value){
-									$this->addError(ucfirst("{$item} must be a maximum of {$rule_value} characters."));
+									$this->addError(ucfirst("{$item} can only be up to {$rule_value} characters long."));
+									Session::flash('' . $item . '', '' . $this->clean_item_output($item) . ' can only be up to ' . $this->clean_item_output($rule_value) . ' characters long.');
 								}
 							break;
 							case 'matches':
 								if($value != $source[$rule_value]){
-									$this->addError("{$rule_value} must match {$item}");
+									$this->addError("{$rule_value} must exactly match {$item}");
+									Session::flash('' . $item . '', '' . $this->clean_item_output($item) . ' must exactly match ' . $this->clean_item_output($rule_value) . '.');
 								}
 							break;
 							case 'unique':
 								$check = $this->_db->get($rule_value, [$item, '=', $value]);
 								if($check->count()) {
 									$this->addError("{$item} already exists.");
+									Session::flash('' . $item . '', '' . $this->clean_item_output($item) . ' already exists.');
 								}
 							break;
 						}
@@ -78,6 +84,16 @@
 				$this->addError("The date \"{$wrong_month} {$wrong_day}, {$year}\" cannot be accepted as data.");
 			}
 			return $this;
+		}
+		
+		private function clean_item_output($item){
+			if (preg_match('/_/', $item)) {
+				$item_raw = explode('_', $item);
+				$output = '';
+				$output .= strtoupper(implode(' ', $item_raw));
+				return $output;
+			}
+			return strtoupper($item);
 		}
 		
 		private function addError($error){

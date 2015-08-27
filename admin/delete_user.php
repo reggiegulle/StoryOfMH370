@@ -14,6 +14,7 @@
 			//assign variable $user to the User Object
 			$user_to_delete = new User(Input::get('id'));
 			$user_to_delete_data = $user_to_delete->data();
+			$username = $user_to_delete_data->username;
 			//$username = $karaoke_user_data->username;
 			//check if $user exists in database
 			if(!$user_to_delete->exists()){
@@ -33,30 +34,5 @@
 				}	
 			}
 		}
-	}
-		
-	
-
-	//assign variable $user to the User Object
-	$karaoke_user = new User($_GET['id']);
-	$karaoke_user_data = $karaoke_user->data();
-	$username = $karaoke_user_data->username;
-	//check if $user exists in database
-	if(!$karaoke_user->exists()){
-		//if $user is not in database,
-		//back to index.php
-		Redirect::to('index.php');
-	} else {
-		try{
-			$karaoke_user->delete([
-				'id', '=' , Input::get('id')
-			]);
-			
-			Session::flash('delete_user', 'User "' . $username . '" has been deleted from the database.');
-			Redirect::to('manage_users.php');
-		} catch (Exception $e){
-			die($e->getMessage());
-		}	
-	}
-		
+	}	
 ?>

@@ -35,16 +35,20 @@
 		
 		<p>Hello <a href="profile.php?user_id=<?php echo escape($data->id); ?>"><?php echo escape($data->username); ?>!</a></p>
 		
-		<?php
-			if (Session::exists('edit_user_success')){
-				echo '<p>' . Session::flash('edit_user_success') . '</p>';
-			}
-		?>
+		<article>
+			<?php
+				if (Session::exists('edit_user_success')){
+					echo '<p class="phpnotif">' . Session::flash('edit_user_success') . '</p>';
+				}
+			?>
+		</article>
 
 		<p>To modify your existing details, fill-in your new details in the fields below.  Then type your password in the field provided and click "Submit".</p>
 		
 		<form action="edit_user_details_post.php?user_id=<?php echo escape($data->id)?>" method="POST">
 			<div class="field">
+				<label for="name">Username</label>
+				<input type="text" name="username" value="<?php echo escape($data->username); ?>" />
 				<article>
 					<?php
 						if(Session::exists('username')){
@@ -52,10 +56,10 @@
 						}
 					?>
 				</article>
-				<label for="name">Username</label>
-				<input type="text" name="username" value="<?php echo escape($data->username); ?>" />
 			</div>
 			<div class="field">
+				<label for="name">Full Name</label>
+				<input type="text" name="name" value="<?php echo escape($data->name); ?>" />
 				<article>
 					<?php
 						if(Session::exists('name')){
@@ -63,26 +67,20 @@
 						}
 					?>
 				</article>
-				<label for="name">Full Name</label>
-				<input type="text" name="name" value="<?php echo escape($data->name); ?>" />
 			</div>
 			<div class="field">
+				<label for="password">Password</label>
+				<input type="password" name="password" id="password" autocomplete="off" value="" />
 				<article>
 					<?php
 						if(Session::exists('password')){
 							echo '<p class="error">' . Session::flash('password') . '</p>';
 						}
-					?>
-				</article>
-				<article>
-					<?php
 						if(Session::exists('edit_user_pwd_error')){
 							echo '<p class="error">' . Session::flash('edit_user_pwd_error') . '</p>';
 						}
 					?>
 				</article>
-				<label for="password">Password</label>
-				<input type="password" name="password" id="password" autocomplete="off" value="" />
 			</div>
 			<div class="field">	
 				<input type="submit" value="Submit" />

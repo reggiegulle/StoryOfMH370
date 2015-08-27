@@ -12,7 +12,12 @@ $user = new User();
 		if(!$user->isLoggedIn() && !$user->hasPermission('admin')){
 			Redirect::to('../index.php');
 		} else {
-			if(Input::exists()){
+			if(Input::exists('get')){
+				$user_id = $_GET['id'];
+				$user_to_be_edited = new User($user_id);
+				$user_data = $user_to_be_edited->data();
+			}
+			if(Input::exists('post')){
 				//echo 'OK!';
 				$validate = new Validate();
 				$validation = $validate->check($_POST, [
@@ -37,10 +42,6 @@ $user = new User();
 					$salt = Hash::salt(32);
 					//update
 					try{
-						$user_id = $_GET['id'];
-						$user_to_be_edited = new User($user_id);
-						$user_data = $user_to_be_edited->data();
-						
 						$user_to_be_edited->update([
 							'username'	=>	Input::get('username'),
 							'name' => Input::get('name'),
@@ -48,18 +49,17 @@ $user = new User();
 							'salt' => $salt	
 						], $user_data->id);
 						
-						Session::flash('edit_user_success', 'User details have been updated.');
-						Redirect::to('edit_user.php?id=' . $user_data->id);
-						
 					} catch(Exception $e){
 						die($e->getMessage());
 					}
 				} else {
-					//echo errors
-					foreach($validation->errors() as $error){
-						echo '<p class="error">' . $error . '</p><br />';
-					}
+					Redirect::to('edit_user.php?id=' . $user_id);
 				}
+				$username = $user_to_be_edited->data()->username;
+						
+				Session::flash('edit_user_success', 'User details have been updated.');
+				
+				Redirect::to('edit_user.php?id=' . $user_id);
 			}
 		}
 	}

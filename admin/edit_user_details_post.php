@@ -60,9 +60,9 @@
 							'name' => Input::get('name')
 						], $user_to_edit_data->id);
 						
-						Redirect::to('edit_user_details.php?user_id=' . $user_to_edit_data->id);
-						
 						Session::flash('edit_user_success', 'Your details have been updated.');
+						
+						Redirect::to('edit_user_details.php?user_id=' . $user_to_edit_data->id);
 						
 					} catch(Exception $e){
 						die($e->getMessage());
@@ -70,10 +70,7 @@
 				}
 			
 			} else {
-				//echo errors
-				foreach($validation->errors() as $error){
-						echo '<p class="error">' . $error . '</p><br />';
-					}
+				Redirect::to('edit_user_details.php?user_id=' . $user_to_edit_data->id);
 			}
 		}
 	}

@@ -86,17 +86,11 @@
 							'video_uploader'	=> (Input::get('video_uploader')),
 							'tag'				=> (Input::get('tag'))	
 						]);
-						//Session::flash('add_video', 'You have added a new video entry!');
-						echo 'You have added a new video entry!';
+						Session::flash('add_video', 'You have added a new video entry!');
 					} catch (Exception $e){
 						die($e->getMessage());
 					}
 					
-				} else {
-					$form_errors = $validate->errors();
-					foreach($form_errors as $error){
-						echo "<p> {$error} </p>";
-					}
 				}
 			}
 		}
@@ -105,8 +99,16 @@
 ?>
 
 		
-		<article>
-
+		<section>
+			
+			<article>
+				<?php
+					if(Session::exists('add_video')){
+						echo '<p class="phpnotif">' . Session::flash('add_video') . '</p>';
+					}
+				?>
+			</article>
+			
 			<h1>Add New Video</h1>
 			<form id="addnewvideo" action="" method="POST">
 				<div class="field">
@@ -169,18 +171,46 @@
 				<div class="field">
 					<label for="video_id"><p>Video Id:</p></label>
 					<input type="text" id="video_id" name="video_id" form="addnewvideo" value="" />	
+					<article>
+						<?php
+							if(Session::exists('video_id')){
+								echo '<p class="error">' . Session::flash('video_id') . '</p>';
+							}
+						?>
+					</article>
 				</div>
 				<div class="field">
 					<label for="video_title"><p>Video Title:</p></label>
-					<input type="text" id="video_title" name="video_title" form="addnewvideo" value="" />	
+					<input type="text" id="video_title" name="video_title" form="addnewvideo" value="" />
+					<article>
+						<?php
+							if(Session::exists('video_title')){
+								echo '<p class="error">' . Session::flash('video_title') . '</p>';
+							}
+						?>
+					</article>
 				</div>
 				<div class="field">
 					<label for="video_desc"><p>Video Description:</p></label>
 					<textarea id="video_desc" name="video_desc" cols="50" rows="8"></textarea>
+					<article>
+						<?php
+							if(Session::exists('video_desc')){
+								echo '<p class="error">' . Session::flash('video_desc') . '</p>';
+							}
+						?>
+					</article>
 				</div>
 				<div class="field">
 					<label for="video_uploader"><p>Video Uploaded By:</p></label>
-					<input type="text" id="video_uploader" name="video_uploader" form="addnewvideo" value="" />	
+					<input type="text" id="video_uploader" name="video_uploader" form="addnewvideo" value="" />
+					<article>
+						<?php
+							if(Session::exists('video_uploader')){
+								echo '<p class="error">' . Session::flash('video_uploader') . '</p>';
+							}
+						?>
+					</article>
 				</div>
 				<div class="field">
 					<label for="tag"><p>Tag:</p></label>
@@ -198,4 +228,4 @@
 			</form>
 			<div id="cancel"><a href="../index.php">Cancel</a></div>
 			
-		</article>
+		</section>
