@@ -8,7 +8,7 @@
 	if (!$user->exists()){
 		Redirect::to('../index.php');
 	} else {
-		if(!$user->isLoggedIn() && !$user->hasPermission('admin')){
+		if(!$user->isLoggedIn() || !$user->hasPermission('admin')){
 			Redirect::to('../index.php');
 		} else {
 			
@@ -81,11 +81,12 @@
 	}
 ?>
 
+<!--include reg_user_header.php-->
+<?php include '../includes/layout/reg_user_header.php'; ?>
 
+<section>
 	<article>
 		<p>Hello <a href="profile.php?user_id=<?php echo escape($user->data()->id); ?>"><?php echo escape($user->data()->username); ?>!</a></p>
-		
-		<article id="logout"><a href="logout.php"><p>Logout</p></a></article>
 	</article>
 
 	<article>
@@ -116,7 +117,6 @@
 		</div>
 		
 		<div class="field">
-			<article>
 			<label for="name">User's Full Name</label>
 			<input type="text" name="name" id="name" value="" />
 			<article>
@@ -199,10 +199,15 @@
 					$li_item .= '</p>';
 					$li_item .= '<a href="edit_user.php?id=' . escape($user_data->id) . '">Edit User</a>';
 					$li_item .= '<br />';
-					$li_item .= '<a href="delete_user.php?id='. escape($user_data->id) . '" onclick="return confirm(\'Are You Sure?\')">Delete User</a>';
+					$li_item .= '<a href="';
+					$li_item .= HTTP . 'includes/delete_user_post.php?id='. escape($user_data->id) . '" onclick="return confirm(\'Are You Sure?\')">Delete User</a>';
 					$li_item .= '</li>';
 					echo $li_item;
 				}
 			?>
 		</ul>
 	</section>
+</section>
+
+<!--include reg_user_footer.php-->
+<?php include '../includes/layout/reg_user_footer.php'; ?>

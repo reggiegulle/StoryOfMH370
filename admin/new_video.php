@@ -98,6 +98,8 @@
 	
 ?>
 
+<!--include reg_user_header.php-->
+<?php include '../includes/layout/reg_user_header.php'; ?>
 		
 		<section>
 			
@@ -229,3 +231,6 @@
 			<div id="cancel"><a href="../index.php">Cancel</a></div>
 			
 		</section>
+		
+<!--include reg_user_footer.php-->
+<?php include '../includes/layout/reg_user_footer.php'; ?>

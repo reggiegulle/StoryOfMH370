@@ -12,7 +12,7 @@
 			Redirect::to('../index.php');
 		} else {
 			foreach($_GET as $key => $value){
-				if ($value === ""){
+				if ($value == ""){
 					Redirect::to('../index.php');
 				}
 			}
@@ -39,8 +39,8 @@
 	}
 ?>
 
-<div id="wrapper"> 
-		
+<!--include reg_user_header.php-->
+<?php include '../includes/layout/reg_user_header.php'; ?>
 	<section>
 		<article>
 			<?php
@@ -199,4 +199,6 @@
 		</form>
 		<div id="cancel"><a href="../index.php">Cancel</a></div>
 	</section>
-</div>
+
+<!--include reg_user_footer.php-->
+<?php include '../includes/layout/reg_user_footer.php'; ?>

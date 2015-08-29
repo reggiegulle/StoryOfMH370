@@ -4,27 +4,28 @@ require_once '../includes/init.php';
 
 $user = new User();
 
-	//if $user not logged in,
-	//back to index.php	
-	if (!$user->exists()){
-		Redirect::to('../index.php');
+//if $user not logged in,
+//back to index.php	
+if (!$user->exists()){
+	Redirect::to(HTTP . 'index.php');
+} else {
+	if(!$user->isLoggedIn() || !$user->hasPermission('admin')){
+		Redirect::to(HTTP . 'index.php');
 	} else {
-		if(!$user->isLoggedIn() && !$user->hasPermission('admin')){
-			Redirect::to('../index.php');
-		} else {
-			$user_id = $_GET['id'];
-			$user_to_be_edited = new User($user_id);
-			$user_data = $user_to_be_edited->data();
-		}
+		$user_id = $_GET['id'];
+		$user_to_be_edited = new User($user_id);
+		$user_data = $user_to_be_edited->data();
 	}
+}
 ?>
 
-
-<div id="wrapper">
-
+<!--include reg_user_header.php-->
+<?php include '../includes/layout/reg_user_header.php'; ?>
 	<section>
 
-		<p>Hello <a href="profile.php?user=<?php echo escape($user->data()->username); ?>"><?php echo escape($user->data()->username); ?>!</a></p>
+		<article>
+			<p>Hello <a href="profile.php?user_id=<?php echo escape($user->data()->id); ?>"><?php echo escape($user->data()->username); ?>!</a></p>
+		</article>
 		
 		<article>
 			<?php
@@ -37,7 +38,7 @@ $user = new User();
 		<p>To modify the user's existing details, fill-in the user's new details in the fields below.  Then type the user's reset password in the field provided and click "Submit".</p>
 
 
-		<form action="edit_user_admin_post.php?id=<?php echo escape($user_id); ?>" method="POST">
+		<form action="<?php print HTTP . 'includes/edit_user_admin_post.php?id=' . escape($user_id); ?>" method="POST">
 			<div class="field">
 				<label for="name">Username</label>
 				<input type="text" name="username" value="<?php echo escape($user_data->username); ?>" />
@@ -99,4 +100,5 @@ $user = new User();
 	
 	</section>
 
-</div>
+<!--include reg_user_footer.php-->
+<?php include '../includes/layout/reg_user_footer.php'; ?>

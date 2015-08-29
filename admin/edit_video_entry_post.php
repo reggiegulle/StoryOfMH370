@@ -12,7 +12,7 @@
 			Redirect::to('../index.php');
 		} else {
 			foreach($_GET as $key => $value){
-				if ($value === ""){
+				if ($value == ""){
 					Redirect::to('../index.php');
 				}
 			}
