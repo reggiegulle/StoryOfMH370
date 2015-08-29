@@ -7,33 +7,32 @@
 	//if $user not logged in,
 	//back to index.php	
 	if (!$user->isLoggedIn()){
-		Redirect::to('../index.php');
+		Redirect::to(HTTP . 'index.php');
 	} else {
 		foreach($_GET as $key => $value){
-			if ($value === ""){
-				Redirect::to('../index.php');
+			if ($value == ""){
+				Redirect::to(HTTP . 'index.php');
 			}
 		}
-		
-		if(!$user_id = Input::get('user_id')){
-			Redirect::to('../index.php');
+		//check if $user exists in database
+		if(!$user->exists()){
+			//if $user is not in database,
+			//back to index.php
+			Redirect::to(HTTP . 'index.php');
 		} else {
-			//assign variable $user to the User Object
-			$user = new User($user_id);
-			//check if $user exists in database
-			if(!$user->exists()){
-				//if $user is not in database,
-				//back to index.php
-				Redirect::to('../index.php');
-			} else {
-				$data = $user->data();	
+			$data = $user->data();
+			if(Input::get('user_id') != $data->id){
+				Redirect::to(HTTP . 'index.php');
 			}
 		}
 	}
 ?>
-	<div id="wrapper">
+
+<!--include reg_user_header.php-->
+<?php include '../includes/layout/reg_user_header.php'; ?>
+	<section>
 		
-		<p>Hello <a href="profile.php?user_id=<?php echo escape($data->id); ?>"><?php echo escape($data->username); ?>!</a></p>
+		<p>Hello <a href="<?php print HTTP;?>admin/profile.php?user_id=<?php echo escape($data->id); ?>"><?php echo escape($data->username); ?>!</a></p>
 		
 		<article>
 			<?php
@@ -45,7 +44,7 @@
 
 		<p>To modify your existing details, fill-in your new details in the fields below.  Then type your password in the field provided and click "Submit".</p>
 		
-		<form action="edit_user_details_post.php?user_id=<?php echo escape($data->id)?>" method="POST">
+		<form action="<?php print HTTP;?>includes/edit_user_details_post.php?user_id=<?php echo escape($data->id)?>" method="POST">
 			<div class="field">
 				<label for="name">Username</label>
 				<input type="text" name="username" value="<?php echo escape($data->username); ?>" />
@@ -90,4 +89,7 @@
 
 		<p><a href="changepassword.php?user_id=<?php echo escape($user->data()->id); ?>">Click here</a> if you want to change your password.</p>
 		
-	</div>
+	</section>
+	
+<!--include reg_user_footer.php-->
+<?php include '../includes/layout/reg_user_footer.php'; ?>
