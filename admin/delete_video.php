@@ -9,12 +9,12 @@
 	if (!$user->exists()){
 		Redirect::to('../index.php');
 	} else {
-		if(!$user->isLoggedIn() && !$user->hasPermission('admin')){
+		if(!$user->isLoggedIn() || !$user->hasPermission('admin')){
 			Redirect::to('../index.php');
 		} else {
 			
 			foreach($_GET as $key => $value){
-				if ($value === ""){
+				if ($value == ""){
 					Redirect::to('../index.php');
 				}
 			}

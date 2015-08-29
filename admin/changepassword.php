@@ -7,21 +7,22 @@
 	//if $user not logged in,
 	//back to index.php	
 	if (!$user->isLoggedIn()){
-		Redirect::to('../index.php');
+		Redirect::to(HTTP . 'index.php');
 	} else {
-		
-		if(!$user_id = Input::get('user_id')){
-			Redirect::to('../index.php');
+		foreach($_GET as $key => $value){
+			if ($value == ""){
+				Redirect::to(HTTP . 'index.php');
+			}
+		}
+		//check if $user exists in database
+		if(!$user->exists()){
+			//if $user is not in database,
+			//back to index.php
+			Redirect::to(HTTP . 'index.php');
 		} else {
-			//assign variable $user to the User Object
-			$user = new User($user_id);
-			//check if $user exists in database
-			if(!$user->exists()){
-				//if $user is not in database,
-				//back to index.php
-				Redirect::to('../index.php');
-			} else {
-				$data = $user->data();	
+			$data = $user->data();
+			if(Input::get('user_id') != $data->id){
+				Redirect::to(HTTP . 'index.php');
 			}
 		}
 	}
@@ -51,7 +52,7 @@
 				//change of password
 				if(Hash::make(Input::get('password_current'), $data->salt) !== $data->password){
 					Session::flash('edit_user_current_pwd_error', 'The current password you provided is incorrect.');
-				} else{
+				} else {
 					//echo 'OK!';
 					$salt = Hash::salt(32);
 					$user->update([
@@ -67,8 +68,11 @@
 	}
 
 ?>
+
+<!--include reg_user_header.php-->
+<?php include '../includes/layout/reg_user_header.php'; ?>
 		
-	<div id="wrapper">
+	<section>
 
 		<p>Hello <a href="profile.php?user_id=<?php echo escape($data->id); ?>"><?php echo escape($data->username); ?>!</a></p>
 		<article>
@@ -125,4 +129,6 @@
 			</div>
 
 		</form>
-	</div>
+	</section>
+<!--include reg_user_footer.php-->
+<?php include '../includes/layout/reg_user_footer.php'; ?>

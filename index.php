@@ -22,6 +22,7 @@
 		<meta name="Description" CONTENT=""/>
 		<!-- Bootstrap style-->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-theme.css" rel="stylesheet">
 		<!--slick js carousel styles-->
 		<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
 		<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
@@ -84,7 +85,7 @@
 		<div id="wrapper" class="container">
 			<section id="masthead" class="row">
 				<article id="masthead_title" class="col-xs-12 col-sm-7 col-md-7">
-					<h1>The Story of MH370</h1>
+					<h1><a href="index.php">The Story of MH370</a></h1>
 				</article>
 				<article id="masthead_login" class="col-xs-12 col-sm-5 col-md-5">
 					<?php include_once "includes/layout/login_splash.php" ;?>
@@ -167,6 +168,15 @@
 			
 			<ul id="videos_list">  
 			</ul>
+			<section id="footer_container">
+				<article id="footer">
+					<ul id="footer-ul">
+						<li>Powered by <a href="http://www.youtube.com" title="YouTube"><img src="images/Youtube_icon45.png" width="45px" height="45px" alt="youtube_icon" /></a></li>
+						<li><p>Design and UI by</p><h3>Reggie Gulle</h3></li>
+						<li><p>All Rights Reserved <?php echo date("Y", time()); ?></p></li>
+					</ul>
+				</article>
+			</section>
 		</div>
 		<script src="js/carousel.menu.js" type="text/javascript"></script>
 		<script src="js/youtube.js" type="text/javascript"></script>
