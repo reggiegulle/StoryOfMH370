@@ -128,7 +128,7 @@ $(document).ready(function(){
 				getSearchResults(search_input);
 			} else {
 				$('#search_input_feedback').html('<p>Please enter 3 or more characters</p>');
-				$('#videos_carousel').empty();
+				$('#videos_carousel').hide();
 				$('#search_stats').html('');
 				$('#prevPgBtn').remove();
 				$('#nextPgBtn').remove();
@@ -190,7 +190,7 @@ $(document).ready(function(){
 		//for "Reset Search" button
 		$('#reset_search').click(function(){
 			$('#search_field').val('');
-			$('#videos_carousel').empty();
+			$('#videos_carousel').hide();
 			$(filters_title).remove();
 			$('#search_stats').html('');
 			$('#prevPgBtn').remove();

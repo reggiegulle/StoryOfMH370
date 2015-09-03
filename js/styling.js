@@ -24,4 +24,18 @@ $(document).ready(function(){
 			}
 		});
 	});
+	
+	$('#videos_carousel').on('mh370.vidCrslRender', function(){
+		var liItmHt = $('#videos_carousel').height();
+		$('#videos_carousel li').css({
+			'height': (liItmHt) + 'px'
+		});
+		
+		$(window).resize(function(){
+			var liItmHt = $('#videos_carousel').height();
+			$('#videos_carousel li').css({
+				'height': (liItmHt) + 'px'
+			});
+		});
+	});	
 });

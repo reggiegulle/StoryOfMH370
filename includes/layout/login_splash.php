@@ -7,48 +7,46 @@
 <?php
 	if (!$user->isLoggedIn()){			
 ?>
-		<p>Registered Users Login</p>
 		<article>
+			<p>Registered Users Login</p>
 			<?php
 				if(Session::exists('login_error')){
 					echo '<p class="error">' . Session::flash('login_error') . '</p>';
 				}
 			?>
+			<form action="<?php print HTTP . 'includes/login_post.php'; ?>" method="POST">
+			
+				<ul>
+					<li>
+						<label for="username">Username</label>
+						<input type="text" name="username" id="username" autocomplete="off" value="" />
+						<?php
+							if(Session::exists('username')){
+								echo '<p class="error">' . Session::flash('username') . '</p>';
+							}
+						?>
+					</li>
+					<li>
+						<label for="password">Password</label>
+						<input type="password" name="password" id="password" autocomplete="off" value="" />
+						<?php
+							if(Session::exists('password')){
+								echo '<p class="error">' . Session::flash('password') . '</p>';
+							}
+						?>
+					</li>
+				</ul>
+				
+				<ul>
+					<li id="desc_inline">
+						<input type="checkbox" name="remember" id="remember" />
+						<p class="remember">Remember me</p>
+						<input type="hidden" name="token" value="<?php echo Token::generate(); ?>" />
+						<input type="submit" value="Log In" />
+					</li>
+				</ul>
+			</form>
 		</article>
-		<!--<form action="includes/post_pages/login_post.php" method="POST">-->
-		<form action="<?php print HTTP . 'includes/login_post.php'; ?>" method="POST">
-			<div class="field">
-				<label for="username">Username</label>
-				<input type="text" name="username" id="username" autocomplete="off" value="" />
-				<article>
-					<?php
-						if(Session::exists('username')){
-							echo '<p class="error">' . Session::flash('username') . '</p>';
-						}
-					?>
-				</article>
-			</div>
-			<div class="field">
-				<label for="password">Password</label>
-				<input type="password" name="password" id="password" autocomplete="off" value="" />
-				<article>
-					<?php
-						if(Session::exists('password')){
-							echo '<p class="error">' . Session::flash('password') . '</p>';
-						}
-					?>
-				</article>
-			</div>
-			
-			<div class="field">
-				<label for="remember">
-					<input type="checkbox" name="remember" id="remember" /> Remember me
-				</label>
-			</div>
-			
-			<input type="hidden" name="token" value="<?php echo Token::generate(); ?>" />
-			<input type="submit" value="Log In" />
-		</form>
 <?php
 	} else {
 		if (!$user->hasPermission('admin')){
