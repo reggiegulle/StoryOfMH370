@@ -28,6 +28,8 @@
 		<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
 		<!--Main Style-->
 		<link rel="stylesheet" type="text/css" href="css/style.main.css"/>
+		<!--Colors Style-->
+		<link rel="stylesheet" type="text/css" href="css/style.theme.css"/>
 		
 		<!--jQuery from Google CDN Hosted Libraries-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -62,6 +64,14 @@
 		<!--js for determining styles-->
 		<script type="text/javascript" src="js/styling.js"></script>
 		
+		<!--[if gte IE 9]>
+		  <style type="text/css">
+			.gradient {
+			   filter: none;
+			}
+		  </style>
+		<![endif]-->
+		
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -84,15 +94,24 @@
 		
 		<div id="wrapper" class="container">
 			<section id="masthead" class="row">
-				<article id="masthead_title" class="col-xs-12 col-sm-7 col-md-7">
-					<h1><a href="index.php">The Story of MH370</a></h1>
+				<article id="masthead_title" class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
+					<div class="rows">
+						<h1 class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-1">
+							<a href="index.php">The Story of <br />
+							Flight MH370 <br />
+							In Online Videos</a>
+						</h1>
+						<div class="col-xs-12 col-sm-8 col-sm-offset-3 col-md-8 col-md-offset-4 col-lg-8 col-lg-offset-4">
+							<img src="images/280x149.airplane.masthead.png" width="280px" height="149px" alt="" />
+						</div>
+					</div>
 				</article>
-				<article id="masthead_login" class="col-xs-12 col-sm-5 col-md-5">
+				<article id="masthead_login" class="col-xs-12 col-sm-4 col-md-4 col-lg-5">
 					<?php include_once "includes/layout/login_splash.php" ;?>
 				</article>
 			</section>
 			<!--This is where the search form should be-->
-			<section id="search_container">
+			<section id="search_container" class="row gradient">
 				<div class="col-xs-0 col-sm-7 col-md-7"></div>
 				<ul class="col-xs-12 col-sm-5 col-md-5">
 					<li>
@@ -116,12 +135,12 @@
 			</section>
 			<div style="clear: both;"></div>
 			
-			<section id="weeks_carousel_container">
+			<section id="weeks_carousel_container" class="gradient">
 				<ul id="weeks_carousel_menu">
 					<?php
 						for($w=1; $w < ($latest_wk+5); $w++){
 							if ($w%4 == 0){
-								echo '<li>Weeks ' . ($w - 3) . '-' . $w . '</li>';
+								echo '<li>WEEKS ' . ($w - 3) . '-' . $w . '</li>';
 							}
 						}
 					?>
@@ -151,7 +170,7 @@
 				<article id="player"></article>
 			</section>
 			
-			<ul id="videos_carousel">
+			<ul id="videos_carousel" class="gradient">
 			</ul>
 			
 			<section id="filter_boxes_container" class="show_hide">

@@ -116,7 +116,7 @@ $(document).ready(function(){
 					var wk_limit = wk_st_int + 4;
 					for(w = wk_st_int; w < wk_limit; w++){
 						var wk_list_item = '<li>';
-						wk_list_item += 'Week ' + w;
+						wk_list_item += '<p>Week ' + w + '</p>';
 						wk_list_item += '</li>';
 						$('#per_wk_list').append(wk_list_item);
 					}
