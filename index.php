@@ -185,8 +185,11 @@
 				<p class="show_hide"></p>
 			</div>
 			
-			<ul id="videos_list">  
-			</ul>
+			<section id="videos_list_container" class="row">
+				<ul id="videos_list">  
+				</ul>
+			</section>
+			
 			<section id="footer_container">
 				<article id="footer">
 					<ul id="footer-ul">

@@ -177,3 +177,8 @@ videos_carousel
 #videos_carousel li h5 {
   font-weight: bold;
 }
+
+/*rule for the videos list*/
+#videos_list{
+	background-color: rgba(255,255,255,0.7);
+}

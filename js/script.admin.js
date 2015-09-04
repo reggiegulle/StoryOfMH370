@@ -13,17 +13,19 @@ $(document).ready(function(){
 				$.each(data, function(k,v){
 					var video_item = "<li data-video_id='" + v.video_id + "'>";
 					video_item += "<div>";
-					video_item += "<img src='https://i3.ytimg.com/vi/" + v.video_id + "/mqdefault.jpg' alt='\"" + v.video_title + "\" thumbnail' width='120px' height='68px' longdesc='Thumbnail for the Youtube video of \"" + v.video_title + "\"'/>";
+					video_item += "<img src='https://i3.ytimg.com/vi/" + v.video_id + "/mqdefault.jpg' alt='\"" + v.video_title + "\" thumbnail' width='150px' height='84px' longdesc='Thumbnail for the Youtube video of \"" + v.video_title + "\"'/>";
 					video_item += "<h5>" + v.string_date_pub + "</h5>";						
 					video_item += "<h6>Week " + v.week_number + "</h6>";
+					video_item += "</div>";
+					video_item += "<div>";
 					video_item += "</div>";
 					video_item += "<h3>" + v.video_title + "</h3>";
 					video_item += "<p>" + v.video_desc;
 					video_item += "<span class='source'>" + v.video_uploader + "</span>";
-					video_item += "<span class='tag'>" + v.tag + "</span></p>";
+					video_item += "<span class='tag'>(" + v.tag + ")</span></p>";
 					//START only for admin
-					video_item += "<p><a href='admin/edit_video_entry.php?id=" + v.id + "'>Edit Video</a></p>";
-					video_item += "<p><a href='admin/delete_video.php?id=" + v.id + "' onclick=\"return confirm('Are You Sure?')\">Delete Video</a></p>";
+					video_item += "<a href='admin/edit_video_entry.php?id=" + v.id + "'>Edit Video</a>";
+					video_item += "<a href='admin/delete_video.php?id=" + v.id + "' onclick=\"return confirm('Are You Sure?')\">Delete Video</a>";
 					//END only for admin
 					video_item += "</li>";
 					$("#videos_list").append(video_item);
@@ -129,7 +131,9 @@ $(document).ready(function(){
 			
 			if($('#per_wk_list_container').is(':hidden')){
 				$('#per_wk_list_container').show();
-			}	
+			}
+			
+			$('#videos_list').trigger('mh370.weekListRender');
 		}
 	});
 }); 
