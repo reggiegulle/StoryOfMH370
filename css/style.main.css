@@ -4,9 +4,6 @@ Main Styling Script
 
 */
 
-body{
-	background: #CCC;
-}
 
 /*
 	Rules below heavily rely on
@@ -18,16 +15,29 @@ body{
 	Rules for the div wrapper
 */
 @media only screen and (max-width: 600px){
-	#wrapper{
+	#wrapper.container{
 		width: 100%;
-		margin: 2rem auto;
+		margin: 0 auto;
+		padding-left: 0px;
+		padding-right: 0px;
 	}
 }
 
-@media only screen and (min-width: 601px){
-	#wrapper{
+@media only screen and (min-width: 601px) and (max-width: 980px){
+	#wrapper.container{
+		width: 90%;
+		margin: 0 auto;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+
+@media only screen and (min-width: 981px){
+	#wrapper.container{
 		width: 80%;
-		margin: 2rem auto;
+		margin: 0 auto;
+		padding-left: 15px;
+		padding-right: 15px;
 	}
 }
 
@@ -36,50 +46,138 @@ body{
 	Rules for the masthead
 */
 #masthead {
-	margin: 15px auto 20px;
+	margin: 0px auto;
+	box-sizing: content-box;
+	padding: 2.5rem 0px 0px;
+}
+
+#masthead_title{
+	position: relative;
+}
+
+#masthead_title h1{
+	margin-top: 0px;
+	position: absolute;
+	z-index: 4;
+}
+
+#masthead_title h1 a:hover,
+#masthead_title h1 a:active,
+#masthead_title h1 a:focus{
+	text-decoration: none;
+}
+
+#masthead_title img{
+	position: relative;
+	z-index: 1;
+}
+
+#masthead_login{
+	margin-top: 0px;
+}
+
+#masthead_login form ul {
+	display: block;
+	list-style-type: none;
+	padding: 0;
+}
+
+#masthead_login form ul li{
+	display: inline-block;
+}
+
+#masthead_login form ul li > *{
+	display: block;
+}
+
+#masthead_login #desc_inline{
+	vertical-align: middle;
+}
+
+#masthead_login #desc_inline > *{
+	display: inline-block;
+}
+
+#masthead_login #desc_inline input[type='submit']{
+	border-radius: 6px;
+	margin-left: 20px;
+}
+
+#masthead_login input[type='text'],
+#masthead_login input[type='password']{
+	border-radius: 6px;
 }
 
 /*
 	Rules for the search input section
 */
 
+#search_container {
+	border-radius: 0px 0px 8px 8px;
+	margin: 0px auto;
+	padding-top: 5px;
+	text-align: right;
+}
+
 #search_container ul{
 	list-style-type: none;
-}
-
-@media only screen and (max-width: 600px){
-	#search_container ul{
-		float: none;
-	}
-}
-
-@media only screen and (min-width: 601px){
-	#search_container ul{
-		float: right;
-	}
+	margin-bottom: 5px;
 }
 
 #search_container ul *{
 	display: inline;
 }
 
+#search_container input[type='text']{
+	border-radius: 6px;
+}
+
+#search_container #reset_search{
+	border-radius: 6px;
+}
+
 /*
 	Rules for the weeks_carousel_menu
 */
-#weeks_carousel_menu {
-	margin: 15px 35px;
+#weeks_carousel_container {
+  border-color: #4ae2c9;
+  border-style: solid;
+  border-width: 2px 0;
+  margin: 5px 30px;
+  padding: 10px 0;
+}
+
+#weeks_carousel_menu{
+	margin: 5px 0;
+}
+
+#weeks_carousel_menu li {
+  text-align: center;
 }
 
 /*
 	Rules for the per_week_list
 */
 #per_wk_list {
-	list-style-type: none;
-	text-align: center;
+  cursor: pointer;
+  list-style-type: none;
+  margin: 15px 20px;
+  padding-left: 0;
+  text-align: center;
 }
 
 #per_wk_list li{
 	display: inline;
+}
+
+#per_wk_list li p {
+  border-color: #4ae2c9;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  display: inline-block;
+  margin: 0;
+  padding: 5px 8px;
 }
 
 
@@ -92,9 +190,12 @@ body{
 		width: 100%;
 		min-width: 320px;
 		height: auto; 
-		margin: 3rem auto;
+		margin: 3rem auto 2rem;
 		padding: 5px 0;
-		background: #000;
+		border-color: transparent;
+		border-radius: 0px;
+		border-style: none;
+		border-width: 0x;
 	}
 }
 
@@ -102,9 +203,12 @@ body{
 	#video_player_container {
 		width: 51.7381%;
 		height: auto;
-		margin: 3rem auto;
-		padding: 5px 0px;
-		background: #000 none repeat scroll 0% 0%;
+		margin: 3rem auto 2rem;
+		padding: 5px;
+		border-color: #4ae2c9;
+		border-radius: 6px;
+		border-style: solid;
+		border-width: 1px;
 	}
 }
 
@@ -116,11 +220,100 @@ body{
 
 /*rule for the slick videos_carousel*/
 #videos_carousel {
-	padding-left: 0px;
+	margin: 0 25px;
+}
+
+#videos_carousel {
+	padding-left: 5px;
+}
+
+#videos_carousel .slick-list.draggable {
+  border-radius: 6px;
+}
+
+#videos_carousel li {
+	background-color: rgba(255, 255, 255, 0.33);
+	margin: 0;
+	padding: 0;
+		-webkit-box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.75);
+		-moz-box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.75);
+	box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+#videos_carousel li > * {
+	display: block;
+	width: 120px;
+	padding: 0;
+}
+
+#videos_carousel li img {
+  border-radius: 4px;
+  margin: 8px auto 0;
+}
+
+#videos_carousel li p {
+  margin: 8px auto 0;
+}
+
+#videos_carousel li h5 {
+  margin: 6px auto 10px;
 }
 
 /*rule for the videos list*/
+@media only screen and (max-width: 767px){
+	#videos_list_container{
+		margin: 0 5px;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+	#videos_list_container{
+		margin: 0 55px;
+	}
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+	#videos_list_container{
+		margin: 0 85px;
+	}
+}
+
+@media only screen and (min-width: 1200px){
+	#videos_list_container{
+		margin: 0 115px;
+	}
+}
+
+#videos_list{
+	list-style-type: none;
+	margin-top: 10px;
+	padding-left: 0;
+	padding-right: 0;
+	overflow: auto;
+}
+
+#videos_list li {
+	border: 1px solid;
+	padding-bottom: 0;
+	padding-top: 30px;
+}
+
 #videos_list li img,
 #videos_list li h3{
 	cursor: pointer;
+}
+
+#videos_list li img {
+	float: left;
+	margin-right: 8px;
+}
+
+#videos_list li h3 {
+	margin-bottom: 5px;
+	margin-top: 10px;
+}
+
+#videos_list li p span.source,
+#videos_list li p span.tag {
+  margin-left: 15px;
 }
