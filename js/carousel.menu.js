@@ -16,7 +16,27 @@ $(document).ready(function(){
 		slide: 'li',
 		slidesToShow: 6,
 		edgeFriction: 0.02,
-		swipeToSlide: true
+		swipeToSlide: true,
+		responsive: [
+			{
+				breakpoint:1024,
+				settings:{
+					slidesToShow: 4
+				}
+			},
+			{
+				breakpoint:600,
+				settings:{
+					slidesToShow: 3
+				}
+			},
+			{
+				breakpoint:480,
+				settings:{
+					slidesToShow: 2
+				}
+			}
+		]
 	});
 	
 	function removeEmptyImgForSlick(url, imgObj, pos){
@@ -33,6 +53,10 @@ $(document).ready(function(){
 	
 	$(document).ajaxSuccess(function(event, xhr, settings){
 		if(settings.url == "http://localhost/mh370/includes/gen_video_list.php"){
+			if($('#videos_carousel').is(':hidden')){
+				$('#videos_carousel').show();
+			}
+			
 			while($('#videos_carousel li').length > 0){
 				$('#videos_carousel').slick('slickRemove', 0);
 			}
@@ -41,7 +65,7 @@ $(document).ready(function(){
 				var vid_item = '<li>';
 				vid_item += "<img src='https://i3.ytimg.com/vi/" + v.video_id + "/mqdefault.jpg' alt='\"" + v.video_title + "\" thumbnail' width='120px' height='68px' longdesc='Thumbnail for the Youtube video of \"" + v.video_title + "\"'/>";
 				vid_item += '<p>' + v.string_date_pub + '</p>';
-				vid_item += '<h6>' + v.video_title + '</h6>';
+				vid_item += '<h5>' + v.video_title + '</h5>';
 				vid_item += '</li>';
 				$('#videos_carousel').slick('slickAdd', vid_item);
 			});
@@ -62,7 +86,13 @@ $(document).ready(function(){
 					player.loadVideoById(vidId);
 				});
 			});
+			
+			$('#videos_carousel').trigger('mh370.vidCrslRender');
 		} else if(settings.url == "http://localhost/mh370/includes/search_return.php"){
+			
+			if($('#videos_carousel').is(':hidden')){
+				$('#videos_carousel').show();
+			}
 			
 			while($('#videos_carousel li').length > 0){
 				$('#videos_carousel').slick('slickRemove', 0);
@@ -76,7 +106,7 @@ $(document).ready(function(){
 					var vid_item = '<li>';
 					vid_item += "<img src='https://i3.ytimg.com/vi/" + v.video_id + "/mqdefault.jpg' alt='\"" + v.video_title + "\" thumbnail' width='120px' height='68px' longdesc='Thumbnail for the Youtube video of \"" + v.video_title + "\"'/>";
 					vid_item += '<p>' + v.string_date_pub + '</p>';
-					vid_item += '<h6>' + v.video_title + '</h6>';
+					vid_item += '<h5>' + v.video_title + '</h5>';
 					vid_item += '</li>';
 					$('#videos_carousel').slick('slickAdd', vid_item);
 				});
@@ -98,10 +128,12 @@ $(document).ready(function(){
 					});
 				});
 				
+				$('#videos_carousel').trigger('mh370.vidCrslRender');	
 			} else {
 				while($('#videos_carousel li').length > 0){
 					$('#videos_carousel').slick('slickRemove', 0);
 				}
+				$('#videos_carousel').trigger('mh370.vidCrslRender');
 			}
 			
 		}

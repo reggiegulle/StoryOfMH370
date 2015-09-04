@@ -13,6 +13,8 @@
 		<link href="../css/bootstrap-theme.css" rel="stylesheet">
 		<!--Main Style-->
 		<link rel="stylesheet" type="text/css" href="../css/style.main.css"/>
+		<!--Colors Style-->
+		<link rel="stylesheet" type="text/css" href="../css/style.theme.css"/>
 		
 		<!--jQuery from Google CDN Hosted Libraries-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -34,10 +36,19 @@
 		
 		<div id="wrapper" class="container">
 			<section id="masthead" class="row">
-				<article id="masthead_title" class="col-xs-12 col-sm-7 col-md-7">
-					<h1><a href="../index.php">The Story of MH370</a></h1>
+				<article id="masthead_title" class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
+					<div class="rows">
+						<h1 class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-1">
+							<a href="../index.php">The Story of <br />
+							Flight MH370 <br />
+							In Online Videos</a>
+						</h1>
+						<div class="col-xs-12 col-sm-8 col-sm-offset-3 col-md-8 col-md-offset-4 col-lg-8 col-lg-offset-4">
+							<img src="../images/280x149.airplane.masthead.png" width="280px" height="149px" alt="" />
+						</div>
+					</div>
 				</article>
-				<article id="masthead_login" class="col-xs-12 col-sm-5 col-md-5">
+				<article id="masthead_login" class="col-xs-12 col-sm-4 col-md-4 col-lg-5">
 					<?php include_once "login_splash.php" ;?>
 				</article>
 			</section>
