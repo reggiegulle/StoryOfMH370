@@ -16,12 +16,15 @@ $(document).ready(function(){
 				} else {
 					$.each(data, function(k,v){
 						var video_item = "<li data-video_id='" + v.video_id + "'>";
+						video_item += "<div>";
 						video_item += "<img src='https://i3.ytimg.com/vi/" + v.video_id + "/mqdefault.jpg' alt='\"" + v.video_title + "\" thumbnail' width='120px' height='68px' longdesc='Thumbnail for the Youtube video of \"" + v.video_title + "\"'/>";
-						video_item += "<h5>" + v.string_date_pub + " - " + "Week " + v.week_number + "</h5>";
+						video_item += "<h5>" + v.string_date_pub + "</h5>";						
+						video_item += "<h6>Week " + v.week_number + "</h6>";
+						video_item += "</div>";
 						video_item += "<h3>" + v.video_title + "</h3>";
-						video_item += "<p>" + v.video_desc + "</p>";
-						video_item += "<p>" + v.video_uploader + "</p>";
-						video_item += "<p>" + v.tag + "</p>";
+						video_item += "<p>" + v.video_desc;
+						video_item += "<span class='source'>" + v.video_uploader + "</span>";
+						video_item += "<span class='tag'>" + v.tag + "</span></p>";
 						video_item += "</li>";
 						$("#videos_list").append(video_item);
 					});	
@@ -129,7 +132,7 @@ $(document).ready(function(){
 					var wk_limit = wk_st_int + 4;
 					for(w = wk_st_int; w < wk_limit; w++){
 						var wk_list_item = '<li>';
-						wk_list_item += 'Week ' + w;
+						wk_list_item += '<p>Week ' + w + '</p>';
 						wk_list_item += '</li>';
 						$('#per_wk_list').append(wk_list_item);
 					}
