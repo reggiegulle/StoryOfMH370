@@ -38,4 +38,40 @@ $(document).ready(function(){
 			});
 		});
 	});	
+	
+	$('#videos_list').on('mh370.vidListRender', function(){
+		$('#videos_list').addClass('col-xs-12');
+		$('#videos_list li').each(function(){
+			$(this).addClass('col-xs-12');
+			liFtDiv = $(this).find('div').eq(0);
+			$(liFtDiv).addClass('col-xs-12 col-sm-6');
+			liScnDiv = $(this).find('div').eq(1);
+			$(liScnDiv).addClass('col-xs-0 col-sm-6');
+			$(this).find('h3, p').addClass('col-xs-12');
+		});
+	});
+	
+	$('#videos_list').on('mh370.weekListRender', function(){
+		function getVidListHt(){
+			var height = 0;
+		
+			for(i = 0;i < 4;i++){
+				height += $('#videos_list li').eq(i).height();
+			}
+			
+			return height;
+		}
+		
+		var vidListHt = getVidListHt();
+		
+		$('#videos_list').css({
+			'height': vidListHt + 'px'
+		});
+	});
+	
+	$('#videos_list').on('mh370.searchListRender', function(){
+		$('#videos_list').css({
+			'height': 'auto'
+		});
+	});
 });

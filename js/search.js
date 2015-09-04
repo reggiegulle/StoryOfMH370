@@ -39,12 +39,17 @@ $(document).ready(function(){
 					$("#videos_list").empty();
 					$.each(data[1]['results'], function(){
 						var search_li_item = "<li>";
-						search_li_item += "<img src='https://i3.ytimg.com/vi/" + this.video_id + "/mqdefault.jpg' alt='\"" + this.video_title + "\" thumbnail' width='120px' height='68px' longdesc='Thumbnail for the Youtube video of \"" + this.video_title + "\"'/>";
-						search_li_item += "<h5>" + this.string_date_pub + " - " + "Week " + this.week_number + "</h5>";
+						search_li_item += "<div>";
+						search_li_item += "<img src='https://i3.ytimg.com/vi/" + this.video_id + "/mqdefault.jpg' alt='\"" + this.video_title + "\" thumbnail' width='150px' height='84px' longdesc='Thumbnail for the Youtube video of \"" + this.video_title + "\"'/>";
+						search_li_item += "<h5>" + this.string_date_pub + "</h5>"; 
+						search_li_item += "<h6>Week " + this.week_number + "</h6>";
+						search_li_item += "</div>";
+						search_li_item += "<div>";
+						search_li_item += "</div>";
 						search_li_item += "<h3>" + this.video_title + "</h3>";
-						search_li_item += "<p>" + this.video_desc + "</p>";
-						search_li_item += "<p>" + this.video_uploader + "</p>";
-						search_li_item += "<p>" + this.tag + "</p>";
+						search_li_item += "<p>" + this.video_desc;
+						search_li_item += "<span class='source'>" + this.video_uploader + "</span>";
+						search_li_item += "<span class='tag'>(" + this.tag + ")</span></p>";
 						search_li_item += "</li>";
 						$("#videos_list").append(search_li_item);
 					});	
@@ -262,6 +267,7 @@ $(document).ready(function(){
 				$('#videos_list').empty().trigger('searchResults');
 			}
 			
+			$('#videos_list').trigger('mh370.searchListRender');
 		}
 		//console.log('total count is ' + data[0]['total_count']);
 	});

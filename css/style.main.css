@@ -32,6 +32,15 @@ Main Styling Script
 	}
 }
 
+@media only screen and (min-width: 601px) and (max-width: 980px){
+	#wrapper.container{
+		width: 90%;
+		margin: 0 auto;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+
 @media only screen and (min-width: 981px){
 	#wrapper.container{
 		width: 80%;
@@ -45,6 +54,7 @@ Main Styling Script
 /*
 	Rules for the masthead
 */
+
 @media only screen and (max-width: 600px){
 	#masthead {
 		margin: 0px;
@@ -59,6 +69,11 @@ Main Styling Script
 		box-sizing: content-box;
 		padding: 2.5rem 0px 2rem;
 	}
+
+#masthead {
+	margin: 0px auto;
+	box-sizing: content-box;
+	padding: 2.5rem 0px 0px;
 }
 
 #masthead_title{
@@ -255,6 +270,10 @@ Main Styling Script
 	margin: 0 25px;
 }
 
+#videos_carousel {
+	padding-left: 5px;
+}
+
 #videos_carousel .slick-list.draggable {
   border-radius: 6px;
 }
@@ -288,7 +307,60 @@ Main Styling Script
 }
 
 /*rule for the videos list*/
+@media only screen and (max-width: 767px){
+	#videos_list_container{
+		margin: 0 5px;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+	#videos_list_container{
+		margin: 0 55px;
+	}
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+	#videos_list_container{
+		margin: 0 85px;
+	}
+}
+
+@media only screen and (min-width: 1200px){
+	#videos_list_container{
+		margin: 0 115px;
+	}
+}
+
+#videos_list{
+	list-style-type: none;
+	margin-top: 10px;
+	padding-left: 0;
+	padding-right: 0;
+	overflow: auto;
+}
+
+#videos_list li {
+	border: 1px solid;
+	padding-bottom: 0;
+	padding-top: 30px;
+}
+
 #videos_list li img,
 #videos_list li h3{
 	cursor: pointer;
+}
+
+#videos_list li img {
+	float: left;
+	margin-right: 8px;
+}
+
+#videos_list li h3 {
+	margin-bottom: 5px;
+	margin-top: 10px;
+}
+
+#videos_list li p span.source,
+#videos_list li p span.tag {
+  margin-left: 15px;
 }
