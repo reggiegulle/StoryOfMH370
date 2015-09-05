@@ -325,6 +325,10 @@ Main Styling Script
   margin-bottom: 15px;
 }
 
+#videos_list li p a:first-of-type {
+  margin-right: 15px;
+}
+
 /*
 Rules for back to top button
 */

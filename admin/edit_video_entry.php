@@ -50,7 +50,7 @@
 			?>
 		</article>
 		<h1>Edit Video Details</h1>
-		<form id="editvideoentry" action="edit_video_entry_post.php?id=<?php echo $video_entry_index; ?>" method="POST">
+		<form id="editvideoentry" action="../includes/edit_video_entry_post.php?id=<?php echo $video_entry_index; ?>" method="POST">
 			<div class="field">
 				<label for="date_published"><p>Date Published:</p></label>
 				<span>Month</span>
