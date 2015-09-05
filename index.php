@@ -190,16 +190,21 @@
 				</ul>
 			</section>
 			
-			<section id="footer_container">
-				<article id="footer">
-					<ul id="footer-ul">
-						<li>Powered by <a href="http://www.youtube.com" title="YouTube"><img src="images/Youtube_icon45.png" width="45px" height="45px" alt="youtube_icon" /></a></li>
-						<li><p>Design and UI by</p><h3>Reggie Gulle</h3></li>
-						<li><p>All Rights Reserved <?php echo date("Y", time()); ?></p></li>
-					</ul>
-				</article>
+			<section id="back_to_top_btn">
+				<div>
+					<p><span id="arrow">&#9650;</span> Back To Top</p>		
+				</div>
 			</section>
 		</div>
+		<section id="footer_container">
+			<article id="footer">
+				<ul id="footer-ul">
+					<li>Powered by <a href="http://www.youtube.com" title="YouTube"><img src="images/Youtube_icon45.png" width="45px" height="45px" alt="youtube_icon" /></a></li>
+					<li><p>Design and UI by</p><h3>Reggie Gulle</h3></li>
+					<li><p>All Rights Reserved <?php echo date("Y", time()); ?></p></li>
+				</ul>
+			</article>
+		</section>
 		<script src="js/carousel.menu.js" type="text/javascript"></script>
 		<script src="js/youtube.js" type="text/javascript"></script>
 		<!--Bootstrap js-->

@@ -52,3 +52,6 @@
 					<?php include_once "login_splash.php" ;?>
 				</article>
 			</section>
+			<!--This is where the search form should be-->
+			<section id="search_container" class="row gradient">
+			</section>

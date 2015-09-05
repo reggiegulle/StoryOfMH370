@@ -20,12 +20,12 @@ $(document).ready(function(){
 					video_item += "<div>";
 					video_item += "</div>";
 					video_item += "<h3>" + v.video_title + "</h3>";
-					video_item += "<p>" + v.video_desc;
-					video_item += "<span class='source'>" + v.video_uploader + "</span>";
+					video_item += "<p>" + v.video_desc + '</p>';
+					video_item += "<p><span class='source'>" + v.video_uploader + "</span>";
 					video_item += "<span class='tag'>(" + v.tag + ")</span></p>";
 					//START only for admin
-					video_item += "<a href='admin/edit_video_entry.php?id=" + v.id + "'>Edit Video</a>";
-					video_item += "<a href='admin/delete_video.php?id=" + v.id + "' onclick=\"return confirm('Are You Sure?')\">Delete Video</a>";
+					video_item += "<p><a href='admin/edit_video_entry.php?id=" + v.id + "'>Edit Video</a>";
+					video_item += "<a href='admin/delete_video.php?id=" + v.id + "' onclick=\"return confirm('Are You Sure?')\">Delete Video</a></p>";
 					//END only for admin
 					video_item += "</li>";
 					$("#videos_list").append(video_item);

@@ -47,8 +47,8 @@ $(document).ready(function(){
 						search_li_item += "<div>";
 						search_li_item += "</div>";
 						search_li_item += "<h3>" + this.video_title + "</h3>";
-						search_li_item += "<p>" + this.video_desc;
-						search_li_item += "<span class='source'>" + this.video_uploader + "</span>";
+						search_li_item += "<p>" + this.video_desc + "</p>";
+						search_li_item += "<p><span class='source'>" + this.video_uploader + "</span>";
 						search_li_item += "<span class='tag'>(" + this.tag + ")</span></p>";
 						search_li_item += "</li>";
 						$("#videos_list").append(search_li_item);

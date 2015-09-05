@@ -32,15 +32,6 @@ Main Styling Script
 	}
 }
 
-@media only screen and (min-width: 601px) and (max-width: 980px){
-	#wrapper.container{
-		width: 90%;
-		margin: 0 auto;
-		padding-left: 15px;
-		padding-right: 15px;
-	}
-}
-
 @media only screen and (min-width: 981px){
 	#wrapper.container{
 		width: 80%;
@@ -54,22 +45,6 @@ Main Styling Script
 /*
 	Rules for the masthead
 */
-
-@media only screen and (max-width: 600px){
-	#masthead {
-		margin: 0px;
-		box-sizing: content-box;
-		padding: 2.5rem 0px 2rem;
-	}
-}
-
-@media only screen and (min-width: 601px){
-	#masthead {
-		margin: 0px auto;
-		box-sizing: content-box;
-		padding: 2.5rem 0px 2rem;
-	}
-
 #masthead {
 	margin: 0px auto;
 	box-sizing: content-box;
@@ -248,28 +223,6 @@ Main Styling Script
 	margin: 0 25px;
 }
 
-@media only screen and (max-width: 400px){
-	#videos_carousel {
-		padding-left: 5px;
-	}
-}
-
-@media only screen and (min-width: 401px) and (max-width: 799px){
-	#videos_carousel {
-		padding-left: 10px;
-	}
-}
-
-@media only screen and (min-width: 800px){
-	#videos_carousel {
-		padding-left: 15px;
-	}
-}
-
-#videos_carousel {
-	margin: 0 25px;
-}
-
 #videos_carousel {
 	padding-left: 5px;
 }
@@ -360,7 +313,44 @@ Main Styling Script
 	margin-top: 10px;
 }
 
-#videos_list li p span.source,
+#videos_list li p:first-of-type {
+  margin-bottom: 1px;
+}
+
 #videos_list li p span.tag {
   margin-left: 15px;
+}
+
+#videos_list li p:last-of-type {
+  margin-bottom: 15px;
+}
+
+#videos_list li p a:first-of-type {
+  margin-right: 15px;
+}
+
+/*
+Rules for back to top button
+*/
+#back_to_top_btn div {
+  margin: 0 45px;
+  text-align: right;
+  width: 100%;
+}
+
+#back_to_top_btn p {
+  margin-right: 75px;
+}
+
+/*
+Rules for footer
+*/
+#footer{
+	padding: 20px 0;
+}
+
+#footer-ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
 }

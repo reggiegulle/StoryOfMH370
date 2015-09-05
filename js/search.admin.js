@@ -47,12 +47,12 @@ $(document).ready(function(){
 						search_li_item += "<div>";
 						search_li_item += "</div>";
 						search_li_item += "<h3>" + this.video_title + "</h3>";
-						search_li_item += "<p>" + this.video_desc;
-						search_li_item += "<span class='source'>" + this.video_uploader + "</span>";
+						search_li_item += "<p>" + this.video_desc + "</p>";
+						search_li_item += "<p><span class='source'>" + this.video_uploader + "</span>";
 						search_li_item += "<span class='tag'>(" + this.tag + ")</span></p>";
 						//START only for admin
-						search_li_item += "<a href='admin/edit_video_entry.php?id=" + this.id + "'>Edit Video</a>";
-						search_li_item += "<a href='admin/delete_video.php?id=" + this.id + "' onclick=\"return confirm('Are You Sure?')\">Delete Video</a>";
+						search_li_item += "<p><a href='admin/edit_video_entry.php?id=" + this.id + "'>Edit Video</a>";
+						search_li_item += "<a href='admin/delete_video.php?id=" + this.id + "' onclick=\"return confirm('Are You Sure?')\">Delete Video</a></p>";
 						//END only for admin
 						search_li_item += "</li>";
 						$("#videos_list").append(search_li_item);

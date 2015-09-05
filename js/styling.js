@@ -15,6 +15,16 @@ $(document).ready(function(){
 		});
 	});
 	
+	function isEmpty( el ){
+		return !$.trim(el.html())
+    }
+	
+	if(isEmpty($('#search_container'))){
+		$('#search_container').height('32px');
+	} else {
+		$('#search_container').height('auto');
+	}
+	
 	$(document).ajaxSuccess(function(){
 		$('#per_wk_list li').each(function(){
 			if($(this).is(':visible')){
@@ -55,7 +65,7 @@ $(document).ready(function(){
 		function getVidListHt(){
 			var height = 0;
 		
-			for(i = 0;i < 4;i++){
+			for(i = 0;i < 6;i++){
 				height += $('#videos_list li').eq(i).height();
 			}
 			
