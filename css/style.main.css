@@ -313,7 +313,40 @@ Main Styling Script
 	margin-top: 10px;
 }
 
-#videos_list li p span.source,
+#videos_list li p:first-of-type {
+  margin-bottom: 1px;
+}
+
 #videos_list li p span.tag {
   margin-left: 15px;
+}
+
+#videos_list li p:last-of-type {
+  margin-bottom: 15px;
+}
+
+/*
+Rules for back to top button
+*/
+#back_to_top_btn div {
+  margin: 0 45px;
+  text-align: right;
+  width: 100%;
+}
+
+#back_to_top_btn p {
+  margin-right: 75px;
+}
+
+/*
+Rules for footer
+*/
+#footer{
+	padding: 20px 0;
+}
+
+#footer-ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
 }

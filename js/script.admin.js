@@ -20,8 +20,8 @@ $(document).ready(function(){
 					video_item += "<div>";
 					video_item += "</div>";
 					video_item += "<h3>" + v.video_title + "</h3>";
-					video_item += "<p>" + v.video_desc;
-					video_item += "<span class='source'>" + v.video_uploader + "</span>";
+					video_item += "<p>" + v.video_desc + '</p>';
+					video_item += "<p><span class='source'>" + v.video_uploader + "</span>";
 					video_item += "<span class='tag'>(" + v.tag + ")</span></p>";
 					//START only for admin
 					video_item += "<a href='admin/edit_video_entry.php?id=" + v.id + "'>Edit Video</a>";

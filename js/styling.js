@@ -55,7 +55,7 @@ $(document).ready(function(){
 		function getVidListHt(){
 			var height = 0;
 		
-			for(i = 0;i < 4;i++){
+			for(i = 0;i < 6;i++){
 				height += $('#videos_list li').eq(i).height();
 			}
 			
