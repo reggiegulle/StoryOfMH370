@@ -118,6 +118,22 @@ function onPlayerStateChange(event){
 				}
 			}
 		});
+		
+		$('#videos_list').on('mh370.vidListRender', function(){
+			$("#videos_list li").each(function(){
+				var thisImgDat = $(this).find('img').attr('src');
+				var thisVidId = thisImgDat.match(imgRegex)[1];
+				var nextImgDat = $(this).next().find('img').attr('src');
+				var nextVidId = nextImgDat.match(imgRegex)[1];
+				if(vidIdFrURI === thisVidId){
+					if($(this).attr('data-index') === endOfUL){
+						event.target.cueVideoById(firstVidId);
+					} else {
+						event.target.loadVideoById(nextVidId);
+					}
+				}
+			});
+		});
 	}
 } 
 

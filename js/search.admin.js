@@ -10,7 +10,7 @@ $(document).ready(function(){
 	
 	var filters_title = '<h6 id="filters_title">Filter Search Results</h6>';
 
-	var filters = ['Breaking News','Headline News','Press Conference','News Feature','News Analysis','Official Communication','Tribute'];
+	var filters = ['Breaking News','Headline News','Press Conference','News Feature','News Analysis','Tribute','Official Communication'];;
 	
 	
 	
@@ -18,8 +18,8 @@ $(document).ready(function(){
 		current_page,
 		last_page;
 	
-	var prevPgBtn = '<div id="prevPgBtn">Prev Page</div>';
-	var nextPgBtn = '<div id="nextPgBtn">Next Page</div>';
+	var prevPgBtn = '<div class="prevPgBtn">Prev Page</div>';
+	var nextPgBtn = '<div class="nextPgBtn">Next Page</div>';
 	
 	
 	function getSearchResults(search_obj){
@@ -129,9 +129,9 @@ $(document).ready(function(){
 				$('#search_input_feedback').html('<p>Please enter 3 or more characters</p>');
 				$('#videos_carousel').empty();
 				$('#search_stats').html('');
-				$('#prevPgBtn').remove();
-				$('#nextPgBtn').remove();
-				$('#pages_info p').empty();
+				$('.prevPgBtn').remove();
+				$('.nextPgBtn').remove();
+				$('.pages_info p').empty();
 				$('#videos_list').empty();
 				
 				if($('#filter_boxes li').length > 1){
@@ -150,13 +150,13 @@ $(document).ready(function(){
 	
 	$('#videos_list').on('searchResults', function(){
 		
-		$('#nextPgBtn').click(function(){
+		$('.nextPgBtn').click(function(){
 			search_input.curr_pg = current_page + 1;
 			//console.log(search_input);
 			getSearchResults(search_input);
 		});
 		
-		$('#prevPgBtn').click(function(){
+		$('.prevPgBtn').click(function(){
 			search_input.curr_pg = current_page - 1;
 			//console.log(search_input);
 			getSearchResults(search_input);
@@ -192,9 +192,9 @@ $(document).ready(function(){
 			$('#videos_carousel').empty();
 			$(filters_title).remove();
 			$('#search_stats').html('');
-			$('#prevPgBtn').remove();
-			$('#nextPgBtn').remove();
-			$('#pages_info p').empty();
+			$('.prevPgBtn').remove();
+			$('.nextPgBtn').remove();
+			$('.pages_info p').empty();
 			$('#videos_list').empty();
 			
 			if($('#filter_boxes li').length > 1){
@@ -223,37 +223,57 @@ $(document).ready(function(){
 				current_page = data[0]['current_page'];
 				last_page = data[0]['last_page'];
 				
-				$('#prevPgBtn').remove();
-				$('#nextPgBtn').remove();
+				$('.prevPgBtn').remove();
+				$('.nextPgBtn').remove();
+				
+				var resPerPg = 10;
+				var stResCnt = (current_page * resPerPg) - (resPerPg - 1);
+				var endResCnt = stResCnt + ((data[1]['results'].length) - 1);
+				//console.info('Results ' + stResCnt + '-' + endResCnt);
+					
+				if(data[1]['results'].length == 1){
+					$(".search_stats").html('<p>' + total_entries + ' item found.</p>');
+				} else {
+					$(".search_stats").html('<p>' + total_entries + ' items found.</p>');
+				}
 				
 				if(last_page > 1){
 					//console.log('The last page is greater than one and is = ' + last_page);
 					if(current_page < last_page){
-						$(nextPgBtn).insertAfter('#pages_info p');	
+						$(nextPgBtn).insertAfter('.pages_info p');	
 					}
 					if(current_page == last_page){
-						$('#nextPgBtn').remove();
+						$('.nextPgBtn').remove();
 					}
 					if(current_page > 1){
-						$(prevPgBtn).insertBefore('#pages_info p');
+						$(prevPgBtn).insertBefore('.pages_info p');
 					}
+					$(".pages_info p").text(current_page + ' of ' + last_page + ' pages (Results ' + stResCnt + '-' + endResCnt + ')');
+				} else {
+					$(".pages_info p").text(current_page + ' of ' + last_page + ' pages (Results ' + stResCnt + '-' + endResCnt + ')');
 				}
 				
-				$("#search_stats").html('<p>Yes, ' + total_entries + ' items found!</p>');
+				$('#videos_list li').each(function(){
+					$(this).attr('data-index', $(this).index());
+				});
 				
-				$("#pages_info p").text(current_page + ' of ' + last_page + ' pages');
+				$('#search_notifier_bottom').html('');
+		
+				$('.search_info_container').clone().appendTo('#search_notifier_bottom');
 			
 				$('#videos_list').trigger('searchResults');
 			} else {
 				$(filters_title).remove();
-				$('#search_stats').html('');
-				$('#prevPgBtn').remove();
-				$('#nextPgBtn').remove();
-				$('#pages_info p').html('');
-				$("#search_stats").html('<p>Sorry, 0 items found.</p>');
+				$('.search_stats').html('');
+				$('.prevPgBtn').remove();
+				$('.nextPgBtn').remove();
+				$('.pages_info p').html('');
+				$(".search_stats").html('<p>Sorry, 0 items found.</p>');
+				$('#search_notifier_bottom').html('');
 				$('#videos_list').empty().trigger('searchResults');
 			}
 			
+			$('#videos_list').trigger('mh370.searchListRender');
 		}
 		//console.log('total count is ' + data[0]['total_count']);
 	});

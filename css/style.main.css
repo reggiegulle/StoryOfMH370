@@ -259,7 +259,102 @@ Main Styling Script
   margin: 6px auto 10px;
 }
 
-/*rule for the videos list*/
+/*rule for the filter boxes list*/
+@media only screen and (max-width: 767px){
+	#filter_boxes_container{
+		margin: 0 5px;
+		padding: 0;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+	#filter_boxes_container{
+		margin: 0 55px;
+		padding: 0 20px;
+	}
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+	#filter_boxes_container{
+		margin: 0 85px;
+		padding: 0 20px;
+	}
+}
+
+@media only screen and (min-width: 1200px){
+	#filter_boxes_container{
+		margin: 0 115px;
+		padding: 0 20px;
+	}
+}
+
+@media only screen and (max-width: 767px){
+	#filter_boxes{
+		margin: 0 -5px;
+	}
+}
+
+@media only screen and (min-width: 768px){
+	#filter_boxes{
+		margin: 0 -15px;
+	}
+}
+
+#filter_boxes{
+	list-style-type: none;
+	padding: 0;
+}
+
+#filter_boxes li{
+	display: inline-block;
+}
+
+#filter_boxes li label{
+	margin-left: 10px;
+}
+
+@media only screen and (max-width: 767px){
+	#filter_boxes li label{
+		font-size: 12px;
+	}
+}
+
+@media only screen and (min-width: 768px){
+	#filter_boxes li label{
+		font-size: inherit;
+	}
+}
+
+/*
+Rules for the search_info_container element
+*/
+@media only screen and (max-width: 767px){
+	.search_info_container{
+		margin: 0 5px;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+	.search_info_container{
+		margin: 0 55px;
+	}
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+	.search_info_container{
+		margin: 0 85px;
+	}
+}
+
+@media only screen and (min-width: 1200px){
+	.search_info_container{
+		margin: 0 115px;
+	}
+}
+
+/*
+Rules for the videos list
+*/
 @media only screen and (max-width: 767px){
 	#videos_list_container{
 		margin: 0 5px;

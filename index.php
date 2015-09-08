@@ -132,6 +132,12 @@
 						</article>
 					</li>
 				</ul>
+				<div>
+					<select name="">
+						<option value="<?php echo escape('ASC'); ?>">Oldest - Newest</option>
+						<option value="<?php echo escape('DESC'); ?>">Newest - Oldest</option>
+					</select>
+				</div>
 			</section>
 			<div style="clear: both;"></div>
 			
@@ -173,21 +179,27 @@
 			<ul id="videos_carousel" class="gradient">
 			</ul>
 			
-			<section id="filter_boxes_container" class="show_hide">
-				<ul id="filter_boxes" class="show_hide">
+			<section id="filter_boxes_container" class="row show_hide">
+				<ul id="filter_boxes" class="row show_hide">
 				</ul>
 			</section>
 			
-			<div id="search_stats" class="show_hide">
-			</div>
-			
-			<div id="pages_info" class="show_hide">
-				<p class="show_hide"></p>
-			</div>
+			<section id="search_notifier_top">
+				<section class="search_info_container">
+					<div class="search_stats show_hide">
+					</div>
+					<div class="pages_info show_hide">
+						<p class="show_hide"></p>
+					</div>
+				</section>
+			</section>
 			
 			<section id="videos_list_container" class="row">
 				<ul id="videos_list">  
 				</ul>
+			</section>
+			
+			<section id="search_notifier_bottom">
 			</section>
 			
 			<section id="back_to_top_btn">
@@ -205,7 +217,17 @@
 				</ul>
 			</article>
 		</section>
-		<script src="js/carousel.menu.js" type="text/javascript"></script>
+		<?php
+			if ($user->isLoggedIn()){
+		?>
+				<script src="js/carousel.menu.admin.js" type="text/javascript"></script>
+		<?php
+			} else {
+		?>
+				<script src="js/carousel.menu.js" type="text/javascript"></script>
+		<?php
+			}
+		?>
 		<script src="js/youtube.js" type="text/javascript"></script>
 		<!--Bootstrap js-->
 		<script src="js/bootstrap.min.js" type="text/javascript"></script>

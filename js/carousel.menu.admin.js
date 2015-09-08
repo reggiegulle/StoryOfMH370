@@ -39,18 +39,6 @@ $(document).ready(function(){
 		]
 	});
 	
-	function removeEmptyImgForSlick(url, imgObj, pos){
-		
-		$("<img/>").attr("src", url).load(function(){
-			
-			s = {w: this.width, h: this.height};
-			
-			if(s.w === 120){
-				$('#videos_carousel').slick('slickRemove', pos);
-			}
-		});	
-	}
-	
 	$('#videos_list').on('mh370.vidListRender', function(){
 		if($('#videos_carousel').is(':hidden')){
 			$('#videos_carousel').show();
@@ -81,7 +69,6 @@ $(document).ready(function(){
 			var imgContainer = $(this);
 			var imgIndex = $(this).index();
 			//console.log(imgIndex);
-			removeEmptyImgForSlick(srcUrl, imgContainer, imgIndex);
 			var imgRegex = /https:\/\/i3.ytimg.com\/vi\/([\w-]{11})\/mqdefault.jpg/;
 			//get the videoid from each li item
 			var vidImgDat = $(this).find('img').attr('src');
