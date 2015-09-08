@@ -191,8 +191,8 @@
 					<option value="Press Conference" <?php if(escape($video_entry_data->tag) === "Press Conference"){ echo "selected"; }; ?>>Press Conference</option>
 					<option value="News Feature" <?php if(escape($video_entry_data->tag) === "News Feature"){ echo "selected"; }; ?>>News Feature</option>
 					<option value="News Analysis" <?php if(escape($video_entry_data->tag) === "News Analysis"){ echo "selected"; }; ?>>News Analysis</option>
-					<option value="Official Communication" <?php if(escape($video_entry_data->tag) === "Official Communication"){ echo "selected"; }; ?>>Official Communication</option>
 					<option value="Tribute" <?php if(escape($video_entry_data->tag) === "Tribute"){ echo "selected"; }; ?>>Tribute</option>
+					<option value="Official Communication" <?php if(escape($video_entry_data->tag) === "Official Communication"){ echo "selected"; }; ?>>Official Communication</option>
 				</select>
 			</div>
 			<input type="submit" value="Edit Entry" />

@@ -173,21 +173,27 @@
 			<ul id="videos_carousel" class="gradient">
 			</ul>
 			
-			<section id="filter_boxes_container" class="show_hide">
-				<ul id="filter_boxes" class="show_hide">
+			<section id="filter_boxes_container" class="row show_hide">
+				<ul id="filter_boxes" class="row show_hide">
 				</ul>
 			</section>
 			
-			<div id="search_stats" class="show_hide">
-			</div>
-			
-			<div id="pages_info" class="show_hide">
-				<p class="show_hide"></p>
-			</div>
+			<section id="search_notifier_top">
+				<section class="search_info_container">
+					<div class="search_stats show_hide">
+					</div>
+					<div class="pages_info show_hide">
+						<p class="show_hide"></p>
+					</div>
+				</section>
+			</section>
 			
 			<section id="videos_list_container" class="row">
 				<ul id="videos_list">  
 				</ul>
+			</section>
+			
+			<section id="search_notifier_bottom">
 			</section>
 			
 			<section id="back_to_top_btn">

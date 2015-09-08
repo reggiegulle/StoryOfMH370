@@ -16,7 +16,7 @@ $(document).ready(function(){
 	});
 	
 	function isEmpty( el ){
-		return !$.trim(el.html())
+		return !$.trim(el.html()); 
     }
 	
 	if(isEmpty($('#search_container'))){
@@ -82,6 +82,13 @@ $(document).ready(function(){
 	$('#videos_list').on('mh370.searchListRender', function(){
 		$('#videos_list').css({
 			'height': 'auto'
+		});
+		$('#filter_boxes li').each(function(){
+			if($(this).index() == 6){
+				$(this).addClass('col-xs-12 col-md-4');
+			}else{
+				$(this).addClass('col-xs-6 col-md-4');
+			}
 		});
 	});
 });
