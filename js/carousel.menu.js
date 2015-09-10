@@ -3,85 +3,86 @@ JavaScript for owl carousel menu
 */
 
 $(document).ready(function(){
-	$('#weeks_carousel_menu').slick({
-		infinite: false,
-		slide: 'li',
-		slidesToShow: 2,
-		edgeFriction: 0.02,
-		swipeToSlide: true
-	});
-	
-	$('#videos_carousel').slick({
-		infinite: false,
-		slide: 'li',
-		slidesToShow: 6,
-		edgeFriction: 0.02,
-		swipeToSlide: true,
-		responsive: [
-			{
-				breakpoint:1024,
-				settings:{
-					slidesToShow: 4
-				}
-			},
-			{
-				breakpoint:600,
-				settings:{
-					slidesToShow: 3
-				}
-			},
-			{
-				breakpoint:480,
-				settings:{
-					slidesToShow: 2
-				}
-			}
-		]
-	});
-	
-	function removeEmptyImgForSlick(url, imgObj, pos){
-		
-		$("<img/>").attr("src", url).load(function(){
-			
-			s = {w: this.width, h: this.height};
-			
-			if(s.w === 120){
-				$('#videos_carousel').slick('slickRemove', pos);
-			}
-		});	
+	var owl_weeks_carousel_menu = $('#weeks_carousel_menu');
+	owl_weeks_carousel_menu.owlCarousel();
+	if (week_order === 'DESC'){
+		//var descPos = ($('#weeks_carousel_menu li').length) - 1;
+		var descPos = $('#weeks_carousel_menu li').index( $('#weeks_carousel_menu li').last());
+		owl_weeks_carousel_menu.trigger('to.owl.carousel', [parseInt(descPos)]);
 	}
 	
-	$('#videos_list').on('mh370.vidListRender', function(){
-		if($('#videos_carousel').is(':hidden')){
-			$('#videos_carousel').show();
-		}
-		
-		while($('#videos_carousel li').length > 0){
-			$('#videos_carousel').slick('slickRemove', 0);
-		}
-		
-		$('#videos_list li').each(function(){
-			var vid_item = $('<li>');
-			var carouselLiImg = $(this).find('img').clone();
-			carouselLiImg.appendTo(vid_item);
-			var carouselDtPubData = $(this).find('h5').text();
-			var carouselDtPub = $('<p>')
-			carouselDtPub.html(carouselDtPubData);
-			carouselDtPub.appendTo(vid_item);
-			var carouselTitleData = $(this).find('h3').text();
-			var carouselTitle = $('<h5>');
-			carouselTitle.html(carouselTitleData);
-			carouselTitle.appendTo(vid_item);
-			$('#videos_carousel').slick('slickAdd', vid_item);
+	var owl_vids_car = $('#videos_carousel');
+	owl_vids_car.owlCarousel({
+		loop: false,
+		items: 6,
+		itemElement: 'li'
+	});
+	
+	while($('#videos_carousel li').length > 0){
+		owl_vids_car.trigger('remove.owl.carousel', [0]);
+	}
+	
+	var vids_car_len = $('#videos_list li').length;
+	for(n=(vids_car_len); n > 0; n--){
+		var vid_car_item = $('<div>');
+		var vid_car_img = $('#videos_list li').eq(n-1).find('img').clone();
+		vid_car_img.appendTo(vid_car_item);
+		var vid_car_datePub_data = $('#videos_list li').eq(n-1).find('h5').text();
+		var vid_car_datePub = $('<p>');
+		vid_car_datePub.html(vid_car_datePub_data);
+		vid_car_datePub.appendTo(vid_car_item);
+		var vid_car_title_data = $('#videos_list li').eq(n-1).find('h3').text();
+		var vid_car_title = $('<h5>');
+		vid_car_title.html(vid_car_title_data);
+		vid_car_title.appendTo(vid_car_item);
+		owl_vids_car.trigger('add.owl.carousel', [vid_car_item, 0]);
+	}
+	owl_vids_car.trigger('refresh.owl.carousel');
+	
+	$("#videos_carousel li").each(function(){
+		var srcUrl = $(this).find('img').attr('src');
+		var imgContainer = $(this);
+		var imgIndex = $(this).index();
+		//console.log(imgIndex);
+		var imgRegex = /https:\/\/i3.ytimg.com\/vi\/([\w-]{11})\/mqdefault.jpg/;
+		//get the videoid from each li item
+		var vidImgDat = $(this).find('img').attr('src');
+		var vidId = vidImgDat.match(imgRegex)[1];
+		//play the video on the player
+		$(this).on("click", "img", function(){
+			player.loadVideoById(vidId);
 		});
+	});
+	
+	$('#videos_carousel').trigger('mh370.vidCrslRender');
+
+	$('#videos_list').on('mh370.vidListRender', function(){
+		while($('#videos_carousel li').length > 0){
+			owl_vids_car.trigger('remove.owl.carousel', [0]);
+		}
 		
-		//behavior of the videos carousel
+		var vids_car_len = $('#videos_list li').length;
+		for(n=(vids_car_len); n > 0; n--){
+			var vid_car_item = $('<div>');
+			var vid_car_img = $('#videos_list li').eq(n-1).find('img').clone();
+			vid_car_img.appendTo(vid_car_item);
+			var vid_car_datePub_data = $('#videos_list li').eq(n-1).find('h5').text();
+			var vid_car_datePub = $('<p>');
+			vid_car_datePub.html(vid_car_datePub_data);
+			vid_car_datePub.appendTo(vid_car_item);
+			var vid_car_title_data = $('#videos_list li').eq(n-1).find('h3').text();
+			var vid_car_title = $('<h5>');
+			vid_car_title.html(vid_car_title_data);
+			vid_car_title.appendTo(vid_car_item);
+			owl_vids_car.trigger('add.owl.carousel', [vid_car_item, 0]);
+		}
+		owl_vids_car.trigger('refresh.owl.carousel');
+		
 		$("#videos_carousel li").each(function(){
 			var srcUrl = $(this).find('img').attr('src');
 			var imgContainer = $(this);
 			var imgIndex = $(this).index();
 			//console.log(imgIndex);
-			removeEmptyImgForSlick(srcUrl, imgContainer, imgIndex);
 			var imgRegex = /https:\/\/i3.ytimg.com\/vi\/([\w-]{11})\/mqdefault.jpg/;
 			//get the videoid from each li item
 			var vidImgDat = $(this).find('img').attr('src');

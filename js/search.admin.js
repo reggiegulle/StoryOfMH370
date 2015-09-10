@@ -35,7 +35,6 @@ $(document).ready(function(){
 					$("#search_stats").html("<p>Sorry, no data found.</p>");
 					$("#videos_list").empty();
 				} else {
-					//console.log(JSON.stringify(data));
 					$("#videos_list").empty();
 					$.each(data[1]['results'], function(){
 						var search_li_item = "<li>";
@@ -72,6 +71,8 @@ $(document).ready(function(){
 			
 			//show all class 'show_hide' elements
 			$('.show_hide').show();
+			//hide all class 'special_show_hide' elements
+			$('.special_show_hide').hide();
 			
 			search_val = $('#search_field').val();
 			if(search_val.length >= 3){
@@ -122,8 +123,6 @@ $(document).ready(function(){
 				if(search_input.hasOwnProperty('filter_array')){
 					delete search_input.filter_array;
 				}
-				
-				console.log(JSON.stringify(search_input));
 				getSearchResults(search_input);
 			} else {
 				$('#search_input_feedback').html('<p>Please enter 3 or more characters</p>');
@@ -152,13 +151,11 @@ $(document).ready(function(){
 		
 		$('.nextPgBtn').click(function(){
 			search_input.curr_pg = current_page + 1;
-			//console.log(search_input);
 			getSearchResults(search_input);
 		});
 		
 		$('.prevPgBtn').click(function(){
 			search_input.curr_pg = current_page - 1;
-			//console.log(search_input);
 			getSearchResults(search_input);
 		});
 				
@@ -182,7 +179,6 @@ $(document).ready(function(){
 			search_input.filter_array = filter_strings;
 			search_input.curr_pg = '1';
 			getSearchResults(search_input);
-			console.log(JSON.stringify(search_input));
 		});
 		
 		
@@ -238,7 +234,6 @@ $(document).ready(function(){
 				}
 				
 				if(last_page > 1){
-					//console.log('The last page is greater than one and is = ' + last_page);
 					if(current_page < last_page){
 						$(nextPgBtn).insertAfter('.pages_info p');	
 					}
@@ -275,7 +270,6 @@ $(document).ready(function(){
 			
 			$('#videos_list').trigger('mh370.searchListRender');
 		}
-		//console.log('total count is ' + data[0]['total_count']);
 	});
 	
 });

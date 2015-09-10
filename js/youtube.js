@@ -29,7 +29,8 @@ function onYouTubeIframeAPIReady() {
 function onPlayerReady(event){ 
 	if($("#videos_list li").length > 0){
 		//get data for the first video to be cued
-		var firstCuedVidImgDat = $("#videos_list li").eq(0).find('img').attr('src');
+		//var firstCuedVidImgDat = $("#videos_list li").eq(0).find('img').attr('src');
+		var firstCuedVidImgDat = $("#videos_list li").first().find('img').attr('src');
 		
 		//extract the video_id
 		//based on img src */
@@ -66,7 +67,8 @@ function onPlayerReady(event){
 		
 		if($("#videos_list li").length > 0){
 			//get data for the first video to be cued
-			var firstCuedVidImgDat = $("#videos_list li").eq(0).find('img').attr('src');
+			//var firstCuedVidImgDat = $("#videos_list li").eq(0).find('img').attr('src');
+			var firstCuedVidImgDat = $("#videos_list li").first().find('div').find('img').attr('src');
 			
 			//extract the video_id
 			//based on img src
@@ -76,7 +78,7 @@ function onPlayerReady(event){
 			
 			$("#videos_list li").each(function(){
 				//get the videoid from each li item
-				var vidImgDat = $(this).find('img').attr('src');
+				var vidImgDat = $(this).find('div').find('img').attr('src');
 				var vidId = vidImgDat.match(imgRegex)[1];
 				//play the video on the player
 				$(this).on("click", "img", function(){
@@ -101,7 +103,8 @@ function onPlayerStateChange(event){
 		var urlRegex = /https\:\/\/www\.youtube\.com\/watch\?v=([\w-]{11})/;
 		var vidIdFrURI = vidurl.match(urlRegex)[1];
 		var imgRegex = /https:\/\/i3.ytimg.com\/vi\/([\w-]{11})\/mqdefault.jpg/;
-		var firstImgDat = $("#videos_list li").eq(0).find('img').attr('src');
+		//var firstImgDat = $("#videos_list li").eq(0).find('img').attr('src');
+		var firstImgDat = $("#videos_list li").first().find('img').attr('src');
 		var firstVidId = firstImgDat.match(imgRegex)[1];
 		var endOfUL = parseInt(($("#videos_list li").length) - 1);
 		
@@ -117,22 +120,6 @@ function onPlayerStateChange(event){
 					event.target.loadVideoById(nextVidId);
 				}
 			}
-		});
-		
-		$('#videos_list').on('mh370.vidListRender', function(){
-			$("#videos_list li").each(function(){
-				var thisImgDat = $(this).find('img').attr('src');
-				var thisVidId = thisImgDat.match(imgRegex)[1];
-				var nextImgDat = $(this).next().find('img').attr('src');
-				var nextVidId = nextImgDat.match(imgRegex)[1];
-				if(vidIdFrURI === thisVidId){
-					if($(this).attr('data-index') === endOfUL){
-						event.target.cueVideoById(firstVidId);
-					} else {
-						event.target.loadVideoById(nextVidId);
-					}
-				}
-			});
 		});
 	}
 } 
