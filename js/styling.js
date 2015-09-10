@@ -15,6 +15,16 @@ $(document).ready(function(){
 		});
 	});
 	
+	function isEmpty( el ){
+		return !$.trim(el.html()); 
+    }
+	
+	if(isEmpty($('#search_container'))){
+		$('#search_container').height('32px');
+	} else {
+		$('#search_container').height('auto');
+	}
+	
 	$(document).ajaxSuccess(function(){
 		$('#per_wk_list li').each(function(){
 			if($(this).is(':visible')){
@@ -24,20 +34,6 @@ $(document).ready(function(){
 			}
 		});
 	});
-	
-	$('#videos_carousel').on('mh370.vidCrslRender', function(){
-		var liItmHt = $('#videos_carousel').height();
-		$('#videos_carousel li').css({
-			'height': (liItmHt) + 'px'
-		});
-		
-		$(window).resize(function(){
-			var liItmHt = $('#videos_carousel').height();
-			$('#videos_carousel li').css({
-				'height': (liItmHt) + 'px'
-			});
-		});
-	});	
 	
 	$('#videos_list').on('mh370.vidListRender', function(){
 		$('#videos_list').addClass('col-xs-12');
@@ -55,7 +51,7 @@ $(document).ready(function(){
 		function getVidListHt(){
 			var height = 0;
 		
-			for(i = 0;i < 4;i++){
+			for(i = 0;i < 6;i++){
 				height += $('#videos_list li').eq(i).height();
 			}
 			
@@ -72,6 +68,13 @@ $(document).ready(function(){
 	$('#videos_list').on('mh370.searchListRender', function(){
 		$('#videos_list').css({
 			'height': 'auto'
+		});
+		$('#filter_boxes li').each(function(){
+			if($(this).index() == 6){
+				$(this).addClass('col-xs-12 col-md-4');
+			}else{
+				$(this).addClass('col-xs-6 col-md-4');
+			}
 		});
 	});
 });
