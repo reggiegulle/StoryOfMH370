@@ -147,8 +147,9 @@ Main Styling Script
   padding: 10px 0;
 }
 
-#weeks_carousel_menu{
-	margin: 5px 0;
+#weeks_carousel_menu {
+  list-style-type: none;
+  margin: 5px 0;
 }
 
 #weeks_carousel_menu li {
@@ -218,17 +219,11 @@ Main Styling Script
 	cursor: pointer;
 }
 
-/*rule for the slick videos_carousel*/
+/*rule for the videos_carousel*/
 #videos_carousel {
+	list-style-type: none;
 	margin: 0 25px;
-}
-
-#videos_carousel {
 	padding-left: 5px;
-}
-
-#videos_carousel .slick-list.draggable {
-  border-radius: 6px;
 }
 
 #videos_carousel li {
@@ -240,13 +235,7 @@ Main Styling Script
 	box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.75);
 }
 
-#videos_carousel li > * {
-	display: block;
-	width: 120px;
-	padding: 0;
-}
-
-#videos_carousel li img {
+#videos_carousel li div img {
   border-radius: 4px;
   margin: 8px auto 0;
 }
@@ -259,7 +248,102 @@ Main Styling Script
   margin: 6px auto 10px;
 }
 
-/*rule for the videos list*/
+/*rule for the filter boxes list*/
+@media only screen and (max-width: 767px){
+	#filter_boxes_container{
+		margin: 0 5px;
+		padding: 0;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+	#filter_boxes_container{
+		margin: 0 55px;
+		padding: 0 20px;
+	}
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+	#filter_boxes_container{
+		margin: 0 85px;
+		padding: 0 20px;
+	}
+}
+
+@media only screen and (min-width: 1200px){
+	#filter_boxes_container{
+		margin: 0 115px;
+		padding: 0 20px;
+	}
+}
+
+@media only screen and (max-width: 767px){
+	#filter_boxes{
+		margin: 0 -5px;
+	}
+}
+
+@media only screen and (min-width: 768px){
+	#filter_boxes{
+		margin: 0 -15px;
+	}
+}
+
+#filter_boxes{
+	list-style-type: none;
+	padding: 0;
+}
+
+#filter_boxes li{
+	display: inline-block;
+}
+
+#filter_boxes li label{
+	margin-left: 10px;
+}
+
+@media only screen and (max-width: 767px){
+	#filter_boxes li label{
+		font-size: 12px;
+	}
+}
+
+@media only screen and (min-width: 768px){
+	#filter_boxes li label{
+		font-size: inherit;
+	}
+}
+
+/*
+Rules for the search_info_container element
+*/
+@media only screen and (max-width: 767px){
+	.search_info_container{
+		margin: 0 5px;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+	.search_info_container{
+		margin: 0 55px;
+	}
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+	.search_info_container{
+		margin: 0 85px;
+	}
+}
+
+@media only screen and (min-width: 1200px){
+	.search_info_container{
+		margin: 0 115px;
+	}
+}
+
+/*
+Rules for the videos list
+*/
 @media only screen and (max-width: 767px){
 	#videos_list_container{
 		margin: 0 5px;

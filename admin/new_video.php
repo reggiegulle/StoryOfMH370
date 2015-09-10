@@ -222,8 +222,8 @@
 						<option value="Press Conference">Press Conference</option>
 						<option value="News Feature">News Feature</option>
 						<option value="News Analysis">News Analysis</option>
-						<option value="Official Communication">Official Communication</option>
 						<option value="Tribute">Tribute</option>
+						<option value="Official Communication">Official Communication</option>
 					</select>
 				</div>
 				<input type="submit" value="Create Entry" />

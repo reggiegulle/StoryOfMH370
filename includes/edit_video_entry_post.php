@@ -109,7 +109,7 @@
 						}
 						
 					} else {
-						Redirect::to('../admin/edit_video_entry.php?id=' . $video_entry_index);
+						Redirect::to('../admin/ edit_video_entry.php?id=' . $video_entry_index);
 					}
 				} else {
 					Redirect::to('../index.php');
