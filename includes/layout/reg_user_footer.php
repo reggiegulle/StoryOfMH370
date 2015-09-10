@@ -1,3 +1,5 @@
+		<!--endtag for div wrapper below-->
+		</div>	
 			<section id="footer_container">
 				<article id="footer">
 					<ul id="footer-ul">
@@ -7,9 +9,7 @@
 					</ul>
 				</article>
 			</section>
-		<!--endtag for div wrapper below-->
-		</div>
 	<!--Bootstrap JS -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
 	</body>
 </html>

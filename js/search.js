@@ -10,7 +10,7 @@ $(document).ready(function(){
 	
 	var filters_title = '<h6 id="filters_title">Filter Search Results</h6>';
 
-	var filters = ['Breaking News','Headline News','Press Conference','News Feature','News Analysis','Official Communication','Tribute'];
+	var filters = ['Breaking News','Headline News','Press Conference','News Feature','News Analysis','Tribute','Official Communication'];
 	
 	
 	
@@ -18,8 +18,8 @@ $(document).ready(function(){
 		current_page,
 		last_page;
 	
-	var prevPgBtn = '<div id="prevPgBtn">Prev Page</div>';
-	var nextPgBtn = '<div id="nextPgBtn">Next Page</div>';
+	var prevPgBtn = '<div class="prevPgBtn">Prev Page</div>';
+	var nextPgBtn = '<div class="nextPgBtn">Next Page</div>';
 	
 	
 	function getSearchResults(search_obj){
@@ -30,21 +30,25 @@ $(document).ready(function(){
 			cache: false,
 			data:search_obj,
 			success: (function(data){
-				$("#search_stats").empty();
+				$(".search_stats").empty();
 				if(!data[1]['results'].length){
-					$("#search_stats").html("<p>Sorry, no data found.</p>");
+					$(".search_stats").html("<p>Sorry, no data found.</p>");
 					$("#videos_list").empty();
 				} else {
-					//console.log(JSON.stringify(data));
 					$("#videos_list").empty();
 					$.each(data[1]['results'], function(){
 						var search_li_item = "<li>";
-						search_li_item += "<img src='https://i3.ytimg.com/vi/" + this.video_id + "/mqdefault.jpg' alt='\"" + this.video_title + "\" thumbnail' width='120px' height='68px' longdesc='Thumbnail for the Youtube video of \"" + this.video_title + "\"'/>";
-						search_li_item += "<h5>" + this.string_date_pub + " - " + "Week " + this.week_number + "</h5>";
+						search_li_item += "<div>";
+						search_li_item += "<img src='https://i3.ytimg.com/vi/" + this.video_id + "/mqdefault.jpg' alt='\"" + this.video_title + "\" thumbnail' width='150px' height='84px' longdesc='Thumbnail for the Youtube video of \"" + this.video_title + "\"'/>";
+						search_li_item += "<h5>" + this.string_date_pub + "</h5>"; 
+						search_li_item += "<h6>Week " + this.week_number + "</h6>";
+						search_li_item += "</div>";
+						search_li_item += "<div>";
+						search_li_item += "</div>";
 						search_li_item += "<h3>" + this.video_title + "</h3>";
 						search_li_item += "<p>" + this.video_desc + "</p>";
-						search_li_item += "<p>" + this.video_uploader + "</p>";
-						search_li_item += "<p>" + this.tag + "</p>";
+						search_li_item += "<p><span class='source'>" + this.video_uploader + "</span>";
+						search_li_item += "<span class='tag'>(" + this.tag + ")</span></p>";
 						search_li_item += "</li>";
 						$("#videos_list").append(search_li_item);
 					});	
@@ -54,17 +58,6 @@ $(document).ready(function(){
 		});
 	}
 	
-	function removeEmptyImg(url, imgObj){
-		$("<img/>").attr("src", url).load(function(){
-			
-			s = {w: this.width, h: this.height};
-			
-			if(s.w === 120){
-				$(imgObj).remove();
-			}
-		});	
-	} 
-	
 	$('#search_field').keypress(function(e){
 		if(e.which == 13){
 			
@@ -73,6 +66,8 @@ $(document).ready(function(){
 			
 			//show all class 'show_hide' elements
 			$('.show_hide').show();
+			//hide all class 'special_show_hide' elements
+			$('.special_show_hide').hide();
 			
 			search_val = $('#search_field').val();
 			if(search_val.length >= 3){
@@ -123,16 +118,15 @@ $(document).ready(function(){
 				if(search_input.hasOwnProperty('filter_array')){
 					delete search_input.filter_array;
 				}
-				
-				console.log(JSON.stringify(search_input));
+
 				getSearchResults(search_input);
 			} else {
 				$('#search_input_feedback').html('<p>Please enter 3 or more characters</p>');
-				$('#videos_carousel').empty();
-				$('#search_stats').html('');
-				$('#prevPgBtn').remove();
-				$('#nextPgBtn').remove();
-				$('#pages_info p').empty();
+				$('#videos_carousel').hide();
+				$('.search_stats').html('');
+				$('.prevPgBtn').remove();
+				$('.nextPgBtn').remove();
+				$('.pages_info p').empty();
 				$('#videos_list').empty();
 				
 				if($('#filter_boxes li').length > 1){
@@ -151,15 +145,13 @@ $(document).ready(function(){
 	
 	$('#videos_list').on('searchResults', function(){
 		
-		$('#nextPgBtn').click(function(){
+		$('.nextPgBtn').click(function(){
 			search_input.curr_pg = current_page + 1;
-			//console.log(search_input);
 			getSearchResults(search_input);
 		});
 		
-		$('#prevPgBtn').click(function(){
+		$('.prevPgBtn').click(function(){
 			search_input.curr_pg = current_page - 1;
-			//console.log(search_input);
 			getSearchResults(search_input);
 		});
 				
@@ -183,19 +175,18 @@ $(document).ready(function(){
 			search_input.filter_array = filter_strings;
 			search_input.curr_pg = '1';
 			getSearchResults(search_input);
-			console.log(JSON.stringify(search_input));
 		});
 		
 		
 		//for "Reset Search" button
 		$('#reset_search').click(function(){
 			$('#search_field').val('');
-			$('#videos_carousel').empty();
+			$('#videos_carousel').hide();
 			$(filters_title).remove();
-			$('#search_stats').html('');
-			$('#prevPgBtn').remove();
-			$('#nextPgBtn').remove();
-			$('#pages_info p').empty();
+			$('.search_stats').html('');
+			$('.prevPgBtn').remove();
+			$('.nextPgBtn').remove();
+			$('.pages_info p').empty();
 			$('#videos_list').empty();
 			
 			if($('#filter_boxes li').length > 1){
@@ -224,46 +215,59 @@ $(document).ready(function(){
 				current_page = data[0]['current_page'];
 				last_page = data[0]['last_page'];
 				
-				$('#prevPgBtn').remove();
-				$('#nextPgBtn').remove();
+				$('.prevPgBtn').remove();
+				$('.nextPgBtn').remove();
 				
-				if(last_page > 1){
-					//console.log('The last page is greater than one and is = ' + last_page);
-					if(current_page < last_page){
-						$(nextPgBtn).insertAfter('#pages_info p');	
-					}
-					if(current_page == last_page){
-						$('#nextPgBtn').remove();
-					}
-					if(current_page > 1){
-						$(prevPgBtn).insertBefore('#pages_info p');
-					}
+				var resPerPg = 10;
+				var stResCnt = (current_page * resPerPg) - (resPerPg - 1);
+				var endResCnt = stResCnt + ((data[1]['results'].length) - 1);
+				//console.info('Results ' + stResCnt + '-' + endResCnt);
+					
+				if(data[1]['results'].length == 1){
+					$(".search_stats").html('<p>' + total_entries + ' item found.</p>');
+				} else {
+					$(".search_stats").html('<p>' + total_entries + ' items found.</p>');
 				}
 				
-				$("#search_stats").html('<p>Yes, ' + total_entries + ' items found!</p>');
-				
-				$("#pages_info p").text(current_page + ' of ' + last_page + ' pages');
+				if(last_page > 1){
+					if(current_page < last_page){
+						$(nextPgBtn).insertAfter('.pages_info p');	
+					}
+					if(current_page == last_page){
+						$('.nextPgBtn').remove();
+					}
+					if(current_page > 1){
+						$(prevPgBtn).insertBefore('.pages_info p');
+					}
+					$(".pages_info p").text(current_page + ' of ' + last_page + ' pages (Results ' + stResCnt + '-' + endResCnt + ')');
+				} else {
+					$(".pages_info p").text(current_page + ' of ' + last_page + ' pages (Results ' + stResCnt + '-' + endResCnt + ')');
+				}
 				
 				$('#videos_list li').each(function(){
 					$(this).attr('data-index', $(this).index());
 					var srcUrl = $(this).find('img').attr('src');
 					var imgContainer = $(this);
-					removeEmptyImg(srcUrl, imgContainer);
 				});
+				
+				$('#search_notifier_bottom').html('');
+		
+				$('.search_info_container').clone().appendTo('#search_notifier_bottom');
 			
 				$('#videos_list').trigger('searchResults');
 			} else {
 				$(filters_title).remove();
-				$('#search_stats').html('');
-				$('#prevPgBtn').remove();
-				$('#nextPgBtn').remove();
-				$('#pages_info p').html('');
-				$("#search_stats").html('<p>Sorry, 0 items found.</p>');
+				$('.search_stats').html('');
+				$('.prevPgBtn').remove();
+				$('.nextPgBtn').remove();
+				$('.pages_info p').html('');
+				$(".search_stats").html('<p>Sorry, 0 items found.</p>');
+				$('#search_notifier_bottom').html('');
 				$('#videos_list').empty().trigger('searchResults');
 			}
 			
+			$('#videos_list').trigger('mh370.searchListRender');
 		}
-		//console.log('total count is ' + data[0]['total_count']);
 	});
 	
 });

@@ -8,6 +8,9 @@
 	$week->get_latest('videos', 'week_number');
 	
 	$latest_wk = (int)$week->latest_week();
+	
+	$week_order = isset($_GET['ver']) ? $_GET['ver'] : null;
+	
 ?>
 
 <!DOCTYPE html>
@@ -24,15 +27,27 @@
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/bootstrap-theme.css" rel="stylesheet">
 		<!--slick js carousel styles-->
-		<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
-		<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+		<link rel="stylesheet" type="text/css" href="css/owl.carousel.css"/>
+		<link rel="stylesheet" type="text/css" href="css/owl.theme.default.css"/>
 		<!--Main Style-->
 		<link rel="stylesheet" type="text/css" href="css/style.main.css"/>
+		<!--Colors Style-->
+		<link rel="stylesheet" type="text/css" href="css/style.theme.css"/>
 		
 		<!--jQuery from Google CDN Hosted Libraries-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!--JS snippet for determining ordering-->
+		<script type="text/javascript">
+			<?php 
+				if(!isset($week_order)){
+					echo 'var week_order = "ASC";';
+				} else if ($week_order === 'n'){
+					echo 'var week_order = "DESC";';
+				}
+			?>
+		</script>
 		<!--slick js plugin-->
-		<script type="text/javascript" src="slick/slick.js"></script>
+		<script type="text/javascript" src="js/owl.carousel.js"></script>
 		<!--main js-->
 		<?php
 			if (!$user->isLoggedIn()){			
@@ -62,6 +77,14 @@
 		<!--js for determining styles-->
 		<script type="text/javascript" src="js/styling.js"></script>
 		
+		<!--[if gte IE 9]>
+		  <style type="text/css">
+			.gradient {
+			   filter: none;
+			}
+		  </style>
+		<![endif]-->
+		
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -84,16 +107,36 @@
 		
 		<div id="wrapper" class="container">
 			<section id="masthead" class="row">
-				<article id="masthead_title" class="col-xs-12 col-sm-7 col-md-7">
-					<h1><a href="index.php">The Story of MH370</a></h1>
+				<article id="masthead_title" class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
+					<div class="rows">
+						<h1 class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-1">
+							<a href="index.php">The Story of <br />
+							Flight MH370 <br />
+							In Online Videos</a>
+						</h1>
+						<div class="col-xs-12 col-sm-8 col-sm-offset-3 col-md-8 col-md-offset-4 col-lg-8 col-lg-offset-4">
+							<img src="images/280x149.airplane.masthead.png" width="280px" height="149px" alt="" />
+						</div>
+					</div>
 				</article>
-				<article id="masthead_login" class="col-xs-12 col-sm-5 col-md-5">
+				<article id="masthead_login" class="col-xs-12 col-sm-4 col-md-4 col-lg-5">
 					<?php include_once "includes/layout/login_splash.php" ;?>
 				</article>
 			</section>
 			<!--This is where the search form should be-->
-			<section id="search_container">
-				<div class="col-xs-0 col-sm-7 col-md-7"></div>
+			<section id="search_container" class="row gradient">
+				<div class="col-xs-0 col-sm-7 col-md-7">
+					<div>
+						<?php 
+							if(!isset($week_order)){
+								echo '<a href="index.php?ver=n" id="newtoold" class="special_show_hide">Newest To Oldest</a>';
+							} else if($week_order === 'n'){
+								echo '<a href="index.php" id="oldtonew" class="special_show_hide">Oldest To Newest</a>';
+							}
+						?>
+						
+					</div>
+				</div>
 				<ul class="col-xs-12 col-sm-5 col-md-5">
 					<li>
 						<h5>Search</h5>
@@ -116,12 +159,12 @@
 			</section>
 			<div style="clear: both;"></div>
 			
-			<section id="weeks_carousel_container">
-				<ul id="weeks_carousel_menu">
+			<section id="weeks_carousel_container" class="gradient">
+				<ul id="weeks_carousel_menu" class="owl-carousel">
 					<?php
 						for($w=1; $w < ($latest_wk+5); $w++){
 							if ($w%4 == 0){
-								echo '<li>Weeks ' . ($w - 3) . '-' . $w . '</li>';
+								echo '<li>WEEKS ' . ($w - 3) . '-' . $w . '</li>';
 							}
 						}
 					?>
@@ -151,34 +194,48 @@
 				<article id="player"></article>
 			</section>
 			
-			<ul id="videos_carousel">
+			<ul id="videos_carousel" class="gradient owl-carousel">
 			</ul>
 			
-			<section id="filter_boxes_container" class="show_hide">
-				<ul id="filter_boxes" class="show_hide">
+			<section id="filter_boxes_container" class="row show_hide">
+				<ul id="filter_boxes" class="row show_hide">
 				</ul>
 			</section>
 			
-			<div id="search_stats" class="show_hide">
-			</div>
+			<section id="search_notifier_top">
+				<section class="search_info_container">
+					<div class="search_stats show_hide">
+					</div>
+					<div class="pages_info show_hide">
+						<p class="show_hide"></p>
+					</div>
+				</section>
+			</section>
 			
-			<div id="pages_info" class="show_hide">
-				<p class="show_hide"></p>
-			</div>
+			<section id="videos_list_container" class="row">
+				<ul id="videos_list">  
+				</ul>
+			</section>
 			
-			<ul id="videos_list">  
-			</ul>
-			<section id="footer_container">
-				<article id="footer">
-					<ul id="footer-ul">
-						<li>Powered by <a href="http://www.youtube.com" title="YouTube"><img src="images/Youtube_icon45.png" width="45px" height="45px" alt="youtube_icon" /></a></li>
-						<li><p>Design and UI by</p><h3>Reggie Gulle</h3></li>
-						<li><p>All Rights Reserved <?php echo date("Y", time()); ?></p></li>
-					</ul>
-				</article>
+			<section id="search_notifier_bottom">
+			</section>
+			
+			<section id="back_to_top_btn">
+				<div>
+					<p><span id="arrow">&#9650;</span> Back To Top</p>		
+				</div>
 			</section>
 		</div>
-		<script src="js/carousel.menu.js" type="text/javascript"></script>
+		<section id="footer_container">
+			<article id="footer">
+				<ul id="footer-ul">
+					<li>Powered by <a href="http://www.youtube.com" title="YouTube"><img src="images/Youtube_icon45.png" width="45px" height="45px" alt="youtube_icon" /></a></li>
+					<li><p>Design and UI by</p><h3>Reggie Gulle</h3></li>
+					<li><p>All Rights Reserved <?php echo date("Y", time()); ?></p></li>
+				</ul>
+			</article>
+		</section>
+		 <script src="js/carousel.menu.js" type="text/javascript"></script>
 		<script src="js/youtube.js" type="text/javascript"></script>
 		<!--Bootstrap js-->
 		<script src="js/bootstrap.min.js" type="text/javascript"></script>
