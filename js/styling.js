@@ -35,20 +35,6 @@ $(document).ready(function(){
 		});
 	});
 	
-	$('#videos_carousel').on('mh370.vidCrslRender', function(){
-		var liItmHt = $('#videos_carousel').height();
-		$('#videos_carousel li').css({
-			'height': (liItmHt) + 'px'
-		});
-		
-		$(window).resize(function(){
-			var liItmHt = $('#videos_carousel').height();
-			$('#videos_carousel li').css({
-				'height': (liItmHt) + 'px'
-			});
-		});
-	});	
-	
 	$('#videos_list').on('mh370.vidListRender', function(){
 		$('#videos_list').addClass('col-xs-12');
 		$('#videos_list li').each(function(){

@@ -147,8 +147,9 @@ Main Styling Script
   padding: 10px 0;
 }
 
-#weeks_carousel_menu{
-	margin: 5px 0;
+#weeks_carousel_menu {
+  list-style-type: none;
+  margin: 5px 0;
 }
 
 #weeks_carousel_menu li {
@@ -218,17 +219,11 @@ Main Styling Script
 	cursor: pointer;
 }
 
-/*rule for the slick videos_carousel*/
+/*rule for the videos_carousel*/
 #videos_carousel {
+	list-style-type: none;
 	margin: 0 25px;
-}
-
-#videos_carousel {
 	padding-left: 5px;
-}
-
-#videos_carousel .slick-list.draggable {
-  border-radius: 6px;
 }
 
 #videos_carousel li {
@@ -240,13 +235,7 @@ Main Styling Script
 	box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.75);
 }
 
-#videos_carousel li > * {
-	display: block;
-	width: 120px;
-	padding: 0;
-}
-
-#videos_carousel li img {
+#videos_carousel li div img {
   border-radius: 4px;
   margin: 8px auto 0;
 }
