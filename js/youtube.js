@@ -37,8 +37,17 @@ function onPlayerReady(event){
 		var imgRegex = /https:\/\/i3.ytimg.com\/vi\/([\w-]{11})\/mqdefault.jpg/;
 		var firstCuedVidId = firstCuedVidImgDat.match(imgRegex)[1];
 		
-		//cue the first video
 		event.target.cueVideoById(firstCuedVidId);
+		
+		//behavior of the video_desc_list
+		$("#video_desc_list li").each(function(){
+			var firstCuedDescDat = $(this).find('img').attr('src');
+			if(firstCuedDescDat === firstCuedVidImgDat){
+				$(this).show();
+			} else {
+				$(this).hide();
+			}
+		});
 		
 		//behavior of the videos list
 		$("#videos_list li").each(function(){
@@ -52,13 +61,47 @@ function onPlayerReady(event){
 				event.target.loadVideoById(vidId);
 			});
 		});
+		
+		
 	} else {
 		event.target.loadVideoById('a1NgU2LSIRc');
 	}
 	
 	
+	
+	//by default,
+	//hide the "HIDE INFO" button
+	$("#showinfo").show();
+	$("#hideinfo").hide();
+	//by default,
+	//hide the "video_desc_list_container" section
+	$("#video_desc_list_container").hide();
+	
+	//by default,
+	//hide the "HIDE INFO" button
+	$(window).resize(function(){
+		$("#showinfo").show();
+		$("#hideinfo").hide();
+		$("#video_desc_list_container").hide();
+	});
+	
+	//onclick, show descrip list
+	$("#showinfo").click(function(){
+		$(this).hide();
+		$("#hideinfo").show();
+		$("#video_desc_list_container").show();
+	});
+	
+	//onclick, hide descrip list
+	$("#hideinfo").click(function(){
+		$(this).hide();
+		$("#showinfo").show();
+		$("#video_desc_list_container").hide();
+	});
+	
+	
 	//listen for custom events
-	//'mh370.vidListRender' and 'mh370.vidCarouselRender'
+	//'mh370.vidListRender'
 	//and execute callbacks
 	//(some repeating code here)
 	
@@ -76,6 +119,17 @@ function onPlayerReady(event){
 			
 			event.target.cueVideoById(firstCuedVidId);
 			
+			//behavior of the video_desc_list
+			$("#video_desc_list li").each(function(){
+				var firstCuedDescDat = $(this).find('img').attr('src');
+				if(firstCuedDescDat === firstCuedVidImgDat){
+					$(this).show();
+				} else {
+					$(this).hide();
+				}
+			});
+			
+			//behavior of the videos list
 			$("#videos_list li").each(function(){
 				//get the videoid from each li item
 				var vidImgDat = $(this).find('div').find('img').attr('src');
@@ -90,15 +144,93 @@ function onPlayerReady(event){
 		} else {
 			event.target.loadVideoById('a1NgU2LSIRc');
 		} 
-	
+		
+		
+		//by default,
+		//hide the "HIDE INFO" button
+		$("#showinfo").show();
+		$("#hideinfo").hide();
+		//by default,
+		//hide the "video_desc_list_container" section
+		$("#video_desc_list_container").hide();
+		
+		//by default,
+		//hide the "HIDE INFO" button
+		$(window).resize(function(){
+			$("#showinfo").show();
+			$("#hideinfo").hide();
+			$("#video_desc_list_container").hide();
+		});
+		
+		//onclick, show descrip list
+		$("#showinfo").click(function(){
+			$(this).hide();
+			$("#hideinfo").show();
+			$("#video_desc_list_container").show();
+		});
+		
+		//onclick, hide descrip list
+		$("#hideinfo").click(function(){
+			$(this).hide();
+			$("#showinfo").show();
+			$("#video_desc_list_container").hide();
+		});
 	});
 }
 
 function onPlayerStateChange(event){
+	//if the video is PLAYING
+	if(event.data === 1){
+ 		//get the YouTube URL of the video playing
+		var vidurl = event.target.getVideoUrl();
+		//extract the video_id
+		var regex = /https\:\/\/www\.youtube\.com\/watch\?v=([\w-]{11})/;
+		var vidIdFrURI = vidurl.match(regex)[1];
+		
+		//behavior of the video_desc_list
+		$("#video_desc_list li").each(function(){
+			if($(this).data('video_id') == vidIdFrURI){
+				$(this).show();
+			} else {
+				$(this).hide();
+			}
+		});
+		
+		//by default,
+		//hide the "HIDE INFO" button
+		$("#showinfo").show();
+		$("#hideinfo").hide();
+		//by default,
+		//hide the "video_desc_list_container" section
+		$("#video_desc_list_container").hide();
+		
+		//by default,
+		//hide the "HIDE INFO" button
+		$(window).resize(function(){
+			$("#showinfo").show();
+			$("#hideinfo").hide();
+			$("#video_desc_list_container").hide();
+		});
+		
+		//onclick, show descrip list
+		$("#showinfo").click(function(){
+			$(this).hide();
+			$("#hideinfo").show();
+			$("#video_desc_list_container").show();
+		});
+		
+		//onclick, hide descrip list
+		$("#hideinfo").click(function(){
+			$(this).hide();
+			$("#showinfo").show();
+			$("#video_desc_list_container").hide();
+		});
+	}
 	//if the video has ENDED
 	if(event.data === 0){
 		//get the YouTube URL of the video playing
-		var vidurl = event.target.getVideoUrl();
+		//var vidurl = event.target.getVideoUrl();
+		var vidurl = player.getVideoUrl();
 		//extract the video_id
 		var urlRegex = /https\:\/\/www\.youtube\.com\/watch\?v=([\w-]{11})/;
 		var vidIdFrURI = vidurl.match(urlRegex)[1];

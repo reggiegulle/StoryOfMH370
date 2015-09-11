@@ -191,6 +191,7 @@ $(document).ready(function(){
 			$('.prevPgBtn').remove();
 			$('.nextPgBtn').remove();
 			$('.pages_info p').empty();
+			$('#video_desc_list').empty();
 			$('#videos_list').empty();
 			
 			if($('#filter_boxes li').length > 1){

@@ -74,6 +74,9 @@
 			}
 		?>
 		
+		<!--js for video_description_list-->
+		<script type="text/javascript" src="js/vidsdesc.js"></script>
+		
 		<!--js for determining styles-->
 		<script type="text/javascript" src="js/styling.js"></script>
 		
@@ -194,6 +197,16 @@
 				<article id="player"></article>
 			</section>
 			
+			<section id="info-buttons">
+				<div id="showinfo">SHOW INFO</div>
+				<div id="hideinfo">HIDE INFO</div>
+			</section>
+			
+			<section id="video_desc_list_container" class="row">
+				<ul id="video_desc_list">
+				</ul>
+			</section>
+			
 			<ul id="videos_carousel" class="gradient owl-carousel">
 			</ul>
 			
@@ -222,7 +235,7 @@
 			
 			<section id="back_to_top_btn">
 				<div>
-					<p><span id="arrow">&#9650;</span> Back To Top</p>		
+					<p><span id="arrow">&#9650;</span> Back To Top</p>
 				</div>
 			</section>
 		</div>

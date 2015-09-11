@@ -178,6 +178,12 @@ videos_carousel
   font-weight: bold;
 }
 
+/*rules for the 
+video_description_list*/
+#video_desc_list{
+	background-color: rgba(255, 255, 255, 0.7);
+}
+
 /*rule for the videos list*/
 #videos_list{
 	background-color: rgba(255,255,255,0.7);

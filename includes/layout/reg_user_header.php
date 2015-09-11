@@ -19,7 +19,7 @@
 		<!--jQuery from Google CDN Hosted Libraries-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!--main js-->
-		<script src="../js/script.admin.js" type="text/javascript"></script>
+		<!--<script src="../js/script.admin.js" type="text/javascript"></script>-->
 		
 		<!--js for determining styles-->
 		<script type="text/javascript" src="../js/styling.js"></script>
