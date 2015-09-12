@@ -196,3 +196,16 @@ Rules for footer
 	background-color: #030f02;
 	color: #31cecb;
 }
+
+/*
+Rules for form_section
+*/
+
+.user_interface_panel{
+	background-color: #ffffff;
+}
+
+.submit,
+#cancel{
+	background-color: yellow;
+}

@@ -101,134 +101,149 @@
 <!--include reg_user_header.php-->
 <?php include '../includes/layout/reg_user_header.php'; ?>
 		
-		<section>
+		<section class="user_interface row">
+		
+			<section class="user_interface_panel col-xs-12 col-sm-8">
+				
+				<article class="col-xs-12">
+					<?php
+						if(Session::exists('add_video')){
+							echo '<p class="phpnotif">' . Session::flash('add_video') . '</p>';
+						}
+					?>
+				</article>
+				
+				<h1 class="col-xs-12">Add New Video</h1>
+				<form id="addnewvideo" class="col-xs-12" action="" method="POST">
+					<div class="field">
+						<label for="date_published"><p>Date Published:</p></label>
+							<article id="select_inputs">
+								<span>Month</span>
+								<select name="date_month" form="addnewvideo">
+									<option value="01">January</option>
+									<option value="02">February</option>
+									<option value="03">March</option>
+									<option value="04">April</option>
+									<option value="05">May</option>
+									<option value="06">June</option>
+									<option value="07">July</option>
+									<option value="08">August</option>
+									<option value="09">September</option>
+									<option value="10">October</option>
+									<option value="11">November</option>
+									<option value="12">December</option>
+								</select>
+								<span>Day</span>
+								<select name="date_day" form="addnewvideo">
+									<option value="01">01</option>
+									<option value="02">02</option>
+									<option value="03">03</option>
+									<option value="04">04</option>
+									<option value="05">05</option>
+									<option value="06">06</option>
+									<option value="07">07</option>
+									<option value="08">08</option>
+									<option value="09">09</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option value="12">12</option>
+									<option value="13">13</option>
+									<option value="14">14</option>
+									<option value="15">15</option>
+									<option value="16">16</option>
+									<option value="17">17</option>
+									<option value="18">18</option>
+									<option value="19">19</option>
+									<option value="20">20</option>
+									<option value="21">21</option>
+									<option value="22">22</option>
+									<option value="23">23</option>
+									<option value="24">24</option>
+									<option value="25">25</option>
+									<option value="26">26</option>
+									<option value="27">27</option>
+									<option value="28">28</option>
+									<option value="29">29</option>
+									<option value="30">30</option>
+									<option value="31">31</option>
+								</select>
+								<span>Year</span>
+								<select name="date_year" form="addnewvideo">
+									<option value="2014">2014</option>
+									<option value="2015">2015</option>
+								</select>
+							</article>
+					</div>
+					<div class="field">
+						<label for="video_id"><p>Video Id:</p></label>
+						<input type="text" id="video_id" name="video_id" form="addnewvideo" value="" />	
+						<article>
+							<?php
+								if(Session::exists('video_id')){
+									echo '<p class="phpnotif">' . Session::flash('video_id') . '</p>';
+								}
+							?>
+						</article>
+					</div>
+					<div class="field">
+						<label for="video_title"><p>Video Title:</p></label>
+						<input type="text" id="video_title" name="video_title" form="addnewvideo" value="" />
+						<article>
+							<?php
+								if(Session::exists('video_title')){
+									echo '<p class="phpnotif">' . Session::flash('video_title') . '</p>';
+								}
+							?>
+						</article>
+					</div>
+					<div class="field">
+						<label for="video_desc"><p>Video Description:</p></label>
+						<textarea id="video_desc" name="video_desc" cols="50" rows="8"></textarea>
+						<article>
+							<?php
+								if(Session::exists('video_desc')){
+									echo '<p class="phpnotif">' . Session::flash('video_desc') . '</p>';
+								}
+							?>
+						</article>
+					</div>
+					<div class="field">
+						<label for="video_uploader"><p>Video Uploaded By:</p></label>
+						<input type="text" id="video_uploader" name="video_uploader" form="addnewvideo" value="" />
+						<article>
+							<?php
+								if(Session::exists('video_uploader')){
+									echo '<p class="phpnotif">' . Session::flash('video_uploader') . '</p>';
+								}
+							?>
+						</article>
+					</div>
+					<div class="field">
+						<label for="tag"><p>Tag:</p></label>
+							<article id="select_inputs">
+								<select name="tag" form="addnewvideo">
+									<option value="Breaking News">Breaking News</option>
+									<option value="Headline News">Headline News</option>
+									<option value="Press Conference">Press Conference</option>
+									<option value="News Feature">News Feature</option>
+									<option value="News Analysis">News Analysis</option>
+									<option value="Tribute">Tribute</option>
+									<option value="Official Communication">Official Communication</option>
+								</select>
+						</article>
+					</div>
+					<div class="field">
+						<input type="submit" class="submit" value="Create Entry" />
+					</div>
+				</form>
+				
+				<article id="cancel" class="col-xs-12">
+					<a href="../index.php">Cancel</a>
+				</article>
+				
+			</section>
 			
-			<article>
-				<?php
-					if(Session::exists('add_video')){
-						echo '<p class="phpnotif">' . Session::flash('add_video') . '</p>';
-					}
-				?>
-			</article>
-			
-			<h1>Add New Video</h1>
-			<form id="addnewvideo" action="" method="POST">
-				<div class="field">
-					<label for="date_published"><p>Date Published:</p></label>
-						<span>Month</span>
-						<select name="date_month" form="addnewvideo">
-							<option value="01">January</option>
-							<option value="02">February</option>
-							<option value="03">March</option>
-							<option value="04">April</option>
-							<option value="05">May</option>
-							<option value="06">June</option>
-							<option value="07">July</option>
-							<option value="08">August</option>
-							<option value="09">September</option>
-							<option value="10">October</option>
-							<option value="11">November</option>
-							<option value="12">December</option>
-						</select>
-						<span>Day</span>
-						<select name="date_day" form="addnewvideo">
-							<option value="01">01</option>
-							<option value="02">02</option>
-							<option value="03">03</option>
-							<option value="04">04</option>
-							<option value="05">05</option>
-							<option value="06">06</option>
-							<option value="07">07</option>
-							<option value="08">08</option>
-							<option value="09">09</option>
-							<option value="10">10</option>
-							<option value="11">11</option>
-							<option value="12">12</option>
-							<option value="13">13</option>
-							<option value="14">14</option>
-							<option value="15">15</option>
-							<option value="16">16</option>
-							<option value="17">17</option>
-							<option value="18">18</option>
-							<option value="19">19</option>
-							<option value="20">20</option>
-							<option value="21">21</option>
-							<option value="22">22</option>
-							<option value="23">23</option>
-							<option value="24">24</option>
-							<option value="25">25</option>
-							<option value="26">26</option>
-							<option value="27">27</option>
-							<option value="28">28</option>
-							<option value="29">29</option>
-							<option value="30">30</option>
-							<option value="31">31</option>
-						</select>
-						<span>Year</span>
-						<select name="date_year" form="addnewvideo">
-							<option value="2014">2014</option>
-							<option value="2015">2015</option>
-						</select>
-				</div>
-				<div class="field">
-					<label for="video_id"><p>Video Id:</p></label>
-					<input type="text" id="video_id" name="video_id" form="addnewvideo" value="" />	
-					<article>
-						<?php
-							if(Session::exists('video_id')){
-								echo '<p class="error">' . Session::flash('video_id') . '</p>';
-							}
-						?>
-					</article>
-				</div>
-				<div class="field">
-					<label for="video_title"><p>Video Title:</p></label>
-					<input type="text" id="video_title" name="video_title" form="addnewvideo" value="" />
-					<article>
-						<?php
-							if(Session::exists('video_title')){
-								echo '<p class="error">' . Session::flash('video_title') . '</p>';
-							}
-						?>
-					</article>
-				</div>
-				<div class="field">
-					<label for="video_desc"><p>Video Description:</p></label>
-					<textarea id="video_desc" name="video_desc" cols="50" rows="8"></textarea>
-					<article>
-						<?php
-							if(Session::exists('video_desc')){
-								echo '<p class="error">' . Session::flash('video_desc') . '</p>';
-							}
-						?>
-					</article>
-				</div>
-				<div class="field">
-					<label for="video_uploader"><p>Video Uploaded By:</p></label>
-					<input type="text" id="video_uploader" name="video_uploader" form="addnewvideo" value="" />
-					<article>
-						<?php
-							if(Session::exists('video_uploader')){
-								echo '<p class="error">' . Session::flash('video_uploader') . '</p>';
-							}
-						?>
-					</article>
-				</div>
-				<div class="field">
-					<label for="tag"><p>Tag:</p></label>
-					<select name="tag" form="addnewvideo">
-						<option value="Breaking News">Breaking News</option>
-						<option value="Headline News">Headline News</option>
-						<option value="Press Conference">Press Conference</option>
-						<option value="News Feature">News Feature</option>
-						<option value="News Analysis">News Analysis</option>
-						<option value="Tribute">Tribute</option>
-						<option value="Official Communication">Official Communication</option>
-					</select>
-				</div>
-				<input type="submit" value="Create Entry" />
-			</form>
-			<div id="cancel"><a href="../index.php">Cancel</a></div>
+			<section id="constraint" class="col-xs-0 col-sm-4"></section>
 			
 		</section>
 		

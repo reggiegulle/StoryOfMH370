@@ -512,8 +512,13 @@ Rules for footer
 }
 
 /*
-Rules for forms
+Rules for form_section
 */
-div.field label {
-    display: block;
+.user_interface.row{
+	margin: 0 auto;
+}
+
+.user_interface_panel label,
+.user_interface_panel #select_inputs{
+	display: block;
 }

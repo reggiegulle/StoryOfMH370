@@ -72,63 +72,78 @@
 <!--include reg_user_header.php-->
 <?php include '../includes/layout/reg_user_header.php'; ?>
 		
-	<section>
+	<section class="user_interface row">
+	
+		<section class="user_interface_panel col-xs-12 col-sm-8">
 
-		<p>Hello <a href="profile.php?user_id=<?php echo escape($data->id); ?>"><?php echo escape($data->username); ?>!</a></p>
-		<article>
-			<?php
-				if(Session::exists('edit_user_pwd_success')){
-					echo '<p class="phpnotif">' . Session::flash('edit_user_pwd_success') . '</p>';
-				}
-			?>
-		</article>
-		
-		<p>To change your password, fill-in your current password in the field provided below.  Type and re-type your new password in each of the fields provided and click "Submit".</p>
-
-		<form action="" method="POST">
+			<p>
+				Hello 
+					<a href="profile.php?user_id=<?php echo escape($data->id); ?>">
+						<?php echo escape($data->username); ?>!
+					</a>
+			</p>
 			
-			<div class="field">
-				<label for="password_current">Current password</label>
-				<input type="password" name="password_current" id="password_current" />
-				<article>
-					<?php
-						if(Session::exists('password_current')){
-							echo '<p class="error">' . Session::flash('password_current') . '</p>';
-						}
-						if(Session::exists('edit_user_current_pwd_error')){
-							echo '<p class="error">' . Session::flash('edit_user_current_pwd_error') . '</p>';
-						}
-					?>
-				</article>
-			</div>
-			<div class="field">
-				<label for="password_new">New password</label>
-				<input type="password" name="password_new" id="password_new" />
-				<article>
-					<?php
-						if(Session::exists('password_new')){
-							echo '<p class="error">' . Session::flash('password_new') . '</p>';
-						}
-					?>
-				</article>
-			</div>
-			<div class="field">
-				<label for="password_new_again">Re-type your new password</label>
-				<input type="password" name="password_new_again" id="password_new_again" />
-				<article>
-					<?php
-						if(Session::exists('password_new_again')){
-							echo '<p class="error">' . Session::flash('password_new_again') . '</p>';
-						}
-					?>
-				</article>
-			</div>
-			<div class="field">	
-				<input type="submit" value="Change" />
-				<input type="hidden" name="token" value="<?php echo Token::generate(); ?>" />
-			</div>
+			<article>
+				<?php
+					if(Session::exists('edit_user_pwd_success')){
+						echo '<p class="phpnotif">' . Session::flash('edit_user_pwd_success') . '</p>';
+					}
+				?>
+			</article>
+			
+			<p>
+				To change your password, fill-in your current password in the field provided below.  Type and re-type your new password in each of the fields provided and click "Change".
+			</p>
 
-		</form>
+			<form action="" method="POST">
+				
+				<div class="field">
+					<label for="password_current">Current password</label>
+					<input type="password" name="password_current" id="password_current" />
+					<article>
+						<?php
+							if(Session::exists('password_current')){
+								echo '<p class="phpnotif">' . Session::flash('password_current') . '</p>';
+							}
+							if(Session::exists('edit_user_current_pwd_error')){
+								echo '<p class="phpnotif">' . Session::flash('edit_user_current_pwd_error') . '</p>';
+							}
+						?>
+					</article>
+				</div>
+				<div class="field">
+					<label for="password_new">New password</label>
+					<input type="password" name="password_new" id="password_new" />
+					<article>
+						<?php
+							if(Session::exists('password_new')){
+								echo '<p class="phpnotif">' . Session::flash('password_new') . '</p>';
+							}
+						?>
+					</article>
+				</div>
+				<div class="field">
+					<label for="password_new_again">Re-type your new password</label>
+					<input type="password" name="password_new_again" id="password_new_again" />
+					<article>
+						<?php
+							if(Session::exists('password_new_again')){
+								echo '<p class="phpnotif">' . Session::flash('password_new_again') . '</p>';
+							}
+						?>
+					</article>
+				</div>
+				<div class="field">	
+					<input type="submit" class="submit" value="Change" />
+					<input type="hidden" name="token" value="<?php echo Token::generate(); ?>" />
+				</div>
+
+			</form>
+		
+		</section>
+		
+		<section id="constraint" class="col-xs-0 col-sm-4"></section>
+		
 	</section>
 <!--include reg_user_footer.php-->
 <?php include '../includes/layout/reg_user_footer.php'; ?>
