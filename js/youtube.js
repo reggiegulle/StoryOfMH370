@@ -26,6 +26,8 @@ function onYouTubeIframeAPIReady() {
 	});
 }
 
+var vidPlayed;
+
 function onPlayerReady(event){ 
 	if($("#videos_list li").length > 0){
 		//get data for the first video to be cued
@@ -110,7 +112,6 @@ function onPlayerReady(event){
 		
 		if($("#videos_list li").length > 0){
 			//get data for the first video to be cued
-			//var firstCuedVidImgDat = $("#videos_list li").eq(0).find('img').attr('src');
 			var firstCuedVidImgDat = $("#videos_list li").first().find('div').find('img').attr('src');
 			
 			//extract the video_id
@@ -183,9 +184,11 @@ function onPlayerStateChange(event){
 	if(event.data === 1){
  		//get the YouTube URL of the video playing
 		var vidurl = event.target.getVideoUrl();
+		//console.info('The URL of the video playing is: ' + vidurl);
 		//extract the video_id
-		var regex = /https\:\/\/www\.youtube\.com\/watch\?v=([\w-]{11})/;
+		var regex = /v=([\w-]{11})/;
 		var vidIdFrURI = vidurl.match(regex)[1];
+		vidPlayed = vidIdFrURI;
 		
 		//behavior of the video_desc_list
 		$("#video_desc_list li").each(function(){
@@ -228,14 +231,11 @@ function onPlayerStateChange(event){
 	}
 	//if the video has ENDED
 	if(event.data === 0){
-		//get the YouTube URL of the video playing
-		//var vidurl = event.target.getVideoUrl();
-		var vidurl = player.getVideoUrl();
+		//console.info('The URL of the video that has ended is: ' + vidPlayed);
+		
 		//extract the video_id
-		var urlRegex = /https\:\/\/www\.youtube\.com\/watch\?v=([\w-]{11})/;
-		var vidIdFrURI = vidurl.match(urlRegex)[1];
+		//based on img src */
 		var imgRegex = /https:\/\/i3.ytimg.com\/vi\/([\w-]{11})\/mqdefault.jpg/;
-		//var firstImgDat = $("#videos_list li").eq(0).find('img').attr('src');
 		var firstImgDat = $("#videos_list li").first().find('img').attr('src');
 		var firstVidId = firstImgDat.match(imgRegex)[1];
 		var endOfUL = parseInt(($("#videos_list li").length) - 1);
@@ -245,7 +245,8 @@ function onPlayerStateChange(event){
 			var thisVidId = thisImgDat.match(imgRegex)[1];
 			var nextImgDat = $(this).next().find('img').attr('src');
 			var nextVidId = nextImgDat.match(imgRegex)[1];
-			if(vidIdFrURI === thisVidId){
+			//if(vidIdFrURI === thisVidId){
+			if(vidPlayed === thisVidId){
 				if($(this).attr('data-index') === endOfUL){
 					event.target.cueVideoById(firstVidId);
 				} else {

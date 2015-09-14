@@ -71,6 +71,18 @@ and descendant elements
 	}
 }
 
+.slicknav_menu{
+	background: transparent;
+}
+
+.slicknav_menu > *{
+	color: #6CF8F7;
+}
+
+.slicknav_nav ul{
+	margin: 0;
+}
+
 #masthead_login{
 	color: #31CECB;
 }
@@ -104,6 +116,10 @@ container
 	background: -ms-linear-gradient(top, #010f0a 52%,#003521 78%); /* IE10+ */
 	background: linear-gradient(to bottom, #010f0a 52%,#003521 78%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#010f0a', endColorstr='#003521',GradientType=0 ); /* IE6-8 */	
+}
+
+#search_container p{
+	color: #6CF8F7;
 }
 
 #search_container #reset_search{

@@ -10,6 +10,12 @@ Main Styling Script
 	the Bootstrap Grid Framework
 */
 
+/*
+	Rules for the div class header
+*/
+.header.container-fluid{
+	padding: 0;
+}
 
 /*
 	Rules for the div wrapper
@@ -72,6 +78,37 @@ Main Styling Script
 	z-index: 1;
 }
 
+.slicknav_menu {
+	margin-left: 10px;
+}
+
+.slicknav_menu input[type='submit']{
+	border-radius: 6px;
+}
+
+@media only screen and (max-width: 767px){
+	.slicknav_menu{
+		display: block;
+	}
+	#login_splash article#normal_login{
+		display: none;
+	}
+}
+
+@media only screen and (min-width: 768px){
+	.slicknav_menu{
+		display: none;
+	}
+	#login_splash article#normal_login{
+		display: block;
+	}
+}
+
+.slicknav_nav form ul:nth-child(2){
+	display: inline-block;
+	margin-top: 10px;
+}
+
 #masthead_login{
 	margin-top: 0px;
 }
@@ -113,10 +150,8 @@ Main Styling Script
 */
 
 #search_container {
-	border-radius: 0px 0px 8px 8px;
 	margin: 0px auto;
 	padding-top: 5px;
-	text-align: right;
 }
 
 #search_container ul{

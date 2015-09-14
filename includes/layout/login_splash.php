@@ -7,7 +7,8 @@
 <?php
 	if (!$user->isLoggedIn()){			
 ?>
-		<article>
+	<section id="login_splash">
+		<article id="normal_login">
 			<p>Registered Users Login</p>
 			<?php
 				if(Session::exists('login_error')){
@@ -47,6 +48,7 @@
 				</ul>
 			</form>
 		</article>
+	</section>
 <?php
 	} else {
 		if (!$user->hasPermission('admin')){

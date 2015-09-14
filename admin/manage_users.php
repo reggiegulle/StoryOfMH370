@@ -190,12 +190,14 @@
 				<ul id="all_users_list">
 					<?php
 						foreach($all_users_data as $user_data){
+							$joined_date = new DateTime($user_data->joined);
+							$clean_joined_date = strftime('%d-%b-%Y');
 							$li_item = '';
 							$li_item .= '<li>';
 							$li_item .= '<h6>Database ID: ' . $user_data->id . '</h6>';
 							$li_item .= '<h6>Username: ' . $user_data->username . '</h6>';
 							$li_item .= '<h6>Full Name: ' . $user_data->name . '</h6>';
-							$li_item .= '<p>Date Joined: ' . $user_data->joined . '</p>';
+							$li_item .= '<p>Date Joined: ' . $clean_joined_date . '</p>';
 							$li_item .= '<p>Group: ';
 							if($user_data->group == 1){
 								$li_item .= 'Standard User';
