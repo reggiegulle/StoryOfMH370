@@ -71,6 +71,11 @@ and descendant elements
 	}
 }
 
+.special_show_hide {
+	background-color: rgba(255, 255, 255, 0.8);
+	color: black;
+}
+
 .slicknav_menu{
 	background: transparent;
 }

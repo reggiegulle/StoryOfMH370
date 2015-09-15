@@ -116,7 +116,7 @@
 			<section id="masthead" class="row">
 				<article id="masthead_title" class="col-xs-12 col-sm-8 col-md-6 col-md-offset-1 col-lg-6 col-lg-offset-1">
 					<div class="rows">
-						<h1 class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-0 col-lg-6 col-lg-offset-1">
+						<h1 class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-0 col-lg-7 col-lg-offset-1">
 							<a href="index.php">The Story of <br />
 							Flight MH370 <br />
 							In Online Videos</a>
@@ -143,7 +143,7 @@
 					?>
 					</p>
 				</div>
-				<ul class="col-xs-12 col-xs-offset-1 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-1 col-lg-4 col-lg-offset-1">
+				<ul class="col-xs-12 col-xs-offset-1 col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-0 col-lg-5 col-lg-offset-0">
 					<li>
 						<h5>Search</h5>
 					</li>
