@@ -204,8 +204,8 @@
 			</section>
 			
 			<section id="info-buttons">
-				<div id="showinfo">SHOW INFO</div>
-				<div id="hideinfo">HIDE INFO</div>
+				<div id="showinfo"><p>SHOW INFO</p></div>
+				<div id="hideinfo"><p>HIDE INFO</p></div>
 			</section>
 			
 			<section id="video_desc_list_container" class="row">

@@ -38,13 +38,14 @@ $(document).ready(function(){
 	$('#videos_list').on('mh370.vidListRender', function(){
 		$('#video_desc_list').addClass('col-xs-12');
 		$('#video_desc_list li').each(function(){
-			$(this).addClass('col-xs-12');
+			$(this).addClass('gradient col-xs-12');
 			var descliFtDiv = $(this).find('div').eq(0);
 			$(descliFtDiv).addClass('col-xs-12 col-sm-6');
 			var descliScnDiv = $(this).find('div').eq(1);
 			$(descliScnDiv).addClass('col-xs-0 col-sm-6');
 			$(this).find('h3, p').addClass('col-xs-12');
 		});
+		
 		$('#videos_list').addClass('col-xs-12');
 		$('#videos_list li').each(function(){
 			$(this).addClass('col-xs-12');
@@ -86,4 +87,6 @@ $(document).ready(function(){
 			}
 		});
 	});
+	
+	
 });
