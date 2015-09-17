@@ -71,6 +71,23 @@ and descendant elements
 	}
 }
 
+.special_show_hide {
+	background-color: rgba(255, 255, 255, 0.8);
+	color: black;
+}
+
+.slicknav_menu{
+	background: transparent;
+}
+
+.slicknav_menu > *{
+	color: #6CF8F7;
+}
+
+.slicknav_nav ul{
+	margin: 0;
+}
+
 #masthead_login{
 	color: #31CECB;
 }
@@ -104,6 +121,10 @@ container
 	background: -ms-linear-gradient(top, #010f0a 52%,#003521 78%); /* IE10+ */
 	background: linear-gradient(to bottom, #010f0a 52%,#003521 78%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#010f0a', endColorstr='#003521',GradientType=0 ); /* IE6-8 */	
+}
+
+#search_container p{
+	color: #6CF8F7;
 }
 
 #search_container #reset_search{
@@ -178,6 +199,12 @@ videos_carousel
   font-weight: bold;
 }
 
+/*rules for the 
+video_description_list*/
+#video_desc_list{
+	background-color: rgba(255, 255, 255, 0.7);
+}
+
 /*rule for the videos list*/
 #videos_list{
 	background-color: rgba(255,255,255,0.7);
@@ -189,4 +216,17 @@ Rules for footer
 #footer{
 	background-color: #030f02;
 	color: #31cecb;
+}
+
+/*
+Rules for form_section
+*/
+
+.user_interface_panel{
+	background-color: #ffffff;
+}
+
+.submit,
+#cancel{
+	background-color: yellow;
 }

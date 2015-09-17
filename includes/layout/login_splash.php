@@ -7,7 +7,8 @@
 <?php
 	if (!$user->isLoggedIn()){			
 ?>
-		<article>
+	<section id="login_splash">
+		<article id="normal_login">
 			<p>Registered Users Login</p>
 			<?php
 				if(Session::exists('login_error')){
@@ -47,18 +48,43 @@
 				</ul>
 			</form>
 		</article>
+	</section>
 <?php
 	} else {
 		if (!$user->hasPermission('admin')){
 ?>
-			<p>Welcome back, <a href="<?php print HTTP . 'admin/profile.php?user_id=' . $user->data()->id; ?>"><?php echo $user->data()->username; ?></a></p>
-			<p><a href="<?php print HTTP . 'includes/logout_post.php'; ?>">Logout</a></p>	
+			<section class="user_interface_panel">
+				<p>Welcome back, 
+					<a href="<?php print HTTP . 'admin/profile.php?user_id=' . $user->data()->id; ?>">
+						<?php echo $user->data()->username; ?>
+					</a>
+				</p>
+				<div class="user_interface_btn">
+					<a href="<?php print HTTP . 'includes/logout_post.php'; ?>">
+						Logout
+					</a>
+				</div>
+			</section>
 <?php			
 		} else {		
 ?>
-			<p>Welcome back, <a href="<?php print HTTP . 'admin/profile.php?user_id=' . $user->data()->id; ?>"><?php echo $user->data()->username; ?></a></p>
-			<p><a href="<?php print HTTP . 'admin/manage_users.php'; ?>">Administer Users</a></p>
-			<p><a href="<?php print HTTP . 'includes/logout_post.php'; ?>">Logout</a></p>
+			<section class="user_interface_panel">
+				<p>Welcome back, 
+					<a href="<?php print HTTP . 'admin/profile.php?user_id=' . $user->data()->id; ?>">
+						<?php echo $user->data()->username; ?>
+					</a>
+				</p>
+				<p>
+					<a href="<?php print HTTP . 'admin/manage_users.php'; ?>">
+						Administer Users
+					</a>
+				</p>
+				<div class="user_interface_btn">
+					<a href="<?php print HTTP . 'includes/logout_post.php'; ?>">
+						Logout
+					</a>
+				</div>
+			</section>
 <?php
 		}
 	}

@@ -4,7 +4,19 @@ JavaScript for owl carousel menu
 
 $(document).ready(function(){
 	var owl_weeks_carousel_menu = $('#weeks_carousel_menu');
-	owl_weeks_carousel_menu.owlCarousel();
+	owl_weeks_carousel_menu.owlCarousel({
+		responsive:{
+			0:{
+				items: 1
+			},
+			768:{
+				items: 2
+			},
+			992:{
+				items: 3
+			}
+		}
+	});
 	if (week_order === 'DESC'){
 		//var descPos = ($('#weeks_carousel_menu li').length) - 1;
 		var descPos = $('#weeks_carousel_menu li').index( $('#weeks_carousel_menu li').last());

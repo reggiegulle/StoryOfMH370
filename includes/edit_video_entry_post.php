@@ -103,13 +103,13 @@
 								'tag'				=> (Input::get('tag'))	
 							], $video_entry_index);
 							Session::flash('edit_video_entry', 'You have updated the video details!');
-							Redirect::to('edit_video_entry.php?id=' . $video_entry_index);
+							Redirect::to('../admin/edit_video_entry.php?id=' . $video_entry_index);
 						} catch (Exception $e){
 							die($e->getMessage());
 						}
 						
 					} else {
-						Redirect::to('../admin/ edit_video_entry.php?id=' . $video_entry_index);
+						Redirect::to('../admin/edit_video_entry.php?id=' . $video_entry_index);
 					}
 				} else {
 					Redirect::to('../index.php');

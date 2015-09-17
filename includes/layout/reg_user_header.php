@@ -19,7 +19,7 @@
 		<!--jQuery from Google CDN Hosted Libraries-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!--main js-->
-		<script src="../js/script.admin.js" type="text/javascript"></script>
+		<!--<script src="../js/script.admin.js" type="text/javascript"></script>-->
 		
 		<!--js for determining styles-->
 		<script type="text/javascript" src="../js/styling.js"></script>
@@ -34,24 +34,26 @@
 	
 	<body>
 		
-		<div id="wrapper" class="container">
+		<div class="header container-fluid">
 			<section id="masthead" class="row">
-				<article id="masthead_title" class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
+				<article id="masthead_title" class="col-xs-12 col-sm-8 col-md-6 col-md-offset-1 col-lg-6 col-lg-offset-1">
 					<div class="rows">
-						<h1 class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-1">
-							<a href="../index.php">The Story of <br />
+						<h1 class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-0 col-lg-7 col-lg-offset-1">
+							<a href="index.php">The Story of <br />
 							Flight MH370 <br />
 							In Online Videos</a>
 						</h1>
 						<div class="col-xs-12 col-sm-8 col-sm-offset-3 col-md-8 col-md-offset-4 col-lg-8 col-lg-offset-4">
-							<img src="../images/280x149.airplane.masthead.png" width="280px" height="149px" alt="" />
+							<img src="images/280x149.airplane.masthead.png" width="280px" height="149px" alt="" />
 						</div>
 					</div>
 				</article>
-				<article id="masthead_login" class="col-xs-12 col-sm-4 col-md-4 col-lg-5">
-					<?php include_once "login_splash.php" ;?>
+				<article id="masthead_login" class="col-xs-12 col-sm-4 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 col-lg-offset-0">
+					<?php include_once "includes/layout/login_splash.php" ;?>
 				</article>
 			</section>
 			<!--This is where the search form should be-->
 			<section id="search_container" class="row gradient">
 			</section>
+		</div>	
+		<div id="wrapper" class="container">

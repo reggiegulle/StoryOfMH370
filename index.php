@@ -26,9 +26,11 @@
 		<!-- Bootstrap style-->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/bootstrap-theme.css" rel="stylesheet">
-		<!--slick js carousel styles-->
+		<!--owl-carousel styles-->
 		<link rel="stylesheet" type="text/css" href="css/owl.carousel.css"/>
 		<link rel="stylesheet" type="text/css" href="css/owl.theme.default.css"/>
+		<!--slicknav style-->
+		<link rel="stylesheet" type="text/css" href="css/slicknav.css"/>
 		<!--Main Style-->
 		<link rel="stylesheet" type="text/css" href="css/style.main.css"/>
 		<!--Colors Style-->
@@ -48,6 +50,8 @@
 		</script>
 		<!--slick js plugin-->
 		<script type="text/javascript" src="js/owl.carousel.js"></script>
+		<!--js for slicknav-->
+		<script type="text/javascript" src="js/jquery.slicknav.js"></script>
 		<!--main js-->
 		<?php
 			if (!$user->isLoggedIn()){			
@@ -73,6 +77,9 @@
 		<?php 
 			}
 		?>
+		
+		<!--js for video_description_list-->
+		<script type="text/javascript" src="js/vidsdesc.js"></script>
 		
 		<!--js for determining styles-->
 		<script type="text/javascript" src="js/styling.js"></script>
@@ -105,11 +112,11 @@
 			});
 		</script>
 		
-		<div id="wrapper" class="container">
+		<div class="header container-fluid">
 			<section id="masthead" class="row">
-				<article id="masthead_title" class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
+				<article id="masthead_title" class="col-xs-12 col-sm-8 col-md-6 col-md-offset-1 col-lg-6 col-lg-offset-1">
 					<div class="rows">
-						<h1 class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-1">
+						<h1 class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-0 col-lg-7 col-lg-offset-1">
 							<a href="index.php">The Story of <br />
 							Flight MH370 <br />
 							In Online Videos</a>
@@ -119,25 +126,24 @@
 						</div>
 					</div>
 				</article>
-				<article id="masthead_login" class="col-xs-12 col-sm-4 col-md-4 col-lg-5">
+				<article id="masthead_login" class="col-xs-12 col-sm-4 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 col-lg-offset-0">
 					<?php include_once "includes/layout/login_splash.php" ;?>
 				</article>
 			</section>
 			<!--This is where the search form should be-->
 			<section id="search_container" class="row gradient">
-				<div class="col-xs-0 col-sm-7 col-md-7">
-					<div>
-						<?php 
-							if(!isset($week_order)){
-								echo '<a href="index.php?ver=n" id="newtoold" class="special_show_hide">Newest To Oldest</a>';
-							} else if($week_order === 'n'){
-								echo '<a href="index.php" id="oldtonew" class="special_show_hide">Oldest To Newest</a>';
-							}
-						?>
-						
-					</div>
+				<div class="col-xs-12 col-xs-offset-1 col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2">
+					<p>View By: 
+					<?php 
+						if(!isset($week_order)){
+							echo '<a href="index.php?ver=n" id="newtoold" class="special_show_hide">Newest To Oldest</a>';
+						} else if($week_order === 'n'){
+							echo '<a href="index.php" id="oldtonew" class="special_show_hide">Oldest To Newest</a>';
+						}
+					?>
+					</p>
 				</div>
-				<ul class="col-xs-12 col-sm-5 col-md-5">
+				<ul class="col-xs-12 col-xs-offset-1 col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-0 col-lg-5 col-lg-offset-0">
 					<li>
 						<h5>Search</h5>
 					</li>
@@ -158,6 +164,9 @@
 				</ul>
 			</section>
 			<div style="clear: both;"></div>
+		</div>
+		
+		<div id="wrapper" class="container">
 			
 			<section id="weeks_carousel_container" class="gradient">
 				<ul id="weeks_carousel_menu" class="owl-carousel">
@@ -194,6 +203,16 @@
 				<article id="player"></article>
 			</section>
 			
+			<section id="info-buttons">
+				<div id="showinfo">SHOW INFO</div>
+				<div id="hideinfo">HIDE INFO</div>
+			</section>
+			
+			<section id="video_desc_list_container" class="row">
+				<ul id="video_desc_list">
+				</ul>
+			</section>
+			
 			<ul id="videos_carousel" class="gradient owl-carousel">
 			</ul>
 			
@@ -222,7 +241,7 @@
 			
 			<section id="back_to_top_btn">
 				<div>
-					<p><span id="arrow">&#9650;</span> Back To Top</p>		
+					<p><span id="arrow">&#9650;</span> Back To Top</p>
 				</div>
 			</section>
 		</div>
