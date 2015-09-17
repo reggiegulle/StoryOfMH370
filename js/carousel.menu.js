@@ -5,17 +5,19 @@ JavaScript for owl carousel menu
 $(document).ready(function(){
 	var owl_weeks_carousel_menu = $('#weeks_carousel_menu');
 	owl_weeks_carousel_menu.owlCarousel({
+		nav: true,
+		navText: ['<p>&laquo;</p>', '<p>&raquo;</p>'],
 		responsive:{
-			0:{
-				items: 1
-			},
-			768:{
-				items: 2
-			},
-			992:{
-				items: 3
+				0:{
+					items: 1
+				},
+				768:{
+					items: 2
+				},
+				992:{
+					items: 3
+				}
 			}
-		}
 	});
 	if (week_order === 'DESC'){
 		//var descPos = ($('#weeks_carousel_menu li').length) - 1;
@@ -26,8 +28,24 @@ $(document).ready(function(){
 	var owl_vids_car = $('#videos_carousel');
 	owl_vids_car.owlCarousel({
 		loop: false,
-		items: 6,
-		itemElement: 'li'
+		itemElement: 'li',
+		margin: 1,
+		nav: true,
+		navText: ['<p>&laquo;</p>&nbsp;<p>prev</p>', '<p>next</p>&nbsp;<p>&raquo;</p>'],
+		responsive:{
+				0:{
+					items: 2
+				},
+				768:{
+					items: 4
+				},
+				992:{
+					items: 5
+				},
+				1200:{
+					items: 6
+				}
+			}
 	});
 	
 	while($('#videos_carousel li').length > 0){
@@ -52,6 +70,12 @@ $(document).ready(function(){
 	owl_vids_car.trigger('refresh.owl.carousel');
 	
 	$("#videos_carousel li").each(function(){
+		
+		$(this).css({
+			'height' : $('#videos_carousel').height() + 'px'
+		});
+		
+		
 		var srcUrl = $(this).find('img').attr('src');
 		var imgContainer = $(this);
 		var imgIndex = $(this).index();
@@ -65,10 +89,11 @@ $(document).ready(function(){
 			player.loadVideoById(vidId);
 		});
 	});
-	
-	$('#videos_carousel').trigger('mh370.vidCrslRender');
 
 	$('#videos_list').on('mh370.vidListRender', function(){
+		
+		owl_weeks_carousel_menu.trigger('refresh.owl.carousel');
+		
 		while($('#videos_carousel li').length > 0){
 			owl_vids_car.trigger('remove.owl.carousel', [0]);
 		}
@@ -91,6 +116,12 @@ $(document).ready(function(){
 		owl_vids_car.trigger('refresh.owl.carousel');
 		
 		$("#videos_carousel li").each(function(){
+			
+			$(this).css({
+				'height' : $('#videos_carousel').height() + 'px'
+			});
+			
+			
 			var srcUrl = $(this).find('img').attr('src');
 			var imgContainer = $(this);
 			var imgIndex = $(this).index();
