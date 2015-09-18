@@ -30,14 +30,28 @@
 <!--include reg_user_header.php-->
 <?php include '../includes/layout/reg_user_header.php'; ?>
 		
-<section>
-		<h5>User Profile:</h5>
+	<section class="user_interface row">
 
-		<p>Username: <strong>"<?php echo escape($data->username); ?>"</strong></p>
-		<p>Full Name: <strong>"<?php echo escape($data->name); ?>"</strong></p>
+		<section class="user_interface_panel col-xs-12 col-sm-8">
+		
+			<h5>User Profile:</h5>
 
-		<p><a href="edit_user_details.php?user_id=<?php echo escape($data->id); ?>">Click here</a> if you want to change your profile details.</p>
-</section>
+			<p>
+				Username: <strong>"<?php echo escape($data->username); ?>"</strong>
+			</p>
+			<p>
+				Full Name: <strong>"<?php echo escape($data->name); ?>"</strong>
+			</p>
+
+			<p>
+				<a href="edit_user_details.php?user_id=<?php echo escape($data->id); ?>">Click here</a> if you want to change your profile details.
+			</p>
+			
+		</section>
+				
+		<section id="constraint" class="col-xs-0 col-sm-4"></section>
+
+	</section>
 
 <!--include reg_user_footer.php-->
 <?php include '../includes/layout/reg_user_footer.php'; ?>

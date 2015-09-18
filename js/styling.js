@@ -25,6 +25,16 @@ $(document).ready(function(){
 		$('#search_container').height('auto');
 	}
 	
+	$('.user_interface_panel').css({
+		'min-height': (window.screen.height - ($('.header').height() + $('#footer_container').height())) + 'px'
+	});
+	
+	$(window).resize(function(){
+		$('.user_interface_panel').css({
+			'min-height': (window.screen.height - ($('.header').height() + $('#footer_container').height())) + 'px'
+		});
+	});
+	
 	$(document).ajaxSuccess(function(){
 		$('#per_wk_list li').each(function(){
 			if($(this).is(':visible')){
@@ -36,12 +46,22 @@ $(document).ready(function(){
 	});
 	
 	$('#videos_list').on('mh370.vidListRender', function(){
+		$('#video_desc_list').addClass('col-xs-12');
+		$('#video_desc_list li').each(function(){
+			$(this).addClass('gradient col-xs-12');
+			var descliFtDiv = $(this).find('div').eq(0);
+			$(descliFtDiv).addClass('col-xs-12 col-sm-6');
+			var descliScnDiv = $(this).find('div').eq(1);
+			$(descliScnDiv).addClass('col-xs-0 col-sm-6');
+			$(this).find('h3, p').addClass('col-xs-12');
+		});
+		
 		$('#videos_list').addClass('col-xs-12');
 		$('#videos_list li').each(function(){
 			$(this).addClass('col-xs-12');
-			liFtDiv = $(this).find('div').eq(0);
+			var liFtDiv = $(this).find('div').eq(0);
 			$(liFtDiv).addClass('col-xs-12 col-sm-6');
-			liScnDiv = $(this).find('div').eq(1);
+			var liScnDiv = $(this).find('div').eq(1);
 			$(liScnDiv).addClass('col-xs-0 col-sm-6');
 			$(this).find('h3, p').addClass('col-xs-12');
 		});
@@ -61,20 +81,24 @@ $(document).ready(function(){
 		var vidListHt = getVidListHt();
 		
 		$('#videos_list').css({
-			'height': vidListHt + 'px'
+			'height': vidListHt + 'px',
+			'margin-top': '40px'
 		});
 	});
 	
 	$('#videos_list').on('mh370.searchListRender', function(){
 		$('#videos_list').css({
-			'height': 'auto'
+			'height': 'auto',
+			'margin-top': '0px'
 		});
 		$('#filter_boxes li').each(function(){
 			if($(this).index() == 6){
-				$(this).addClass('col-xs-12 col-md-4');
+				$(this).addClass('col-xs-12');
 			}else{
 				$(this).addClass('col-xs-6 col-md-4');
 			}
 		});
 	});
+	
+	
 });

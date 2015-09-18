@@ -18,8 +18,8 @@ $(document).ready(function(){
 		current_page,
 		last_page;
 	
-	var prevPgBtn = '<div class="prevPgBtn">Prev Page</div>';
-	var nextPgBtn = '<div class="nextPgBtn">Next Page</div>';
+	var prevPgBtn = '<p class="prevPgBtn">&#x25c0;&nbsp;Prev Page</p>';
+	var nextPgBtn = '<p class="nextPgBtn">Next Page&nbsp;&#x25b6;</p>';
 	
 	
 	function getSearchResults(search_obj){
@@ -28,7 +28,7 @@ $(document).ready(function(){
 			url: "http://localhost/mh370/includes/search_return.php",
 			dataType: 'json',
 			cache: false,
-			data:search_obj,
+			data:search_obj, 
 			success: (function(data){
 				$("#search_stats").empty();
 				if(!data[1]['results'].length){
@@ -191,6 +191,7 @@ $(document).ready(function(){
 			$('.prevPgBtn').remove();
 			$('.nextPgBtn').remove();
 			$('.pages_info p').empty();
+			$('#video_desc_list').empty();
 			$('#videos_list').empty();
 			
 			if($('#filter_boxes li').length > 1){
@@ -235,21 +236,24 @@ $(document).ready(function(){
 				
 				if(last_page > 1){
 					if(current_page < last_page){
-						$(nextPgBtn).insertAfter('.pages_info p');	
+						//$(nextPgBtn).insertAfter('.pages_info p');
+						$('.nextPgBtnDiv').html(nextPgBtn);
 					}
 					if(current_page == last_page){
 						$('.nextPgBtn').remove();
 					}
 					if(current_page > 1){
-						$(prevPgBtn).insertBefore('.pages_info p');
+						$('.prevPgBtnDiv').html(prevPgBtn);
 					}
-					$(".pages_info p").text(current_page + ' of ' + last_page + ' pages (Results ' + stResCnt + '-' + endResCnt + ')');
+					$(".pages_info p.show_hide").text(current_page + ' of ' + last_page + ' pages (Results ' + stResCnt + '-' + endResCnt + ')');
 				} else {
-					$(".pages_info p").text(current_page + ' of ' + last_page + ' pages (Results ' + stResCnt + '-' + endResCnt + ')');
+					$(".pages_info p.show_hide").text(current_page + ' of ' + last_page + ' pages (Results ' + stResCnt + '-' + endResCnt + ')');
 				}
 				
 				$('#videos_list li').each(function(){
 					$(this).attr('data-index', $(this).index());
+					var srcUrl = $(this).find('img').attr('src');
+					var imgContainer = $(this);
 				});
 				
 				$('#search_notifier_bottom').html('');
