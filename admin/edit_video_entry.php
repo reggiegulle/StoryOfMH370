@@ -209,7 +209,9 @@
 					<input type="submit" class="submit" value="Edit Entry" />
 				</div>
 			</form>
-			<article id="cancel" class="col-xs-12"><a href="../index.php">Cancel</a></article>
+			<article id="cancel" class="col-xs-12">
+				<a href="<?php print HTTP . 'index.php'; ?>">Cancel</a>
+			</article>
 		</section>
 		
 		<section id="constraint" class="col-xs-0 col-sm-4"></section>

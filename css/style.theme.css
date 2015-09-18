@@ -71,7 +71,7 @@ and descendant elements
 	}
 }
 
-.special_show_hide {
+.special_show_hide{
 	background-color: rgba(255, 255, 255, 0.8);
 	color: black;
 }
@@ -136,6 +136,11 @@ container
 }
 
 #search_container p{
+	color: #6CF8F7;
+}
+
+#search_container p.special_show_hide{
+	background-color: transparent;
 	color: #6CF8F7;
 }
 
@@ -265,6 +270,18 @@ Rules for the video_desc_list
 }
 
 /*
+	rules for the 
+	search information
+	sections
+*/
+#filter_boxes_container,
+#search_notifier_top,
+#search_notifier_bottom{
+	color: #31cecb;
+}
+
+
+/*
 Rules for 
 the slick 
 videos_carousel
@@ -370,15 +387,34 @@ Rules for footer
 	color: #31cecb;
 }
 
+
 /*
-Rules for form_section
+Rules for 
+user_interface sections 
+and 
+form_sections
 */
 
 .user_interface_panel{
-	background-color: #ffffff;
+	background-color: rgba(201, 255, 234, 0.8);
+		-webkit-box-shadow:  0px -2px 2px 1px #A1D0BF, 0px 2px 2px 1px #A1D0BF;
+		-moz-box-shadow:  0px -2px 2px 1px #A1D0BF, 0px 2px 2px 1px #A1D0BF;
+	box-shadow: 0px -2px 2px 1px #A1D0BF, 0px 2px 2px 1px #A1D0BF;
+}
+
+.user_interface_panel_login{
+	background-color: transparent;
 }
 
 .submit,
-#cancel{
-	background-color: yellow;
+#cancel a{
+	background-color: #91F6BF;
+}
+
+#cancel a{
+	font-size: 16px;
+}
+
+#all_users_list h6{
+	font-weight: bold;
 }

@@ -238,7 +238,7 @@
 				</form>
 				
 				<article id="cancel" class="col-xs-12">
-					<a href="../index.php">Cancel</a>
+					<a href="<?php print HTTP . 'index.php'; ?>">Cancel</a>
 				</article>
 				
 			</section>

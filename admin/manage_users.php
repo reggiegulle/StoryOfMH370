@@ -108,7 +108,7 @@
 			</article>
 
 
-			<h4 class="col-xs-12">Register New User</h4>
+			<h4>Register New User</h4>
 
 			<form action="" method="POST">
 				<div class="field">
@@ -181,7 +181,7 @@
 
 				
 			</form>
-			<article id="cancel" class="col-xs-12">
+			<article id="cancel">
 				<a href="../index.php">Cancel</a>
 			</article>
 			
