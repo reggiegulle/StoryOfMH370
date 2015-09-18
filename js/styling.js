@@ -25,6 +25,16 @@ $(document).ready(function(){
 		$('#search_container').height('auto');
 	}
 	
+	$('.user_interface_panel').css({
+		'min-height': (window.screen.height - ($('.header').height() + $('#footer_container').height())) + 'px'
+	});
+	
+	$(window).resize(function(){
+		$('.user_interface_panel').css({
+			'min-height': (window.screen.height - ($('.header').height() + $('#footer_container').height())) + 'px'
+		});
+	});
+	
 	$(document).ajaxSuccess(function(){
 		$('#per_wk_list li').each(function(){
 			if($(this).is(':visible')){
@@ -71,17 +81,19 @@ $(document).ready(function(){
 		var vidListHt = getVidListHt();
 		
 		$('#videos_list').css({
-			'height': vidListHt + 'px'
+			'height': vidListHt + 'px',
+			'margin-top': '40px'
 		});
 	});
 	
 	$('#videos_list').on('mh370.searchListRender', function(){
 		$('#videos_list').css({
-			'height': 'auto'
+			'height': 'auto',
+			'margin-top': '0px'
 		});
 		$('#filter_boxes li').each(function(){
 			if($(this).index() == 6){
-				$(this).addClass('col-xs-12 col-md-4');
+				$(this).addClass('col-xs-12');
 			}else{
 				$(this).addClass('col-xs-6 col-md-4');
 			}

@@ -136,6 +136,10 @@ $(document).ready(function(){
 			});
 		});
 		
+		if($('#videos_carousel').is(':hidden')){
+			$('#videos_carousel').show();
+		}
+		
 		$('#videos_carousel').trigger('mh370.vidCrslRender');
 	});
 });

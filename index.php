@@ -132,8 +132,8 @@
 			</section>
 			<!--This is where the search form should be-->
 			<section id="search_container" class="row gradient">
-				<div class="col-xs-12 col-xs-offset-1 col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2">
-					<p>View By: 
+				<div class="col-xs-12 col-xs-offset-0 col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2">
+					<p class="special_show_hide">View By: 
 					<?php 
 						if(!isset($week_order)){
 							echo '<a href="index.php?ver=n" id="newtoold" class="special_show_hide">Newest To Oldest</a>';
@@ -143,7 +143,7 @@
 					?>
 					</p>
 				</div>
-				<ul class="col-xs-12 col-xs-offset-1 col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-0 col-lg-5 col-lg-offset-0">
+				<ul class="col-xs-12 col-xs-offset-0 col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-0 col-lg-5 col-lg-offset-0">
 					<li>
 						<h5>Search</h5>
 					</li>
@@ -154,7 +154,7 @@
 						<input id="search_field" type="text" name="keywords" value="" />
 					</li>
 					<li>
-						<button id="reset_search" class="show_hide">Reset Search</button>
+						<button id="reset_search" class="show_hide">Reset</button>
 					</li>
 					<br />
 					<li>
@@ -222,11 +222,13 @@
 			</section>
 			
 			<section id="search_notifier_top">
-				<section class="search_info_container">
-					<div class="search_stats show_hide">
+				<section class="search_info_container row">
+					<div class="search_stats show_hide col-xs-12">
 					</div>
-					<div class="pages_info show_hide">
-						<p class="show_hide"></p>
+					<div class="pages_info show_hide row">
+						<div class="prevPgBtnDiv show_hide col-xs-12 col-sm-3"></div>
+						<p class="show_hide col-xs-12 col-sm-6"></p>
+						<div class="nextPgBtnDiv show_hide col-xs-12 col-sm-3"></div>
 					</div>
 				</section>
 			</section>

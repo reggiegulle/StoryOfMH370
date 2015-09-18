@@ -69,7 +69,11 @@ function onPlayerReady(event){
 		event.target.loadVideoById('a1NgU2LSIRc');
 	}
 	
-	
+	//load the filler video
+	//when search is reset
+	$('#reset_search').click(function(){
+		event.target.loadVideoById('PcRBWsJPCZc');
+	});
 	
 	//by default,
 	//hide the "HIDE INFO" button
@@ -144,7 +148,14 @@ function onPlayerReady(event){
 			});
 		} else {
 			event.target.loadVideoById('a1NgU2LSIRc');
-		} 
+		}
+
+		
+		//load the filler video
+		//when search is reset
+		$('#reset_search').click(function(){
+			event.target.loadVideoById('PcRBWsJPCZc');
+		});
 		
 		
 		//by default,

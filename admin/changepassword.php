@@ -139,6 +139,10 @@
 				</div>
 
 			</form>
+			
+			<article id="cancel">
+				<a href="<?php print HTTP . 'index.php'; ?>">Cancel</a>
+			</article>
 		
 		</section>
 		
