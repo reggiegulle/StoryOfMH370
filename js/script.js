@@ -36,6 +36,30 @@ $(document).ready(function(){
 		});
 	}
 	
+	//slicknav for login_splash
+	$(function(){
+		$('#normal_login').slicknav({
+			label: 'Login',
+			prependTo:'#login_splash',
+			init: function(){
+					$(window).resize(function(){
+						$('#normal_login').slicknav('close');
+					});
+				},
+			afterOpen: function(trigger){
+					$('.slicknav_menu span.slicknav_menutxt').html('Close');
+					$('.slicknav_nav form ul').eq(1).find('li').children().css({
+						'display': 'inline'
+					});
+				},
+			afterClose: function(trigger){
+					$('.slicknav_menu span.slicknav_menutxt').html('Login');
+				}
+		});
+	});
+	
+	
+	
 	//clear the value
 	//of the search field
 	$('#search_field').val('');
@@ -72,6 +96,12 @@ $(document).ready(function(){
 	//populate the ul 'videos_list'
 	//by default parameters
 	populateVideoList(wk_st_wk_end_post);
+	
+	$('#back_to_top_btn div p').click(function(){
+		$("html, body").animate({
+			scrollTop: $("#weeks_carousel_container").offset().top 
+		},500);
+	});
 	
 	$('#videos_list').on('mh370.weekListRender', function(){
 		
