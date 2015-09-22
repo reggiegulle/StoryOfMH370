@@ -26,9 +26,9 @@
 		<!-- Bootstrap style-->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/bootstrap-theme.css" rel="stylesheet">
-		<!--owl-carousel styles-->
-		<link rel="stylesheet" type="text/css" href="css/owl.carousel.css"/>
-		<link rel="stylesheet" type="text/css" href="css/owl.theme.default.css"/>
+		<!--slick js carousel styles-->
+		<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+		<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
 		<!--slicknav style-->
 		<link rel="stylesheet" type="text/css" href="css/slicknav.css"/>
 		<!--Main Style-->
@@ -48,8 +48,8 @@
 				}
 			?>
 		</script>
-		<!--slick js plugin-->
-		<script type="text/javascript" src="js/owl.carousel.js"></script>
+		<!--slick js (carousel) plugin-->
+		<script type="text/javascript" src="slick/slick.js"></script>
 		<!--js for slicknav-->
 		<script type="text/javascript" src="js/jquery.slicknav.js"></script>
 		<!--main js-->
