@@ -334,6 +334,11 @@ videos_carousel
 	font-size: 14px;
 }
 
+
+#videos_carousel li.loaded{ /*class to identify currently playing video*/
+	background-color: rgb(0, 219, 255);
+}
+
 /*rule for the videos list*/
 #videos_list{
 	background-color: transparent;
@@ -341,6 +346,10 @@ videos_carousel
 
 #videos_list li {
 	background-color: rgba(201, 255, 234, 0.8);
+}
+
+#videos_list li.inplayer{
+	background-color: rgb(108, 248, 247);
 }
 
 #videos_list li img {

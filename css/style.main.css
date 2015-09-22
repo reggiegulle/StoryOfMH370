@@ -408,11 +408,16 @@ Rules for the video_desc_list
   max-width: 150px;
 }
 
-#videos_carousel li p {
+#videos_carousel li div p {
 	margin: 5px 15px 0px;
 }
 
-#videos_carousel li h5 {
+#videos_carousel li div img,
+#videos_carousel li div h5{
+	cursor: pointer;
+}
+
+#videos_carousel li div h5 {
 	margin: 0px 8px 12px 15px;
 }
 
@@ -550,6 +555,11 @@ Rules for the search_info_container element
 
 div.pages_info.show_hide.row{
 	margin: 0px;
+}
+
+div.prevPgBtnDiv,
+div.nextPgBtnDiv{
+	cursor: pointer;
 }
 
 @media only screen and (max-width: 767px){
