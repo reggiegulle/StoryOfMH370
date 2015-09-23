@@ -398,18 +398,30 @@ Rules for the video_desc_list
 
 #videos_carousel li {
 	border-radius: 5px;
-	margin: 0;
-	padding: 0;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
 }
 
-#videos_carousel li div img {
-  border-radius: 4px;
-  margin: 10px auto 5px;
-  max-width: 150px;
+#videos_carousel li img {
+	border-radius: 4px;
+	margin: 10px auto 5px;
+	max-width: 150px;
 }
 
-#videos_carousel li p {
+#videos_carousel li div p {
 	margin: 5px 15px 0px;
+}
+
+#videos_carousel li div img,
+#videos_carousel li div h5{
+	cursor: pointer;
+}
+
+#videos_carousel li div h5 {
+#videos_carousel li img,
+#videos_carousel li h5{
+	cursor: pointer;
 }
 
 #videos_carousel li h5 {
@@ -550,6 +562,11 @@ Rules for the search_info_container element
 
 div.pages_info.show_hide.row{
 	margin: 0px;
+}
+
+div.prevPgBtnDiv,
+div.nextPgBtnDiv{
+	cursor: pointer;
 }
 
 @media only screen and (max-width: 767px){
