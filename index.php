@@ -28,7 +28,8 @@
 		<link href="css/bootstrap-theme.css" rel="stylesheet">
 		<!--owl-carousel styles-->
 		<link rel="stylesheet" type="text/css" href="css/owl.carousel.css"/>
-		<link rel="stylesheet" type="text/css" href="css/owl.theme.default.css"/>
+		<link rel="stylesheet" type="text/css" href="css/owl.theme.css"/>
+		<link rel="stylesheet" type="text/css" href="css/owl.transitions.css"/>
 		<!--slicknav style-->
 		<link rel="stylesheet" type="text/css" href="css/slicknav.css"/>
 		<!--Main Style-->

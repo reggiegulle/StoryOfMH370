@@ -182,7 +182,7 @@
 				
 			</form>
 			<article id="cancel">
-				<a href="../index.php">Cancel</a>
+				<a href="<?php print HTTP . '/admin/manage_users.php'; ?>">Cancel</a>
 			</article>
 			
 			<section id="all_users_list_container">
