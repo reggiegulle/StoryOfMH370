@@ -16,31 +16,6 @@ $(document).ready(function(){
 	var owl_weeks_carousel_menu = $('#weeks_carousel_menu').data('owlCarousel');
 	if (week_order === 'DESC'){
 		var descPos = $('#weeks_carousel_menu li').index( $('#weeks_carousel_menu li').last());
-		owl_weeks_carousel_menu.trigger('to.owl.carousel', [parseInt(descPos)]);
-	}
-	
-	var owl_vids_car = $('#videos_carousel');
-	owl_vids_car.owlCarousel({
-		loop: false,
-		itemElement: 'li',
-		margin: 1,
-		nav: true,
-		navText: ['<p>&laquo;</p>&nbsp;<p>prev</p>', '<p>next</p>&nbsp;<p>&raquo;</p>'],
-		responsive:{
-				0:{
-					items: 2
-				},
-				768:{
-					items: 4
-				},
-				992:{
-					items: 5
-				},
-				1200:{
-					items: 6
-				}
-			}
-	});
 		owl_weeks_carousel_menu.jumpTo(descPos);
 	}
 	
@@ -63,8 +38,6 @@ $(document).ready(function(){
 		}
 		
 		var vids_car_len = $('#videos_list li').length;
-		for(n=(vids_car_len); n > 0; n--){
-			var vid_car_item = '<div data-index="';
 		for(n=1; n < vids_car_len; n++){
 			var vid_car_item = '<li data-index="';
 			vid_car_item += (n-1) + '">';
@@ -74,8 +47,6 @@ $(document).ready(function(){
 			vid_car_item += '<p>' + vid_car_datePub_data + '</p>';
 			var vid_car_title_data = $('#videos_list li').eq(n-1).find('h3').text();
 			vid_car_item += '<h5>' + vid_car_title_data + '</h5>';
-			vid_car_item += '</div>';
-			owl_vids_car.trigger('add.owl.carousel', [vid_car_item, 0]);
 			vid_car_item += '</li>';
 			owl_vids_car.addItem(vid_car_item);
 		}
