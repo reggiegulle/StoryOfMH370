@@ -254,7 +254,6 @@ $(document).ready(function(){
 					$(this).attr('data-index', $(this).index());
 					var srcUrl = $(this).find('img').attr('src');
 					var imgContainer = $(this);
-					removeEmptyImg(srcUrl, imgContainer);
 				});
 				
 				$('#search_notifier_bottom').html('');

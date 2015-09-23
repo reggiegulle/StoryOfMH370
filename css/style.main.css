@@ -409,16 +409,10 @@ Rules for the video_desc_list
 	max-width: 150px;
 }
 
-#videos_carousel li div p {
+#videos_carousel li p {
 	margin: 5px 15px 0px;
 }
 
-#videos_carousel li div img,
-#videos_carousel li div h5{
-	cursor: pointer;
-}
-
-#videos_carousel li div h5 {
 #videos_carousel li img,
 #videos_carousel li h5{
 	cursor: pointer;
