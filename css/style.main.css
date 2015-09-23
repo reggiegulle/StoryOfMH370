@@ -398,14 +398,15 @@ Rules for the video_desc_list
 
 #videos_carousel li {
 	border-radius: 5px;
-	margin: 0;
-	padding: 0;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
 }
 
-#videos_carousel li div img {
-  border-radius: 4px;
-  margin: 10px auto 5px;
-  max-width: 150px;
+#videos_carousel li img {
+	border-radius: 4px;
+	margin: 10px auto 5px;
+	max-width: 150px;
 }
 
 #videos_carousel li div p {
@@ -418,6 +419,12 @@ Rules for the video_desc_list
 }
 
 #videos_carousel li div h5 {
+#videos_carousel li img,
+#videos_carousel li h5{
+	cursor: pointer;
+}
+
+#videos_carousel li h5 {
 	margin: 0px 8px 12px 15px;
 }
 

@@ -241,6 +241,9 @@ function onPlayerStateChange(event){
 		var owllicarloaded = $('#videos_carousel li.loaded').find('div').data('index');
 		console.log('The index of the loaded video is ' + owllicarloaded);
 		$('#videos_carousel').trigger('to.owl.carousel', [owllicarloaded]);
+		var owl_vids_car = $('#videos_carousel li');
+		owl_vids_car.trigger('refresh.owl.carousel');
+		owl_vids_car.trigger('to.owl.carousel', [1]);
 	}
 	//if the video is PLAYING
 	if(event.data === 1){
