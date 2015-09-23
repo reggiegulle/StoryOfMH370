@@ -237,9 +237,9 @@ function onPlayerReady(event){
 function onPlayerStateChange(event){
 	//if the video is PAUSED
 	if(event.data === 2){
-		var owl_vids_car = $('#videos_carousel li');
-		owl_vids_car.trigger('refresh.owl.carousel');
-		owl_vids_car.trigger('to.owl.carousel', [1]);
+		var owl_vids_car = $('#videos_carousel');
+		var owl_vids_car_loaded_idx = $('#videos_carousel li.loaded').data('index');
+		owl_vids_car.data('owlCarousel').goTo(owl_vids_car_loaded_idx);
 	}
 	//if the video is PLAYING
 	if(event.data === 1){
