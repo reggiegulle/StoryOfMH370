@@ -217,7 +217,7 @@ a#oldtonew {
 	right: -40px;
 }
 
-#weeks_carousel_menu div.owl-nav p {
+#weeks_carousel_menu div.owl-nav{
 	border-radius: 18px;
 	border-style: solid;
 	border-width: 1px;

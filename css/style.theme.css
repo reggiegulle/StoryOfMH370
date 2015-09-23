@@ -179,10 +179,14 @@ element and descendants
 	color: rgb(0, 0, 0);
 }
 
-#weeks_carousel_menu div.owl-nav p{
+#weeks_carousel_menu div.owl-prev, 
+#weeks_carousel_menu div.owl-next {
 	border-color: rgba(74, 226, 201, 0.5);
 	color: #31CECB;
 	font-size: 25px;
+	border-style: solid;
+	border-width: 1px;
+	background: transparent none repeat scroll 0% 0%;
 }
 
 /*
@@ -320,20 +324,11 @@ videos_carousel
 
 #videos_carousel div.owl-prev,
 #videos_carousel div.owl-next{
+	background: transparent;
 	border-color: rgba(74, 226, 201, 0.5);
 	color: #31CECB;
-}
-
-#videos_carousel div.owl-prev p:first-of-type, #videos_carousel div.owl-next p:last-of-type {
-	font-size: 32px;
-	line-height: 10px;
-}
-
-#videos_carousel div.owl-prev p:last-of-type, 
-#videos_carousel div.owl-next p:first-of-type {
 	font-size: 14px;
 }
-
 
 #videos_carousel li.loaded{ /*class to identify currently playing video*/
 	background-color: rgb(0, 219, 255);
