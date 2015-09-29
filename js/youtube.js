@@ -41,6 +41,9 @@ function onPlayerReady(event){
 		
 		event.target.cueVideoById(firstCuedVidId);
 		
+		//declare the video carousel variable
+		var owl_vids_car = $('#videos_carousel');
+		
 		//behavior of the video_desc_list
 		$("#video_desc_list li").each(function(){
 			var descItmVidId = $(this).data('video_id');
@@ -59,32 +62,66 @@ function onPlayerReady(event){
 				$(this).addClass('loaded');
 			} else {
 				$(this).removeClass('loaded');
-			}
+			}			
 		});
 		
 		//behavior of the videos list
 		$("#videos_list li").each(function(){
 			//get the videoid from each li item
 			var vidId = $(this).data('video_id');
-			$(this).removeClass('inplayer');
 			if(vidId == firstCuedVidId){
 				$(this).addClass('inplayer');
 			}
-			//play the video on the player
+		});
+		//behavior of the per_wk_list
+		$('#per_wk_list li').each(function(){
+			var active_week = $('#videos_list li.inplayer').data('week');
+			if($(this).data('week') == active_week){
+				$(this).addClass('active_week');
+			} else {
+				$(this).removeClass('active_week');
+			}
+		});
+		//re-evaluate behavior of the videos list
+		$("#videos_list li").each(function(){
 			$(this).on("click", "img", function(){
+				//get the videoid from each li item
+				var vidId = $(this).closest('li').data('video_id');
+				//get the data-index from each li item
+				var vidListLiIdx = $(this).closest('li').data('index');
+				var vidListLiWk = $(this).closest('li').data('week');
+				$('#videos_list li.inplayer').removeClass('inplayer');
+				$(this).closest('li').addClass('inplayer');
+				owl_vids_car.data('owlCarousel').goTo(vidListLiIdx);
+				$('#videos_carousel li.loaded').removeClass('loaded');
+				$('#videos_carousel').find('li[data-index="' + vidListLiIdx + '"]').addClass('loaded');
+				$('#per_wk_list li.active_week').removeClass('active_week');
+				$('#per_wk_list').find('li[data-week="' + vidListLiWk + '"]').addClass('active_week');
 				$("html, body").animate({
 					scrollTop: $("#weeks_carousel_container").offset().top 
 				},500);
+				//play the video on the player
 				event.target.loadVideoById(vidId);
 			}).on("click", "h3", function(){
+				//get the videoid from each li item
+				var vidId = $(this).closest('li').data('video_id');
+				//get the data-index from each li item
+				var vidListLiIdx = $(this).closest('li').data('index');
+				var vidListLiWk = $(this).closest('li').data('week');
+				$('#videos_list li.inplayer').removeClass('inplayer');
+				$(this).closest('li').addClass('inplayer');
+				owl_vids_car.data('owlCarousel').goTo(vidListLiIdx);
+				$('#videos_carousel li.loaded').removeClass('loaded');
+				$('#videos_carousel').find('li[data-index="' + vidListLiIdx + '"]').addClass('loaded');
+				$('#per_wk_list li.active_week').removeClass('active_week');
+				$('#per_wk_list').find('li[data-week="' + vidListLiWk + '"]').addClass('active_week');
 				$("html, body").animate({
 					scrollTop: $("#weeks_carousel_container").offset().top 
 				},500);
+				//play the video on the player
 				event.target.loadVideoById(vidId);
 			});
 		});
-		
-		
 	} else {
 		event.target.loadVideoById('a1NgU2LSIRc');
 	}
@@ -171,24 +208,13 @@ function onPlayerReady(event){
 			
 			//behavior of the videos list
 			$("#videos_list li").each(function(){
+				//get the data-index from each li item
+				var vidListLiIdx = $(this).data('index');
 				//get the videoid from each li item
 				var vidId = $(this).data('video_id');
-				$(this).removeClass('inplayer');
 				if(vidId == firstCuedVidId){
 					$(this).addClass('inplayer');
 				}
-				//play the video on the player
-				$(this).on("click", "img", function(){
-					$("html, body").animate({
-						scrollTop: $("#weeks_carousel_container").offset().top 
-					},500);
-					event.target.loadVideoById(vidId);
-				}).on("click", "h3", function(){
-					$("html, body").animate({
-						scrollTop: $("#weeks_carousel_container").offset().top 
-					},500);
-					event.target.loadVideoById(vidId);
-				});
 			});
 		} else {
 			event.target.loadVideoById('a1NgU2LSIRc');
@@ -315,6 +341,16 @@ function onPlayerStateChange(event){
 				}
 			}
 		});
+		
+		//behavior of the per_wk_list
+		$('#per_wk_list li').each(function(){
+			var active_week = $('#videos_list li.inplayer').data('week');
+			if($(this).data('week') == active_week){
+				$(this).addClass('active_week');
+			} else {
+				$(this).removeClass('active_week');
+			}
+		});
 	}
 	//if the video has ENDED
 	if(event.data === 0){
@@ -323,6 +359,7 @@ function onPlayerStateChange(event){
 		var imgRegex = /https:\/\/i3.ytimg.com\/vi\/([\w-]{11})\/mqdefault.jpg/;
 		var firstVidId = $('#videos_list li').first().data('video_id');
 		var endOfUL = $('#videos_list li').last().data('video_id');
+		var owl_vids_car = $('#videos_carousel');
 		
 		$("#videos_list li").each(function(){
 			var thisVidId = $(this).data('video_id');
@@ -330,18 +367,29 @@ function onPlayerStateChange(event){
 			if(vidPlayed === thisVidId){
 				if($(this).data('video_id') == endOfUL){
 					event.target.cueVideoById(firstVidId);
+					$('#videos_list').scrollTop(0);
+					$('#videos_list li.inplayer').removeClass('inplayer');
+					$('#videos_list li').first().addClass('inplayer');
+					owl_vids_car.data('owlCarousel').goTo(0);
+					$('#videos_carousel li.loaded').removeClass('loaded');
+					$('#videos_carousel li[data-index="0"]').addClass('loaded');
+					$('#per_wk_list li.active_week').removeClass('active_week');
+					$('#per_wk_list li').first().addClass('active_week');
 				} else {
 					event.target.loadVideoById(nextVidId);
+					var nextOwlCue = ($(this).data('index')) + 1;
+					owl_vids_car.data('owlCarousel').goTo(nextOwlCue);
+					$('#videos_carousel li.loaded').removeClass('loaded');
+					$('#videos_carousel li[data-index="' + nextOwlCue + '"]').addClass('loaded');
 				}
 			}
 		});
+		
+		
 	}
 } 
 
 //the custom event registered
-/* $(document).on('ajaxSuccess', function(){
-	$('#videos_list').trigger('mh370.vidListRender');
-}); */
 $(document).ajaxSuccess(function(event, xhr, settings){
 	$('#videos_list').trigger('mh370.vidListRender');
 	if(settings.url == "http://localhost/mh370/includes/gen_video_list.php"){

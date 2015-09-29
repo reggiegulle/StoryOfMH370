@@ -181,21 +181,24 @@ element and descendants
 
 #weeks_carousel_menu div.owl-prev, 
 #weeks_carousel_menu div.owl-next {
-	border-color: rgba(74, 226, 201, 0.5);
 	color: #31CECB;
 	font-size: 25px;
-	border-style: solid;
-	border-width: 1px;
 	background: transparent none repeat scroll 0% 0%;
+	padding: 3px 0px;
 }
 
 /*
 	Rules for the per_week_list
 */
 #per_wk_list li p {
-  background-color: #010f0a;
-  color: #31cecb;
-  font-size: 16px;
+	background-color: #010f0a;
+	color: #31cecb;
+	font-size: 16px;
+}
+
+#per_wk_list li.active_week p{
+	background-color: #31cecb;
+	color: #000;
 }
 
 /*
@@ -316,7 +319,11 @@ videos_carousel
 	box-shadow: -2px 1px 5px 1px #5C5C5C;
 }
 
-#videos_carousel li h5 {
+#videos_carousel li h6{
+	font-style: italic;
+}
+
+#videos_carousel li h5{
 	font-weight: bold;
 	line-height: 19px;
 	font-size: 12px;
@@ -331,7 +338,7 @@ videos_carousel
 }
 
 #videos_carousel li.loaded{ /*class to identify currently playing video*/
-	background-color: rgb(0, 219, 255);
+	background-color: rgb(108, 248, 247);
 }
 
 /*rule for the videos list*/
@@ -343,7 +350,7 @@ videos_carousel
 	background-color: rgba(201, 255, 234, 0.8);
 }
 
-#videos_list li.inplayer{
+#videos_list li.inplayer{ /*class to identify currently playing video*/
 	background-color: rgb(108, 248, 247);
 }
 
