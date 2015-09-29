@@ -199,29 +199,27 @@ a#oldtonew {
 	border-width: 2px 0px;
 	list-style-type: none;
 	margin: 5px 0px;
-	padding: 12px 0px;
+	padding: 2px 0px;
 	position: relative;
 }
 
-#weeks_carousel_menu div.owl-prev,
-#weeks_carousel_menu div.owl-next{
+#weeks_carousel_menu div.owl-wrapper-outer{
+	margin-bottom: -4px;
+	padding-top: 8px;
+}
+
+#weeks_carousel_menu div.owl-prev, 
+#weeks_carousel_menu div.owl-next {
 	position: absolute;
-	top: 10%;
+	top: -5px;
 }
 
 #weeks_carousel_menu div.owl-prev {
-	left: -40px;
+	left: -25px;
 }
 
 #weeks_carousel_menu div.owl-next {
-	right: -40px;
-}
-
-#weeks_carousel_menu div.owl-nav p {
-	border-radius: 18px;
-	border-style: solid;
-	border-width: 1px;
-	padding: 0px 12px 2px;
+	right: -25px;
 }
 
 #weeks_carousel_menu li {
@@ -398,22 +396,32 @@ Rules for the video_desc_list
 
 #videos_carousel li {
 	border-radius: 5px;
-	margin: 0;
-	padding: 0;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
 }
 
-#videos_carousel li div img {
-  border-radius: 4px;
-  margin: 10px auto 5px;
-  max-width: 150px;
+#videos_carousel li img {
+	border-radius: 4px;
+	margin: 10px auto 5px;
+	max-width: 150px;
 }
 
 #videos_carousel li p {
 	margin: 5px 15px 0px;
 }
 
-#videos_carousel li h5 {
+#videos_carousel li img,
+#videos_carousel li h5{
+	cursor: pointer;
+}
+
+#videos_carousel li h5{
 	margin: 0px 8px 12px 15px;
+}
+
+#videos_carousel li h6{
+	margin: 0 0 10px;
 }
 
 #videos_carousel div.owl-prev, 
@@ -550,6 +558,11 @@ Rules for the search_info_container element
 
 div.pages_info.show_hide.row{
 	margin: 0px;
+}
+
+div.prevPgBtnDiv,
+div.nextPgBtnDiv{
+	cursor: pointer;
 }
 
 @media only screen and (max-width: 767px){

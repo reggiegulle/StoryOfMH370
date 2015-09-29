@@ -37,7 +37,7 @@ $(document).ready(function(){
 				} else {
 					$("#videos_list").empty();
 					$.each(data[1]['results'], function(){
-						var search_li_item = "<li>";
+						var search_li_item = "<li data-video_id='" + this.video_id + "'>";
 						search_li_item += "<div>";
 						search_li_item += "<img src='https://i3.ytimg.com/vi/" + this.video_id + "/mqdefault.jpg' alt='\"" + this.video_title + "\" thumbnail' width='150px' height='84px' longdesc='Thumbnail for the Youtube video of \"" + this.video_title + "\"'/>";
 						search_li_item += "<h5>" + this.string_date_pub + "</h5>"; 

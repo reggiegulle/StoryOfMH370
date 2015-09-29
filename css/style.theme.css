@@ -179,19 +179,26 @@ element and descendants
 	color: rgb(0, 0, 0);
 }
 
-#weeks_carousel_menu div.owl-nav p{
-	border-color: rgba(74, 226, 201, 0.5);
+#weeks_carousel_menu div.owl-prev, 
+#weeks_carousel_menu div.owl-next {
 	color: #31CECB;
 	font-size: 25px;
+	background: transparent none repeat scroll 0% 0%;
+	padding: 3px 0px;
 }
 
 /*
 	Rules for the per_week_list
 */
 #per_wk_list li p {
-  background-color: #010f0a;
-  color: #31cecb;
-  font-size: 16px;
+	background-color: #010f0a;
+	color: #31cecb;
+	font-size: 16px;
+}
+
+#per_wk_list li.active_week p{
+	background-color: #31cecb;
+	color: #000;
 }
 
 /*
@@ -312,7 +319,11 @@ videos_carousel
 	box-shadow: -2px 1px 5px 1px #5C5C5C;
 }
 
-#videos_carousel li h5 {
+#videos_carousel li h6{
+	font-style: italic;
+}
+
+#videos_carousel li h5{
 	font-weight: bold;
 	line-height: 19px;
 	font-size: 12px;
@@ -320,18 +331,14 @@ videos_carousel
 
 #videos_carousel div.owl-prev,
 #videos_carousel div.owl-next{
+	background: transparent;
 	border-color: rgba(74, 226, 201, 0.5);
 	color: #31CECB;
-}
-
-#videos_carousel div.owl-prev p:first-of-type, #videos_carousel div.owl-next p:last-of-type {
-	font-size: 32px;
-	line-height: 10px;
-}
-
-#videos_carousel div.owl-prev p:last-of-type, 
-#videos_carousel div.owl-next p:first-of-type {
 	font-size: 14px;
+}
+
+#videos_carousel li.loaded{ /*class to identify currently playing video*/
+	background-color: rgb(108, 248, 247);
 }
 
 /*rule for the videos list*/
@@ -341,6 +348,10 @@ videos_carousel
 
 #videos_list li {
 	background-color: rgba(201, 255, 234, 0.8);
+}
+
+#videos_list li.inplayer{ /*class to identify currently playing video*/
+	background-color: rgb(108, 248, 247);
 }
 
 #videos_list li img {
