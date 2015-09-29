@@ -10,6 +10,7 @@ $(document).ready(function(){
 		itemsTablet: [768, 2],
 		itemsMobile: [767, 1],
 		navigation: true,
+		navigationText: ['&laquo', '&raquo'],
 		pagination: false
 	});
 	
