@@ -101,12 +101,12 @@ if (!$user->exists()){
 					
 				<div class="field">
 					<input type="submit" class="submit" value="Submit" />
+					<article id="cancel">
+						<a href="<?php print HTTP . '/admin/manage_users.php'; ?>">Cancel</a>
+					</article>
 					<input type="hidden" name="token" value="<?php echo Token::generate(); ?>" />
 				</div>
 			</form>
-			<article id="cancel">
-				<a href="<?php print HTTP . '/admin/manage_users.php'; ?>">Cancel</a>
-			</article>
 		
 		</section>
 				

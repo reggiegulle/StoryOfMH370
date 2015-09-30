@@ -234,12 +234,11 @@
 					</div>
 					<div class="field">
 						<input type="submit" class="submit" value="Create Entry" />
+						<article id="cancel">
+							<a href="<?php print HTTP . 'index.php'; ?>">Cancel</a>
+						</article>
 					</div>
 				</form>
-				
-				<article id="cancel" class="col-xs-12">
-					<a href="<?php print HTTP . 'index.php'; ?>">Cancel</a>
-				</article>
 				
 			</section>
 			
