@@ -22,19 +22,6 @@ body{
 	background-color: #001414;
 }
 
-/*
-Rules with specificity
-*/
-/*
-"Submit" type input
-rule
-*/
-input[type="submit"],
-input[type='text'],
-input[type='password']{
-	color: initial !important;
-}
-
 /* 
 Rules
 for the masthead element
@@ -71,21 +58,15 @@ and descendant elements
 	}
 }
 
-.special_show_hide{
-	background-color: rgba(255, 255, 255, 0.8);
-	color: black;
+a#newtoold,
+a#oldtonew{
+	border-color: rgba(108, 248, 247, 0.25);
 }
 
-a#newtoold {
-		-webkit-box-shadow: -1px -1px 8px 4px rgba(255, 255, 255, 0.8);
-		-moz-box-shadow: -1px -1px 8px 4px rgba(255, 255, 255, 0.8);
-	box-shadow: -1px -1px 8px 4px rgba(255, 255, 255, 0.8);
-}
-
-a#oldtonew {
-		-webkit-box-shadow: 2px -1px 8px 3px rgba(255, 255, 255, 0.8);
-		-moz-box-shadow: 2px -1px 8px 3px rgba(255, 255, 255, 0.8);
-	box-shadow: 2px -1px 8px 3px rgba(255, 255, 255, 0.8);
+a#newtoold:hover,
+a#oldtonew:hover {
+	text-decoration: none;
+	border-color: rgba(108, 248, 247, 1);
 }
 
 .slicknav_menu{
@@ -139,7 +120,7 @@ container
 	color: #6CF8F7;
 }
 
-#search_container p.special_show_hide{
+#search_container p a.special_show_hide{
 	background-color: transparent;
 	color: #6CF8F7;
 }
@@ -332,9 +313,15 @@ videos_carousel
 #videos_carousel div.owl-prev,
 #videos_carousel div.owl-next{
 	background: transparent;
-	border-color: rgba(74, 226, 201, 0.5);
+	border-color: rgba(74, 226, 201, 0.333);
 	color: #31CECB;
 	font-size: 14px;
+	opacity: 1;
+}
+
+#videos_carousel div.owl-prev:hover,
+#videos_carousel div.owl-next:hover{
+	border-color: rgba(74, 226, 201, 1);
 }
 
 #videos_carousel li.loaded{ /*class to identify currently playing video*/
@@ -406,6 +393,53 @@ and
 form_sections
 */
 
+/*
+Rules with specificity
+*/
+/*
+input rule
+*/
+input[type="submit"],
+input[type='text'],
+input[type='password']{
+	color: initial !important;
+}
+
+/* user login bits below */
+.user_interface_panel_login{
+	background-color: transparent;
+}
+
+.user_interface_panel_login a {
+	color: #2fa4ff;
+	text-decoration: none;
+}
+
+.user_interface_panel_login a:hover {
+	text-decoration: underline;
+}
+
+/* add/modify/delete video entry links below */
+#add_new_video_btn a {
+	color: #2fa4ff;
+	text-decoration: none;
+}
+
+#add_new_video_btn a:hover {
+	text-decoration: underline;
+}
+
+/* videos_list links */
+#videos_list li a{
+	color:#23527c;
+	text-decoration: none;
+}
+
+#videos_list li a:hover{
+	text-decoration: underline;
+}
+
+/* user interface panel bits below */
 .user_interface_panel{
 	background-color: rgba(201, 255, 234, 0.8);
 		-webkit-box-shadow:  0px -2px 2px 1px #A1D0BF, 0px 2px 2px 1px #A1D0BF;
@@ -413,17 +447,27 @@ form_sections
 	box-shadow: 0px -2px 2px 1px #A1D0BF, 0px 2px 2px 1px #A1D0BF;
 }
 
-.user_interface_panel_login{
-	background-color: transparent;
+.user_interface_panel a{
+	color:#23527c;
+	text-decoration: none;
 }
 
-.submit,
-#cancel a{
-	background-color: #91F6BF;
+.user_interface_panel a:hover{
+	text-decoration: underline;
+}
+
+.submit, #cancel a {
+	background-color: #91f6bf;
+	border-color: #1e3d22;
+	border-radius: 6px;
 }
 
 #cancel a{
-	font-size: 16px;
+	font-size: 15px;
+}
+
+#cancel a:hover{
+	text-decoration: none;
 }
 
 #all_users_list h6{

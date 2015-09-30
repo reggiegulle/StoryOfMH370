@@ -80,12 +80,16 @@ Main Styling Script
 
 a#newtoold {
 	border-radius: 8px 2px 2px 8px;
+	border-style: solid;
+	border-width: 1px;
 	margin-left: 6px;
 	padding: 1px 5px 1px 10px;
 }
 
 a#oldtonew {
 	border-radius: 2px 8px 8px 2px;
+	border-style: solid;
+	border-width: 1px;
 	margin-left: 4px;
 	padding: 1px 10px 1px 5px;
 }
@@ -168,6 +172,12 @@ a#oldtonew {
 #search_container {
 	margin: 0px auto;
 	padding-top: 5px;
+}
+
+@media only screen and (max-width: 767px){
+	#search_container ul{
+		margin-left: 15px;
+	}
 }
 
 #search_container ul{
@@ -688,6 +698,11 @@ user_interface sections
 and 
 form_sections
 */
+
+#add_new_video_btn{
+	margin: 0px 50px;
+}
+
 .user_interface.row,
 .user_interface_panel_login.row{
 	margin-left: 0px;
@@ -726,15 +741,39 @@ form_sections
 }
 
 .field{
-	margin-bottom: 20px;
+	margin-bottom: 15px;
+}
+
+form div.field:last-of-type{
+	margin-bottom: 40px;
+}
+
+form div.field:last-of-type > *{
+	display: inline;
+	vertical-align: middle;
 }
 
 #cancel{
 	margin-bottom: 20px;
 }
 
+.submit{
+	border-style: solid;
+	border-width: 1px;
+}
+
 #cancel a{
-	border-style: outset;
-	border-width: 2px;
-	padding: 0 6px;
+	border-style: solid;
+	border-width: 1px;
+	margin-left: 15px;
+	padding: 1px 6px;
+}
+
+.user_interface_btn{
+	margin-bottom: 30px;
+}
+
+/* error ('phpnotif') */
+.phpnotif{
+	font-style: italic;
 }
