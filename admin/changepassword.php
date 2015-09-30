@@ -135,14 +135,13 @@
 				</div>
 				<div class="field">	
 					<input type="submit" class="submit" value="Change" />
+					<article id="cancel">
+						<a href="<?php print HTTP . 'index.php'; ?>">Cancel</a>
+					</article>
 					<input type="hidden" name="token" value="<?php echo Token::generate(); ?>" />
 				</div>
 
 			</form>
-			
-			<article id="cancel">
-				<a href="<?php print HTTP . 'index.php'; ?>">Cancel</a>
-			</article>
 		
 		</section>
 		

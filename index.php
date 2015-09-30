@@ -11,6 +11,9 @@
 	
 	$week_order = isset($_GET['ver']) ? $_GET['ver'] : null;
 	
+	if(isset($_GET['ver']) && !preg_match('/n/', $week_order)){
+		Redirect::to("index.php");
+	}
 ?>
 
 <!DOCTYPE html>
@@ -134,7 +137,7 @@
 			<!--This is where the search form should be-->
 			<section id="search_container" class="row gradient">
 				<div class="col-xs-12 col-xs-offset-0 col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2">
-					<p class="special_show_hide">View By: 
+					<p class="special_show_hide col-xs-12">View By: 
 					<?php 
 						if(!isset($week_order)){
 							echo '<a href="index.php?ver=n" id="newtoold" class="special_show_hide">Newest To Oldest</a>';
@@ -144,7 +147,7 @@
 					?>
 					</p>
 				</div>
-				<ul class="col-xs-12 col-xs-offset-0 col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-0 col-lg-5 col-lg-offset-0">
+				<ul class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-0 col-lg-5 col-lg-offset-0">
 					<li>
 						<h5>Search</h5>
 					</li>
