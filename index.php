@@ -11,6 +11,9 @@
 	
 	$week_order = isset($_GET['ver']) ? $_GET['ver'] : null;
 	
+	if(isset($_GET['ver']) && !preg_match('/n/', $week_order)){
+		Redirect::to("index.php");
+	}
 ?>
 
 <!DOCTYPE html>
