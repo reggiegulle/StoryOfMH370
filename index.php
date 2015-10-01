@@ -116,6 +116,8 @@
 			});
 		</script>
 		
+		<div class="ajx_loader"><img src="images/page-loader.gif" width="300px" height="300px" alt="" /><p>Loading...</p></div>
+		
 		<div class="header container-fluid">
 			<section id="masthead" class="row">
 				<article id="masthead_title" class="col-xs-12 col-sm-8 col-md-6 col-md-offset-1 col-lg-6 col-lg-offset-1">

@@ -22,6 +22,18 @@ body{
 	background-color: #001414;
 }
 
+/*
+	Rules for the ajax loading image
+*/
+
+.ajx_loader {
+	background-color: rgba(0, 79, 79, 0.8);
+	color: #3FFFFB;
+	font-size: 25px;
+	text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+	font-weight: bold;
+}
+
 /* 
 Rules
 for the masthead element
@@ -64,12 +76,14 @@ a#oldtonew{
 	box-shadow: none;
 	color: rgb(108, 248, 247);
 	text-shadow: none;
+	transition: border-color 0.25s ease;
 }
 
 a#newtoold:hover,
 a#oldtonew:hover {
 	text-decoration: none;
 	border-color: rgba(108, 248, 247, 1);
+	transition: border-color 0.5s ease;
 }
 
 .slicknav_menu{
@@ -94,6 +108,12 @@ a#oldtonew:hover {
 
 #masthead_login input[type="submit"] {
   background-color: #4ae2c9;
+  transition: background-color 0.5s ease;
+}
+
+#masthead_login input[type="submit"]:hover {
+  background-color: #FFF;
+  transition: background-color 0.25s ease;
 }
 
 #masthead_login #desc_inline p[class='remember']{
@@ -131,6 +151,12 @@ container
 #search_container #reset_search{
 	background-color: #4ae2c9;
 	color: #000;
+	transition: background-color 0.5s ease;
+}
+
+#search_container #reset_search:hover{
+	background-color: #FFF;
+	transition: background-color 0.25s ease;
 }
 
 #search_container ul li h5,
@@ -161,6 +187,15 @@ element and descendants
 #weeks_carousel_menu li {
 	font-size: 1.8rem;
 	color: rgb(0, 0, 0);
+	text-shadow: none;
+	transition: color 0.5s ease, text-shadow 0.5s ease;
+}
+
+#weeks_carousel_menu li:hover {
+	font-size: 1.8rem;
+	color: rgb(255, 255, 255);
+	text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8), 0px -1px 2px rgba(255, 255, 255, 0.5);
+	transition: color 0.5s ease, text-shadow 0.5s ease;
 }
 
 #weeks_carousel_menu div.owl-prev, 
@@ -169,6 +204,14 @@ element and descendants
 	font-size: 25px;
 	background: transparent none repeat scroll 0% 0%;
 	padding: 3px 0px;
+	opacity: 0.5;
+	transition: opacity 0.5s ease;
+}
+
+#weeks_carousel_menu div.owl-prev:hover, 
+#weeks_carousel_menu div.owl-next:hover{
+	opacity: 1;
+	transition: opacity 0.25s ease;
 }
 
 /*
@@ -176,8 +219,17 @@ element and descendants
 */
 #per_wk_list li p {
 	background-color: #010f0a;
+	border-color: #4ae2c9;
 	color: #31cecb;
 	font-size: 16px;
+	transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+#per_wk_list li p:hover {
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+	transition: background-color 0.5s ease, color 0.5s ease;
+
 }
 
 #per_wk_list li.active_week p{
@@ -208,8 +260,17 @@ Rules for the video player section
 	Rules for the info-buttons
 */
 #info-buttons div p{
+	background-color: transparent;
 	border-color: rgba(74, 226, 201, 0.5);
 	color: #31cecb;
+	transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+#info-buttons div p:hover{
+	background-color: #31cecb;
+	border-color: rgba(74, 226, 201, 0.5);
+	color: #000;
+	transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 /*
@@ -297,10 +358,20 @@ videos_carousel
 	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75) inset;
 }
 
-#videos_carousel li img{
+#videos_carousel li img,
+#videos_carousel li.loaded img,
+#videos_carousel li.loaded img:hover{
 		-webkit-box-shadow: -2px 1px 5px 1px #5C5C5C;
 		-moz-box-shadow: -2px 1px 5px 1px #5C5C5C;
 	box-shadow: -2px 1px 5px 1px #5C5C5C;
+	transition: box-shadow 0.5s ease;
+}
+
+#videos_carousel li img:hover{
+		-webkit-box-shadow:1px 2px 3px rgb(255, 255, 255), -1px -1px 2px rgb(255, 255, 255);
+		-moz-box-shadow: 1px 2px 3px rgb(255, 255, 255), -1px -1px 2px rgb(255, 255, 255);
+	box-shadow: 1px 2px 3px rgb(255, 255, 255), -1px -1px 2px rgb(255, 255, 255);
+	transition: box-shadow 0.25s ease;
 }
 
 #videos_carousel li h6{
@@ -308,9 +379,29 @@ videos_carousel
 }
 
 #videos_carousel li h5{
+	color: #333;
 	font-weight: bold;
 	line-height: 19px;
 	font-size: 12px;
+	text-shadow: none;
+	transition: color 0.5s ease, text-shadow 0.5s ease;
+}
+
+#videos_carousel li h5:hover{
+	color: #000;
+	text-shadow: 1px 2px 3px rgb(255, 255, 255), -1px -1px 2px rgb(255, 255, 255);
+	transition: color 0.5s ease, text-shadow 0.5s ease;
+}
+
+#videos_carousel li.loaded{ /*class to identify currently playing video*/
+	background-color: rgb(108, 248, 247);
+}
+
+#videos_carousel li.loaded h5,
+#videos_carousel li.loaded h5:hover{ /*class to identify currently playing video*/
+	color: #333;
+	font-size: 12px;
+	text-shadow: none;
 }
 
 #videos_carousel div.owl-prev,
@@ -320,14 +411,16 @@ videos_carousel
 	color: #31CECB;
 	font-size: 14px;
 	opacity: 1;
+	transition: border-color 0.5s ease;
 }
 
 #videos_carousel div.owl-prev:hover,
 #videos_carousel div.owl-next:hover{
 	border-color: rgba(74, 226, 201, 1);
+	transition: border-color 0.25s ease;
 }
 
-#videos_carousel li.loaded{ /*class to identify currently playing video*/
+#videos_carousel li.loaded h5{ /*class to identify currently playing video*/
 	background-color: rgb(108, 248, 247);
 }
 
@@ -344,11 +437,21 @@ videos_carousel
 	background-color: rgb(108, 248, 247);
 }
 
-#videos_list li img {
+#videos_list li img,
+#videos_list li.inplayer img,
+#videos_list li.inplayer img:hover{
 	border-radius: 6px;
 		-webkit-box-shadow: -2px 1px 5px 1px #5C5C5C;
 		-moz-box-shadow: -2px 1px 5px 1px #5C5C5C;
 	box-shadow: -2px 1px 5px 1px #5C5C5C;
+	transition: box-shadow 0.5s ease;
+}
+
+#videos_list li img:hover{
+		-webkit-box-shadow:1px 2px 3px rgb(255, 255, 255), -1px -1px 2px rgb(255, 255, 255);
+		-moz-box-shadow: 1px 2px 3px rgb(255, 255, 255), -1px -1px 2px rgb(255, 255, 255);
+	box-shadow: 1px 2px 3px rgb(255, 255, 255), -1px -1px 2px rgb(255, 255, 255);
+	transition: box-shadow 0.25s ease;
 }
 
 #videos_list li h5{
@@ -361,7 +464,10 @@ videos_carousel
 	text-shadow: 1px 1px 1px rgb(163, 163, 163);
 }
 
-#videos_list li h3 {
+#videos_list li h3,
+#videos_list li.inplayer h3,
+#videos_list li.inplayer h3:hover{
+	color: #333;
 	font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;
 	font-size: 24px;
 	font-style: normal;
@@ -369,6 +475,13 @@ videos_carousel
 	font-weight: 500;
 	line-height: 26.4px;
 	text-shadow: -1px 0px 1px rgb(92, 92, 92);
+	transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+#videos_list li h3:hover {
+	color: #000;
+	text-shadow: 1px 1px 3px rgb(255, 255, 255), 0px -1px 2px rgb(255, 255, 255);
+	transition: color 0.5s ease, text-shadow 0.5s ease;
 }
 
 #videos_list li p:first-of-type {
@@ -378,6 +491,12 @@ videos_carousel
 /*rules for back_to_top btn*/
 #back_to_top_btn div{
 	color: #31CECB;
+	transition: color 0.5s ease;
+}
+
+#back_to_top_btn div:hover{
+	color: #FFF;
+	transition: color 0.25s ease;
 }
 
 /*
@@ -414,32 +533,41 @@ input[type='password']{
 }
 
 .user_interface_panel_login a {
-	color: #2fa4ff;
+	color: #2FA4FF;
 	text-decoration: none;
+	transition: color 0.25s ease;
 }
 
 .user_interface_panel_login a:hover {
 	text-decoration: underline;
+	color: rgb(255,255,255);
+	transition: color 0.5s ease;
 }
 
 /* add/modify/delete video entry links below */
 #add_new_video_btn a {
-	color: #2fa4ff;
+	color: #2FA4FF;
 	text-decoration: none;
+	transition: color 0.25s ease;
 }
 
 #add_new_video_btn a:hover {
 	text-decoration: underline;
+	color: rgb(255,255,255);
+	transition: color 0.5s ease;
 }
 
 /* videos_list links */
 #videos_list li a{
 	color:#23527c;
 	text-decoration: none;
+	transition: color 0.5s ease;
 }
 
 #videos_list li a:hover{
+	color:#000;
 	text-decoration: underline;
+	transition: color 0.25s ease;
 }
 
 /* user interface panel bits below */
@@ -453,16 +581,26 @@ input[type='password']{
 .user_interface_panel a{
 	color:#23527c;
 	text-decoration: none;
+	transition: color 0.5s ease;
 }
 
 .user_interface_panel a:hover{
+	color:#000;
 	text-decoration: underline;
+	transition: color 0.25s ease;
 }
 
 .submit, #cancel a {
 	background-color: #91f6bf;
 	border-color: #1e3d22;
 	border-radius: 6px;
+	transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
+.submit:hover, #cancel a:hover{
+	background-color: #FFF;
+	border-color: #FFF;
+	transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 #cancel a{

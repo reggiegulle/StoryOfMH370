@@ -36,9 +36,14 @@ $(document).ready(function(){
 		});
 	});
 	
-	
+	$(document).ajaxStart(function(){
+		$('.ajx_loader').fadeIn();
+	});
 	
 	$(document).ajaxSuccess(function(){
+		
+		$('.ajx_loader').fadeOut();
+		
 		$('#per_wk_list li').each(function(){
 			if($(this).is(':visible')){
 				$(this).addClass('col-xs-3');
@@ -67,6 +72,12 @@ $(document).ready(function(){
 			var liScnDiv = $(this).find('div').eq(1);
 			$(liScnDiv).addClass('col-xs-0 col-sm-6');
 			$(this).find('h3, p').addClass('col-xs-12');
+		});
+		
+		$('#weeks_carousel_menu li').each(function(){
+			$(this).mouseenter(function(){
+				
+			});
 		});
 	});
 	
