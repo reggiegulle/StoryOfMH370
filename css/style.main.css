@@ -11,6 +11,21 @@ Main Styling Script
 */
 
 /*
+	Rules for the ajax loading image
+*/
+
+.ajx_loader {
+	display: none;
+	left: 50%;
+	margin-left: -150px;
+	position: absolute;
+	top: 33.33%;
+	text-align: center;
+	z-index: 25;
+	border-radius: 8px;
+}
+
+/*
 	Rules for the div class header
 */
 .header.container-fluid{
@@ -253,7 +268,6 @@ a#oldtonew {
 }
 
 #per_wk_list li p {
-  border-color: #4ae2c9;
   border-radius: 4px;
   border-style: solid;
   border-width: 1px;
