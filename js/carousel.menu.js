@@ -15,10 +15,10 @@ $(document).ready(function(){
 	});
 	
 	var owl_weeks_carousel_menu = $('#weeks_carousel_menu').data('owlCarousel');
-	if (week_order === 'DESC'){
+	/* if (week_order === 'DESC'){
 		var descPos = $('#weeks_carousel_menu li').index( $('#weeks_carousel_menu li').last());
 		owl_weeks_carousel_menu.jumpTo(descPos);
-	}
+	} */
 	
 	$('#videos_carousel').owlCarousel({
 		items: 6,

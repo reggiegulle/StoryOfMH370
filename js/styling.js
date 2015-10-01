@@ -5,6 +5,7 @@ JS for styling
 */
 
 $(document).ready(function(){
+	
 	$("#video_player_container").css({
 		"height":($("#video_player_container").width() * 0.609375) + "px"
 	});
@@ -34,6 +35,8 @@ $(document).ready(function(){
 			'min-height': (window.screen.height - ($('.header').height() + $('#footer_container').height())) + 'px'
 		});
 	});
+	
+	
 	
 	$(document).ajaxSuccess(function(){
 		$('#per_wk_list li').each(function(){

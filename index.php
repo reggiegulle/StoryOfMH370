@@ -175,12 +175,27 @@
 			<section id="weeks_carousel_container" class="gradient">
 				<ul id="weeks_carousel_menu" class="owl-carousel">
 					<?php
-						for($w=1; $w < ($latest_wk+5); $w++){
+						/* for($w=1; $w < ($latest_wk+5); $w++){
 							if ($w%4 == 0){
 								echo '<li>WEEKS ' . ($w - 3) . '-' . $w . '</li>';
 							}
+						} */
+						if(!isset($week_order)){
+							for($w=1; $w < ($latest_wk+5); $w++){
+									if ($w%4 == 0){
+										echo '<li>WEEKS ' . ($w - 3) . '-' . $w . '</li>';
+								}
+							}
+						} else if ($week_order === 'n'){
+							for($w=($latest_wk+5); $w > 0 ; $w--){
+								if ($w%4 == 0){
+									echo '<li>WEEKS ' . $w . '-' . ($w - 3) . '</li>';
+								}
+							}
 						}
 					?>
+					
+					
 				</ul>
 			</section>
 			
