@@ -92,20 +92,17 @@
 				</div>
 				<div class="field">	
 					<input type="submit" class="submit" value="Submit" />
+					<article id="cancel">
+						<a href="<?php print HTTP . 'index.php'; ?>">Cancel</a>
+					</article>
 					<input type="hidden" name="token" value="<?php echo Token::generate(); ?>" />
 				</div>
 			</form>
-			
-			<article id="cancel">
-				<a href="<?php print HTTP . 'index.php'; ?>">Cancel</a>
-			</article>
 
-			<div>
-				<div class="user_interface_btn">
-					<a href="changepassword.php?user_id=<?php echo escape($user->data()->id); ?>">
-						Click here
-					</a>
-				</div>
+			<div class="user_interface_btn">
+				<a href="changepassword.php?user_id=<?php echo escape($user->data()->id); ?>">
+					Click here
+				</a>
 				if you want to change your password.
 			</div>
 		

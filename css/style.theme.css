@@ -19,20 +19,19 @@ Rules
 for the body element
 */
 body{
-	background-color: #001414;
+	background-image: url('../images/radar.08.ver.BG.png');
 }
 
 /*
-Rules with specificity
+	Rules for the ajax loading image
 */
-/*
-"Submit" type input
-rule
-*/
-input[type="submit"],
-input[type='text'],
-input[type='password']{
-	color: initial !important;
+
+.ajx_loader {
+	background-color: rgba(0, 79, 79, 0.8);
+	color: #3FFFFB;
+	font-size: 25px;
+	text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+	font-weight: bold;
 }
 
 /* 
@@ -71,21 +70,20 @@ and descendant elements
 	}
 }
 
-.special_show_hide{
-	background-color: rgba(255, 255, 255, 0.8);
-	color: black;
+a#newtoold,
+a#oldtonew{
+	border-color: rgba(108, 248, 247, 0.25);
+	box-shadow: none;
+	color: rgb(108, 248, 247);
+	text-shadow: none;
+	transition: border-color 0.25s ease;
 }
 
-a#newtoold {
-		-webkit-box-shadow: -1px -1px 8px 4px rgba(255, 255, 255, 0.8);
-		-moz-box-shadow: -1px -1px 8px 4px rgba(255, 255, 255, 0.8);
-	box-shadow: -1px -1px 8px 4px rgba(255, 255, 255, 0.8);
-}
-
-a#oldtonew {
-		-webkit-box-shadow: 2px -1px 8px 3px rgba(255, 255, 255, 0.8);
-		-moz-box-shadow: 2px -1px 8px 3px rgba(255, 255, 255, 0.8);
-	box-shadow: 2px -1px 8px 3px rgba(255, 255, 255, 0.8);
+a#newtoold:hover,
+a#oldtonew:hover {
+	text-decoration: none;
+	border-color: rgba(108, 248, 247, 1);
+	transition: border-color 0.5s ease;
 }
 
 .slicknav_menu{
@@ -110,6 +108,12 @@ a#oldtonew {
 
 #masthead_login input[type="submit"] {
   background-color: #4ae2c9;
+  transition: background-color 0.5s ease;
+}
+
+#masthead_login input[type="submit"]:hover {
+  background-color: #FFF;
+  transition: background-color 0.25s ease;
 }
 
 #masthead_login #desc_inline p[class='remember']{
@@ -139,7 +143,7 @@ container
 	color: #6CF8F7;
 }
 
-#search_container p.special_show_hide{
+#search_container p a.special_show_hide{
 	background-color: transparent;
 	color: #6CF8F7;
 }
@@ -147,6 +151,12 @@ container
 #search_container #reset_search{
 	background-color: #4ae2c9;
 	color: #000;
+	transition: background-color 0.5s ease;
+}
+
+#search_container #reset_search:hover{
+	background-color: #FFF;
+	transition: background-color 0.25s ease;
 }
 
 #search_container ul li h5,
@@ -161,37 +171,70 @@ element and descendants
 */
 
 #weeks_carousel_menu{
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#60ffbd+30,60ffbd+70&0+0,0.55+15,0.55+85,0+100 */
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#50d8a8+30,50d8a8+70&0+0,1+15,1+85,0+100 */
 	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
-	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzYwZmZiZCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjE1JSIgc3RvcC1jb2xvcj0iIzYwZmZiZCIgc3RvcC1vcGFjaXR5PSIwLjU1Ii8+CiAgICA8c3RvcCBvZmZzZXQ9IjMwJSIgc3RvcC1jb2xvcj0iIzYwZmZiZCIgc3RvcC1vcGFjaXR5PSIwLjU1Ii8+CiAgICA8c3RvcCBvZmZzZXQ9IjcwJSIgc3RvcC1jb2xvcj0iIzYwZmZiZCIgc3RvcC1vcGFjaXR5PSIwLjU1Ii8+CiAgICA8c3RvcCBvZmZzZXQ9Ijg1JSIgc3RvcC1jb2xvcj0iIzYwZmZiZCIgc3RvcC1vcGFjaXR5PSIwLjU1Ii8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM2MGZmYmQiIHN0b3Atb3BhY2l0eT0iMCIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-	background: -moz-linear-gradient(left, rgba(96,255,189,0) 0%, rgba(96,255,189,0.55) 15%, rgba(96,255,189,0.55) 30%, rgba(96,255,189,0.55) 70%, rgba(96,255,189,0.55) 85%, rgba(96,255,189,0) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(96,255,189,0)), color-stop(15%,rgba(96,255,189,0.55)), color-stop(30%,rgba(96,255,189,0.55)), color-stop(70%,rgba(96,255,189,0.55)), color-stop(85%,rgba(96,255,189,0.55)), color-stop(100%,rgba(96,255,189,0))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(left, rgba(96,255,189,0) 0%,rgba(96,255,189,0.55) 15%,rgba(96,255,189,0.55) 30%,rgba(96,255,189,0.55) 70%,rgba(96,255,189,0.55) 85%,rgba(96,255,189,0) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(left, rgba(96,255,189,0) 0%,rgba(96,255,189,0.55) 15%,rgba(96,255,189,0.55) 30%,rgba(96,255,189,0.55) 70%,rgba(96,255,189,0.55) 85%,rgba(96,255,189,0) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(left, rgba(96,255,189,0) 0%,rgba(96,255,189,0.55) 15%,rgba(96,255,189,0.55) 30%,rgba(96,255,189,0.55) 70%,rgba(96,255,189,0.55) 85%,rgba(96,255,189,0) 100%); /* IE10+ */
-	background: linear-gradient(to right, rgba(96,255,189,0) 0%,rgba(96,255,189,0.55) 15%,rgba(96,255,189,0.55) 30%,rgba(96,255,189,0.55) 70%,rgba(96,255,189,0.55) 85%,rgba(96,255,189,0) 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0060ffbd', endColorstr='#0060ffbd',GradientType=1 ); /* IE6-8 */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzUwZDhhOCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjE1JSIgc3RvcC1jb2xvcj0iIzUwZDhhOCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjMwJSIgc3RvcC1jb2xvcj0iIzUwZDhhOCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjcwJSIgc3RvcC1jb2xvcj0iIzUwZDhhOCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijg1JSIgc3RvcC1jb2xvcj0iIzUwZDhhOCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM1MGQ4YTgiIHN0b3Atb3BhY2l0eT0iMCIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(left, rgba(80,216,168,0) 0%, rgba(80,216,168,1) 15%, rgba(80,216,168,1) 30%, rgba(80,216,168,1) 70%, rgba(80,216,168,1) 85%, rgba(80,216,168,0) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(80,216,168,0)), color-stop(15%,rgba(80,216,168,1)), color-stop(30%,rgba(80,216,168,1)), color-stop(70%,rgba(80,216,168,1)), color-stop(85%,rgba(80,216,168,1)), color-stop(100%,rgba(80,216,168,0))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left, rgba(80,216,168,0) 0%,rgba(80,216,168,1) 15%,rgba(80,216,168,1) 30%,rgba(80,216,168,1) 70%,rgba(80,216,168,1) 85%,rgba(80,216,168,0) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left, rgba(80,216,168,0) 0%,rgba(80,216,168,1) 15%,rgba(80,216,168,1) 30%,rgba(80,216,168,1) 70%,rgba(80,216,168,1) 85%,rgba(80,216,168,0) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left, rgba(80,216,168,0) 0%,rgba(80,216,168,1) 15%,rgba(80,216,168,1) 30%,rgba(80,216,168,1) 70%,rgba(80,216,168,1) 85%,rgba(80,216,168,0) 100%); /* IE10+ */
+	background: linear-gradient(to right, rgba(80,216,168,0) 0%,rgba(80,216,168,1) 15%,rgba(80,216,168,1) 30%,rgba(80,216,168,1) 70%,rgba(80,216,168,1) 85%,rgba(80,216,168,0) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0050d8a8', endColorstr='#0050d8a8',GradientType=1 ); /* IE6-8 */
 	border-color: #4AE2C9;
 }
 
 #weeks_carousel_menu li {
 	font-size: 1.8rem;
 	color: rgb(0, 0, 0);
+	text-shadow: none;
+	transition: color 0.5s ease, text-shadow 0.5s ease;
 }
 
-#weeks_carousel_menu div.owl-nav p{
-	border-color: rgba(74, 226, 201, 0.5);
+#weeks_carousel_menu li:hover {
+	font-size: 1.8rem;
+	color: rgb(255, 255, 255);
+	text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8), 0px -1px 2px rgba(255, 255, 255, 0.5);
+	transition: color 0.5s ease, text-shadow 0.5s ease;
+}
+
+#weeks_carousel_menu div.owl-prev, 
+#weeks_carousel_menu div.owl-next {
 	color: #31CECB;
 	font-size: 25px;
+	background: transparent none repeat scroll 0% 0%;
+	padding: 3px 0px;
+	opacity: 0.5;
+	transition: opacity 0.5s ease;
+}
+
+#weeks_carousel_menu div.owl-prev:hover, 
+#weeks_carousel_menu div.owl-next:hover{
+	opacity: 1;
+	transition: opacity 0.25s ease;
 }
 
 /*
 	Rules for the per_week_list
 */
 #per_wk_list li p {
-  background-color: #010f0a;
-  color: #31cecb;
-  font-size: 16px;
+	background-color: #010f0a;
+	border-color: #4ae2c9;
+	color: #31cecb;
+	font-size: 16px;
+	transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+#per_wk_list li p:hover {
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+	transition: background-color 0.5s ease, color 0.5s ease;
+
+}
+
+#per_wk_list li.active_week p{
+	background-color: #31cecb;
+	color: #000;
 }
 
 /*
@@ -217,8 +260,17 @@ Rules for the video player section
 	Rules for the info-buttons
 */
 #info-buttons div p{
+	background-color: #010f0a;
 	border-color: rgba(74, 226, 201, 0.5);
 	color: #31cecb;
+	transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+#info-buttons div p:hover{
+	background-color: #31cecb;
+	border-color: rgba(74, 226, 201, 0.5);
+	color: #000;
+	transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 /*
@@ -231,8 +283,7 @@ Rules for the video_desc_list
 }
 
 #video_desc_list li{
-	background-color: rgba(201, 255, 234, 0.8);
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#c9ffea+0,c9ffea+100&0+0,0.8+2,0.8+98,0+100 */
+	background-color: rgba(201, 255, 234, 0.95);
 }
 
 #video_desc_list li img{
@@ -300,43 +351,76 @@ videos_carousel
 }
 
 #videos_carousel li {
-	background-color: rgba(255, 255, 255, 0.6);
+	background-color: rgba(255, 255, 255, 0.75);
 		-webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75) inset;
 		-moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75) inset;
 	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75) inset;
 }
 
-#videos_carousel li img{
+#videos_carousel li img,
+#videos_carousel li.loaded img,
+#videos_carousel li.loaded img:hover{
 		-webkit-box-shadow: -2px 1px 5px 1px #5C5C5C;
 		-moz-box-shadow: -2px 1px 5px 1px #5C5C5C;
 	box-shadow: -2px 1px 5px 1px #5C5C5C;
+	transition: box-shadow 0.5s ease;
 }
 
-#videos_carousel li h5 {
+#videos_carousel li img:hover{
+		-webkit-box-shadow:1px 2px 3px rgb(255, 255, 255), -1px -1px 2px rgb(255, 255, 255);
+		-moz-box-shadow: 1px 2px 3px rgb(255, 255, 255), -1px -1px 2px rgb(255, 255, 255);
+	box-shadow: 1px 2px 3px rgb(255, 255, 255), -1px -1px 2px rgb(255, 255, 255);
+	transition: box-shadow 0.25s ease;
+}
+
+#videos_carousel li h6{
+	font-style: italic;
+}
+
+#videos_carousel li h5{
+	color: #333;
 	font-weight: bold;
 	line-height: 19px;
 	font-size: 12px;
+	text-shadow: none;
+	transition: color 0.5s ease, text-shadow 0.5s ease;
+}
+
+#videos_carousel li h5:hover{
+	color: #000;
+	text-shadow: 1px 2px 3px rgb(255, 255, 255), -1px -1px 2px rgb(255, 255, 255);
+	transition: color 0.5s ease, text-shadow 0.5s ease;
+}
+
+#videos_carousel li.loaded{ /*class to identify currently playing video*/
+	background-color: rgb(108, 248, 247);
+}
+
+#videos_carousel li.loaded h5,
+#videos_carousel li.loaded h5:hover{ /*class to identify currently playing video*/
+	color: #333;
+	font-size: 12px;
+	text-shadow: none;
 }
 
 #videos_carousel div.owl-prev,
 #videos_carousel div.owl-next{
-	border-color: rgba(74, 226, 201, 0.5);
+	background-color: #010f0a;
+	border-color: rgba(74, 226, 201, 0.333);
 	color: #31CECB;
-}
-
-#videos_carousel div.owl-prev p:first-of-type, #videos_carousel div.owl-next p:last-of-type {
-	font-size: 32px;
-	line-height: 10px;
-}
-
-#videos_carousel div.owl-prev p:last-of-type, 
-#videos_carousel div.owl-next p:first-of-type {
 	font-size: 14px;
+	opacity: 1;
+	transition: border-color 0.5s ease;
 }
 
+#videos_carousel div.owl-prev:hover,
+#videos_carousel div.owl-next:hover{
+	border-color: rgba(74, 226, 201, 1);
+	transition: border-color 0.25s ease;
+}
 
-#videos_carousel li.loaded{ /*class to identify currently playing video*/
-	background-color: rgb(0, 219, 255);
+#videos_carousel li.loaded h5{ /*class to identify currently playing video*/
+	background-color: rgb(108, 248, 247);
 }
 
 /*rule for the videos list*/
@@ -345,18 +429,28 @@ videos_carousel
 }
 
 #videos_list li {
-	background-color: rgba(201, 255, 234, 0.8);
+  background-color: rgba(201, 255, 234, 0.85);
 }
 
-#videos_list li.inplayer{
+#videos_list li.inplayer{ /*class to identify currently playing video*/
 	background-color: rgb(108, 248, 247);
 }
 
-#videos_list li img {
+#videos_list li img,
+#videos_list li.inplayer img,
+#videos_list li.inplayer img:hover{
 	border-radius: 6px;
 		-webkit-box-shadow: -2px 1px 5px 1px #5C5C5C;
 		-moz-box-shadow: -2px 1px 5px 1px #5C5C5C;
 	box-shadow: -2px 1px 5px 1px #5C5C5C;
+	transition: box-shadow 0.5s ease;
+}
+
+#videos_list li img:hover{
+		-webkit-box-shadow:1px 2px 3px rgb(255, 255, 255), -1px -1px 2px rgb(255, 255, 255);
+		-moz-box-shadow: 1px 2px 3px rgb(255, 255, 255), -1px -1px 2px rgb(255, 255, 255);
+	box-shadow: 1px 2px 3px rgb(255, 255, 255), -1px -1px 2px rgb(255, 255, 255);
+	transition: box-shadow 0.25s ease;
 }
 
 #videos_list li h5{
@@ -369,7 +463,10 @@ videos_carousel
 	text-shadow: 1px 1px 1px rgb(163, 163, 163);
 }
 
-#videos_list li h3 {
+#videos_list li h3,
+#videos_list li.inplayer h3,
+#videos_list li.inplayer h3:hover{
+	color: #333;
 	font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;
 	font-size: 24px;
 	font-style: normal;
@@ -377,6 +474,13 @@ videos_carousel
 	font-weight: 500;
 	line-height: 26.4px;
 	text-shadow: -1px 0px 1px rgb(92, 92, 92);
+	transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+#videos_list li h3:hover {
+	color: #000;
+	text-shadow: 1px 1px 3px rgb(255, 255, 255), 0px -1px 2px rgb(255, 255, 255);
+	transition: color 0.5s ease, text-shadow 0.5s ease;
 }
 
 #videos_list li p:first-of-type {
@@ -384,8 +488,17 @@ videos_carousel
 }
 
 /*rules for back_to_top btn*/
-#back_to_top_btn div{
+
+#arrow {
 	color: #31CECB;
+	transition: color 0.5s ease;
+	background-color: #010f0a;
+	border-color: rgba(74, 226, 201, 0.5);
+}
+
+#arrow:hover{
+	color: #FFF;
+	transition: color 0.25s ease;
 }
 
 /*
@@ -404,6 +517,62 @@ and
 form_sections
 */
 
+/*
+Rules with specificity
+*/
+/*
+input rule
+*/
+input[type="submit"],
+input[type='text'],
+input[type='password']{
+	color: initial !important;
+}
+
+/* user login bits below */
+.user_interface_panel_login{
+	background-color: transparent;
+}
+
+.user_interface_panel_login a {
+	color: #2FA4FF;
+	text-decoration: none;
+	transition: color 0.25s ease;
+}
+
+.user_interface_panel_login a:hover {
+	text-decoration: underline;
+	color: rgb(255,255,255);
+	transition: color 0.5s ease;
+}
+
+/* add/modify/delete video entry links below */
+#add_new_video_btn a {
+	color: #2FA4FF;
+	text-decoration: none;
+	transition: color 0.25s ease;
+}
+
+#add_new_video_btn a:hover {
+	text-decoration: underline;
+	color: rgb(255,255,255);
+	transition: color 0.5s ease;
+}
+
+/* videos_list links */
+#videos_list li a{
+	color:#23527c;
+	text-decoration: none;
+	transition: color 0.5s ease;
+}
+
+#videos_list li a:hover{
+	color:#000;
+	text-decoration: underline;
+	transition: color 0.25s ease;
+}
+
+/* user interface panel bits below */
 .user_interface_panel{
 	background-color: rgba(201, 255, 234, 0.8);
 		-webkit-box-shadow:  0px -2px 2px 1px #A1D0BF, 0px 2px 2px 1px #A1D0BF;
@@ -411,17 +580,37 @@ form_sections
 	box-shadow: 0px -2px 2px 1px #A1D0BF, 0px 2px 2px 1px #A1D0BF;
 }
 
-.user_interface_panel_login{
-	background-color: transparent;
+.user_interface_panel a{
+	color:#23527c;
+	text-decoration: none;
+	transition: color 0.5s ease;
 }
 
-.submit,
-#cancel a{
-	background-color: #91F6BF;
+.user_interface_panel a:hover{
+	color:#000;
+	text-decoration: underline;
+	transition: color 0.25s ease;
+}
+
+.submit, #cancel a {
+	background-color: #91f6bf;
+	border-color: #1e3d22;
+	border-radius: 6px;
+	transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
+.submit:hover, #cancel a:hover{
+	background-color: #FFF;
+	border-color: #FFF;
+	transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 #cancel a{
-	font-size: 16px;
+	font-size: 15px;
+}
+
+#cancel a:hover{
+	text-decoration: none;
 }
 
 #all_users_list h6{
