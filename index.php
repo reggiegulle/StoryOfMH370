@@ -116,6 +116,8 @@
 			});
 		</script>
 		
+		<div class="ajx_loader"><img src="images/page-loader.gif" width="300px" height="300px" alt="" /><p>Loading...</p></div>
+		
 		<div class="header container-fluid">
 			<section id="masthead" class="row">
 				<article id="masthead_title" class="col-xs-12 col-sm-8 col-md-6 col-md-offset-1 col-lg-6 col-lg-offset-1">
@@ -175,12 +177,27 @@
 			<section id="weeks_carousel_container" class="gradient">
 				<ul id="weeks_carousel_menu" class="owl-carousel">
 					<?php
-						for($w=1; $w < ($latest_wk+5); $w++){
+						/* for($w=1; $w < ($latest_wk+5); $w++){
 							if ($w%4 == 0){
 								echo '<li>WEEKS ' . ($w - 3) . '-' . $w . '</li>';
 							}
+						} */
+						if(!isset($week_order)){
+							for($w=1; $w < ($latest_wk+5); $w++){
+									if ($w%4 == 0){
+										echo '<li>WEEKS ' . ($w - 3) . '-' . $w . '</li>';
+								}
+							}
+						} else if ($week_order === 'n'){
+							for($w=($latest_wk+5); $w > 0 ; $w--){
+								if ($w%4 == 0){
+									echo '<li>WEEKS ' . $w . '-' . ($w - 3) . '</li>';
+								}
+							}
 						}
 					?>
+					
+					
 				</ul>
 			</section>
 			
@@ -247,7 +264,7 @@
 			
 			<section id="back_to_top_btn">
 				<div>
-					<p><span id="arrow">&#9650;</span> Back To Top</p>
+					<p><span id="arrow">&#9650; &nbsp; Back To Top</span></p>
 				</div>
 			</section>
 		</div>

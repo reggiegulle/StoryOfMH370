@@ -54,27 +54,25 @@ $(document).ready(function(){
 		return wk_st_wk_end_obj;
 	}
 	
-	//add a 'selected' class
-	//to the first or last li item
-	//in the 'weeks_carousel_menu' menu
-	//depending on the sort order
-	if (week_order === 'ASC'){
+	if(week_order == 'ASC'){
 		$("#weeks_carousel_menu li").first().addClass('selected');
-	} else if(week_order === 'DESC'){
-		$("#weeks_carousel_menu li").last().addClass('selected');
+		var wk_st_wk_end_data = $("#weeks_carousel_menu li.selected").text();
+		var wk_st_regex_match = wk_st_wk_end_data.match(wkslistregex)[1];
+		var wk_end_regex_match = wk_st_wk_end_data.match(wkslistregex)[2];
+		var wk_st_wk_end_post = make_wk_st_wk_end_obj(wk_st_regex_match, wk_end_regex_match, week_order);
+	} else if(week_order == 'DESC'){
+		$("#weeks_carousel_menu li").first().addClass('selected');
+		var wk_st_wk_end_data = $("#weeks_carousel_menu li.selected").text();
+		var wk_st_regex_match = wk_st_wk_end_data.match(wkslistregex)[2];
+		var wk_end_regex_match = wk_st_wk_end_data.match(wkslistregex)[1];
+		var wk_st_wk_end_post = make_wk_st_wk_end_obj(wk_st_regex_match, wk_end_regex_match, week_order);
 	}
-	
-	
-	var wk_st_wk_end_data = $("#weeks_carousel_menu li.selected").text();
-	var wk_st_regex_match = wk_st_wk_end_data.match(wkslistregex)[1];
-	var wk_end_regex_match = wk_st_wk_end_data.match(wkslistregex)[2];
-	var wk_st_wk_end_post = make_wk_st_wk_end_obj(wk_st_regex_match, wk_end_regex_match, week_order);
 	
 	//populate the ul 'videos_list'
 	//by default parameters
 	populateVideoList(wk_st_wk_end_post);
 	
-	$('#back_to_top_btn div p').click(function(){
+	$('#arrow').click(function(){
 		$("html, body").animate({
 			scrollTop: $("#weeks_carousel_container").offset().top 
 		},500);
@@ -83,31 +81,61 @@ $(document).ready(function(){
 	$('#videos_list').on('mh370.weekListRender', function(){
 		
 		$("#weeks_carousel_menu li").each(function(){
-			$(this).on("click", function(){	
-				$("#weeks_carousel_menu").find("li").removeClass("selected");
-				$(this).addClass('selected');
-				var wk_st_wk_end_data = $(this).text();
-				var wk_st_regex_match = wk_st_wk_end_data.match(wkslistregex)[1];
-				var wk_end_regex_match = wk_st_wk_end_data.match(wkslistregex)[2];
-				var wk_st_wk_end_post = make_wk_st_wk_end_obj(wk_st_regex_match, wk_end_regex_match, week_order);
-				
-				//populate the videos_list
-				//again, given user-determined parameters
-				populateVideoList(wk_st_wk_end_post);
-			});
+			if(week_order == 'ASC'){
+				$(this).on("click", function(){	
+					$("#weeks_carousel_menu li.selected").removeClass("selected");
+					$(this).addClass('selected');
+					var wk_st_wk_end_data = $(this).text();
+					var wk_st_regex_match = wk_st_wk_end_data.match(wkslistregex)[1];
+					var wk_end_regex_match = wk_st_wk_end_data.match(wkslistregex)[2];
+					var wk_st_wk_end_post = make_wk_st_wk_end_obj(wk_st_regex_match, wk_end_regex_match, week_order);
+					
+					//populate the videos_list
+					//again, given user-determined parameters
+					populateVideoList(wk_st_wk_end_post);
+				});
+			} else if(week_order == 'DESC'){
+				$(this).on("click", function(){	
+					$("#weeks_carousel_menu li.selected").removeClass("selected");
+					$(this).addClass('selected');
+					var wk_st_wk_end_data = $(this).text();
+					var wk_st_regex_match = wk_st_wk_end_data.match(wkslistregex)[2];
+					var wk_end_regex_match = wk_st_wk_end_data.match(wkslistregex)[1];
+					var wk_st_wk_end_post = make_wk_st_wk_end_obj(wk_st_regex_match, wk_end_regex_match, week_order);
+					
+					//populate the videos_list
+					//again, given user-determined parameters
+					populateVideoList(wk_st_wk_end_post);
+				});
+			}
 		});
 		
 		$('#weeks_carousel_menu li').each(function(){
-			if($(this).hasClass('selected')){
-				var wk_st_wk_end_data = $(this).text();
-				var wk_st_regex_match = wk_st_wk_end_data.match(wkslistregex)[1];
-				var wk_st_int = parseInt(wk_st_regex_match, 10);
-				var wk_limit = wk_st_int + 4;
-				for(w = wk_st_int; w < wk_limit; w++){
-					var wk_list_item = '<li data-week="' + w + '">';
-					wk_list_item += '<p>Week ' + w + '</p>';
-					wk_list_item += '</li>';
-					$('#per_wk_list').append(wk_list_item);
+			if(week_order == 'ASC'){
+				if($(this).hasClass('selected')){
+					var wk_st_wk_end_data = $(this).text();
+					var wk_st_regex_match = wk_st_wk_end_data.match(wkslistregex)[1];
+					var wk_st_int = parseInt(wk_st_regex_match, 10);
+					var wk_limit = wk_st_int + 4;
+					for(w = wk_st_int; w < wk_limit; w++){
+						var wk_list_item = '<li data-week="' + w + '">';
+						wk_list_item += '<p>Week ' + w + '</p>';
+						wk_list_item += '</li>';
+						$('#per_wk_list').append(wk_list_item);
+					}
+				}
+			} else if(week_order == 'DESC'){
+				if($(this).hasClass('selected')){
+					var wk_st_wk_end_data = $(this).text();
+					var wk_st_regex_match = wk_st_wk_end_data.match(wkslistregex)[1];
+					var wk_st_int = parseInt(wk_st_regex_match, 10);
+					var wk_limit = wk_st_int - 4;
+					for(w = wk_st_int; w > wk_limit; w--){
+						var wk_list_item = '<li data-week="' + w + '">';
+						wk_list_item += '<p>Week ' + w + '</p>';
+						wk_list_item += '</li>';
+						$('#per_wk_list').append(wk_list_item);
+					}
 				}
 			}
 		});
