@@ -95,7 +95,7 @@ $(document).ready(function(){
 	//by default parameters
 	populateVideoList(wk_st_wk_end_post);
 	
-	$('#back_to_top_btn div p').click(function(){
+	$('#arrow').click(function(){
 		$("html, body").animate({
 			scrollTop: $("#weeks_carousel_container").offset().top 
 		},500);

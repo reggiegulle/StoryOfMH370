@@ -264,7 +264,7 @@
 			
 			<section id="back_to_top_btn">
 				<div>
-					<p><span id="arrow">&#9650;</span> Back To Top</p>
+					<p><span id="arrow">&#9650; &nbsp; Back To Top</span></p>
 				</div>
 			</section>
 		</div>
