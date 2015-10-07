@@ -18,8 +18,11 @@ Include a custom font
 Rules
 for the body element
 */
+
 body{
-	background-image: url('../images/radar.08.ver.BG.png');
+	background-color: #001414;
+	background-image: url('../images/radar.fin.ver.BG.svg');
+	background-position: center;
 }
 
 /*
