@@ -6,23 +6,21 @@
 	
 	defined('SITE_ROOT') ? null : define('SITE_ROOT', 'C:' . DS . 'XAMPP' . DS . 'htdocs' . DS . 'mh370');
 	
-	defined('HTTP') ? null : define('HTTP', ($_SERVER['SERVER_NAME'] == 'localhost') ? 'http://localhost/mh370/' : null);
-	
 	//store necessary values in the GLOBAL session
 	$GLOBALS['config'] = [
 		'mysql' => [
-			'host' => '127.0.0.1',
-			'username' => 'reggiegulle',
-			'password' => 'Kwisatz01@kartadalH',
-			'db' => 'mh370'
+			'host' => 'xxx',
+			'username' => 'xxx',
+			'password' => 'xxx',
+			'db' => 'xxx'
 		],
 		'remember' => [
-			'cookie_name' => 'hash',
-			'cookie_expiry' => '604800'
+			'cookie_name' => 'xxx',
+			'cookie_expiry' => 'xxx'
 		],
 		'session' => [
-			'session_name' => 'user',
-			'token_name' => 'token'
+			'session_name' => 'xxx',
+			'token_name' => 'xxx'
 		]
 	];
 	
