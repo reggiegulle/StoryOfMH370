@@ -1,5 +1,5 @@
 <?php
-	require_once "/includes/init.php";
+	require_once "includes/init.php";
 	
 	$user = new User();
 	
@@ -262,8 +262,8 @@
 			<section id="search_notifier_bottom">
 			</section>
 			
-			<section id="back_to_top_btn">
-				<div>
+			<section id="back_to_top_btn" class="row">
+				<div class="col-xs-12">
 					<p><span id="arrow">&#9650; &nbsp; Back To Top</span></p>
 				</div>
 			</section>

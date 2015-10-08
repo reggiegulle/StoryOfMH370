@@ -552,6 +552,10 @@ Rules for the video_desc_list
 Rules for the search_info_container element
 */
 
+#filter_boxes_container{
+	border-radius: 6px 6px 0 0;
+}
+
 @media only screen and (max-width: 767px){
 	.search_info_container{
 		margin: 0 5px;
@@ -607,6 +611,10 @@ div.nextPgBtnDiv{
 	}
 }
 
+#search_notifier_bottom .pages_info{
+	border-radius: 0 0 6px 6px;
+}
+
 /*
 Rules for the videos list
 */
@@ -637,13 +645,15 @@ Rules for the videos list
 #videos_list{
 	list-style-type: none;
 	margin-top: 40px;
+	margin-bottom: 0;
 	padding-left: 0;
 	padding-right: 0;
 	overflow: auto;
 }
 
 #videos_list li {
-	border: 1px solid;
+	border-top: 1px solid;
+	border-bottom: 1px solid;
 	padding-bottom: 0;
 	padding-top: 15px;
 }
@@ -683,7 +693,7 @@ Rules for the videos list
 Rules for back to top button
 */
 #back_to_top_btn div {
-	margin: 0 45px;
+	margin: 10px 0;
 	text-align: right;
 	width: 100%;
 }
@@ -718,6 +728,14 @@ form_sections
 
 #add_new_video_btn{
 	margin: 0px 50px;
+}
+
+#add_new_video_btn a{
+	cursor: pointer;
+	border-radius: 6px;
+	border-style: solid;
+	border-width: 1px;
+	padding: 2px 10px;
 }
 
 .user_interface.row,
