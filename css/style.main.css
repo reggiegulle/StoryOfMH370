@@ -371,6 +371,7 @@ Rules for the video_desc_list
 #video_desc_list li {
 	padding-bottom: 0;
 	padding-top: 10px;
+	display: none;
 }
 
 #video_desc_list li img,
@@ -390,19 +391,23 @@ Rules for the video_desc_list
 }
 
 #video_desc_list li p:first-of-type {
-  margin-bottom: 1px;
+	margin-bottom: 1px;
 }
 
 #video_desc_list li p span.tag {
-  margin-left: 15px;
+	margin-left: 15px;
 }
 
 #video_desc_list li p:last-of-type {
-  margin-bottom: 5px;
+	margin-bottom: 5px;
 }
 
 #video_desc_list li p a:first-of-type {
-  margin-right: 15px;
+	margin-right: 15px;
+}
+
+#video_desc_list li.playing{
+	display: block;
 }
 
 /*rule for all slick carousels*/

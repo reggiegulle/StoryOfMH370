@@ -48,9 +48,9 @@ function onPlayerReady(event){
 		$("#video_desc_list li").each(function(){
 			var descItmVidId = $(this).data('video_id');
 			if(descItmVidId == firstCuedVidId){
-				$(this).show();
+				$(this).addClass('playing');
 			} else {
-				$(this).hide();
+				$(this).removeClass('playing');
 			}
 		});
 		
@@ -84,6 +84,7 @@ function onPlayerReady(event){
 		});
 		//re-evaluate behavior of the videos list
 		$("#videos_list li").each(function(){
+			var dataIdx = $(this).data('index');
 			$(this).on("click", "img", function(){
 				//get the videoid from each li item
 				var vidId = $(this).closest('li').data('video_id');
@@ -92,6 +93,8 @@ function onPlayerReady(event){
 				var vidListLiWk = $(this).closest('li').data('week');
 				$('#videos_list li.inplayer').removeClass('inplayer');
 				$(this).closest('li').addClass('inplayer');
+				$('#video_desc_list li.playing').removeClass('playing');
+				$('#video_desc_list li').eq(dataIdx).addClass('playing');
 				owl_vids_car.data('owlCarousel').goTo(vidListLiIdx);
 				$('#videos_carousel li.loaded').removeClass('loaded');
 				$('#videos_carousel').find('li[data-index="' + vidListLiIdx + '"]').addClass('loaded');
@@ -110,6 +113,8 @@ function onPlayerReady(event){
 				var vidListLiWk = $(this).closest('li').data('week');
 				$('#videos_list li.inplayer').removeClass('inplayer');
 				$(this).closest('li').addClass('inplayer');
+				$('#video_desc_list li.playing').removeClass('playing');
+				$('#video_desc_list li').eq(dataIdx).addClass('playing');
 				owl_vids_car.data('owlCarousel').goTo(vidListLiIdx);
 				$('#videos_carousel li.loaded').removeClass('loaded');
 				$('#videos_carousel').find('li[data-index="' + vidListLiIdx + '"]').addClass('loaded');
@@ -189,9 +194,9 @@ function onPlayerReady(event){
 			$("#video_desc_list li").each(function(){
 				var descItmVidId = $(this).data('video_id');
 				if(descItmVidId == firstCuedVidId){
-					$(this).show();
+					$(this).addClass('playing');
 				} else {
-					$(this).hide();
+					$(this).removeClass('playing');
 				}
 			});
 			
@@ -281,9 +286,9 @@ function onPlayerStateChange(event){
 		//behavior of the video_desc_list
 		$("#video_desc_list li").each(function(){
 			if($(this).data('video_id') == vidIdFrURI){
-				$(this).show();
+				$(this).addClass('playing');
 			} else {
-				$(this).hide();
+				$(this).removeClass('playing');
 			}
 		});
 		
@@ -391,7 +396,6 @@ function onPlayerStateChange(event){
 
 //the custom event registered
 $(document).ajaxSuccess(function(event, xhr, settings){
-	$('#videos_list').trigger('mh370.vidListRender');
 	if(settings.url == "http://localhost/mh370/includes/gen_video_list.php"){
 		withScrollBar = true;
 	} else if(settings.url == "http://localhost/mh370/includes/search_return.php"){
