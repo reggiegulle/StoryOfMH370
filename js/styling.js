@@ -73,12 +73,6 @@ $(document).ready(function(){
 			$(liScnDiv).addClass('col-xs-0 col-sm-6');
 			$(this).find('h3, p').addClass('col-xs-12');
 		});
-		
-		$('#weeks_carousel_menu li').each(function(){
-			$(this).mouseenter(function(){
-				
-			});
-		});
 	});
 	
 	$('#videos_list').on('mh370.weekListRender', function(){
