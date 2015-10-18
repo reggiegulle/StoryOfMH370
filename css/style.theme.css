@@ -18,8 +18,11 @@ Include a custom font
 Rules
 for the body element
 */
+
 body{
-	background-image: url('../images/radar.08.ver.BG.png');
+	background-color: #001414;
+	background-image: url('../images/radar.fin.ver.BG.svg');
+	background-position: center;
 }
 
 /*
@@ -410,13 +413,15 @@ videos_carousel
 	color: #31CECB;
 	font-size: 14px;
 	opacity: 1;
-	transition: border-color 0.5s ease;
+	transition: border-color 0.5s ease, background-color 0.5s ease, color 0.5s ease;
 }
 
 #videos_carousel div.owl-prev:hover,
 #videos_carousel div.owl-next:hover{
+	background-color: #31cecb;
+	color: rgb(0, 0, 0);
 	border-color: rgba(74, 226, 201, 1);
-	transition: border-color 0.25s ease;
+	transition: border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease;
 }
 
 #videos_carousel li.loaded h5{ /*class to identify currently playing video*/
@@ -487,6 +492,32 @@ videos_carousel
 	text-shadow: 1px 1px 1px rgb(163, 163, 163);
 }
 
+/*rules for the search items*/
+
+#filter_boxes_container,
+.search_info_container .row{
+	background-color: rgb(108, 248, 247);
+	color: #010f0a;
+}
+
+.search_stats.show_hide p{
+	color: #010f0a;
+}
+
+.prevPgBtn,
+.nextPgBtn{
+	color: #010f0a;
+	text-shadow: none;
+	transition: color 0.5s ease, text-shadow 0.5s ease;
+}
+
+.prevPgBtn:hover,
+.nextPgBtn:hover{
+	color: #FFFFFF;
+	text-shadow: 1px 1px 1px #010f0a;
+	transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
 /*rules for back_to_top btn*/
 
 #arrow {
@@ -548,15 +579,16 @@ input[type='password']{
 
 /* add/modify/delete video entry links below */
 #add_new_video_btn a {
-	color: #2FA4FF;
-	text-decoration: none;
-	transition: color 0.25s ease;
+	color: #31CECB;
+	transition: color 0.5s ease;
+	background-color: #010f0a;
+	border-color: rgba(74, 226, 201, 0.5);
 }
 
 #add_new_video_btn a:hover {
-	text-decoration: underline;
-	color: rgb(255,255,255);
-	transition: color 0.5s ease;
+	text-decoration: none;
+	color: #FFF;
+	transition: color 0.25s ease;
 }
 
 /* videos_list links */
@@ -596,6 +628,9 @@ input[type='password']{
 	background-color: #91f6bf;
 	border-color: #1e3d22;
 	border-radius: 6px;
+		-webkit-box-shadow:  1px 1px 2px 0 #010f0a;
+		-moz-box-shadow:  1px 1px 2px 0 #010f0a;
+	box-shadow: 1px 1px 2px 0 #010f0a;
 	transition: background-color 0.5s ease, border-color 0.5s ease;
 }
 

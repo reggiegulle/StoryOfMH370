@@ -220,6 +220,7 @@ $(document).ready(function(){
 			}
 
 			$('#videos_list').trigger('mh370.weekListRender');
+			$('#videos_list').trigger('mh370.vidListRender');
 		}
 	});
 }); 
