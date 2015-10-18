@@ -5,9 +5,10 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title>Lorem Ipsum</title>
+		<title>The Story of MH370 In Online Videos</title>
 		
 		<meta name="Description" CONTENT=""/>
+		<link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
 		<!-- Bootstrap style-->
 		<link href="../css/bootstrap.min.css" rel="stylesheet">
 		<link href="../css/bootstrap-theme.css" rel="stylesheet">

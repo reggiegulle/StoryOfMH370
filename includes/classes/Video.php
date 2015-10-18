@@ -45,7 +45,7 @@
 		}
 		
 		public function display_weeks_by($start, $end, $order){
-			$sql = 'SELECT * FROM videos WHERE week_number >= ? AND week_number <= ? ORDER BY date_published ' . $order;
+			$sql = 'SELECT * FROM videos WHERE week_number >= ? AND week_number <= ? ORDER BY date_published ' . $order . ', id ' . $order;
 			$sql_array = [$start,$end];
 			if(!$this->_db->query($sql, $sql_array)->error()){
 				$this->_data = $this->_db->results();
