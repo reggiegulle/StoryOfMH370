@@ -23,8 +23,9 @@ $(document).ready(function(){
 		itemsTablet: [768, 3],
 		itemsMobile: [479, 2],
 		navigation: true,
-		pagination: false
-	})
+		pagination: false,
+		itemsScaleUp: true
+	});
 	
 	var owl_vids_car = $('#videos_carousel').data('owlCarousel');
 
@@ -69,11 +70,14 @@ $(document).ready(function(){
 			$(this).on("click", "img", function(){
 				//get the videoid from each li item
 				var vidId = $(this).closest('li').data('video_id');
+				var dataIdx = $(this).closest('li').data('index');
 				//get the data-index from each li item
 				var vidListLiIdx = $(this).closest('li').data('index');
 				var vidListLiWk = $(this).closest('li').data('week');
 				$('#videos_list li.inplayer').removeClass('inplayer');
 				$(this).closest('li').addClass('inplayer');
+				$('#video_desc_list li.playing').removeClass('playing');
+				$('#video_desc_list li').eq(dataIdx).addClass('playing');
 				owl_vids_car.goTo(vidListLiIdx);
 				$('#videos_carousel li.loaded').removeClass('loaded');
 				$('#videos_carousel').find('li[data-index="' + vidListLiIdx + '"]').addClass('loaded');
@@ -87,11 +91,14 @@ $(document).ready(function(){
 			$(this).on("click", "h3", function(){
 				//get the videoid from each li item
 				var vidId = $(this).closest('li').data('video_id');
+				var dataIdx = $(this).closest('li').data('index');
 				//get the data-index from each li item
 				var vidListLiIdx = $(this).closest('li').data('index');
 				var vidListLiWk = $(this).closest('li').data('week');
 				$('#videos_list li.inplayer').removeClass('inplayer');
 				$(this).closest('li').addClass('inplayer');
+				$('#video_desc_list li.playing').removeClass('playing');
+				$('#video_desc_list li').eq(dataIdx).addClass('playing');
 				owl_vids_car.goTo(vidListLiIdx);
 				$('#videos_carousel li.loaded').removeClass('loaded');
 				$('#videos_carousel').find('li[data-index="' + vidListLiIdx + '"]').addClass('loaded');

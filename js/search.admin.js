@@ -273,6 +273,7 @@ $(document).ready(function(){
 			}
 			
 			$('#videos_list').trigger('mh370.searchListRender');
+			$('#videos_list').trigger('mh370.vidListRender');
 		}
 	});
 	

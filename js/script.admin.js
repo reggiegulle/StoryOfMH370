@@ -127,10 +127,10 @@ $(document).ready(function(){
 			} else if(week_order == 'DESC'){
 				if($(this).hasClass('selected')){
 					var wk_st_wk_end_data = $(this).text();
-					var wk_st_regex_match = wk_st_wk_end_data.match(wkslistregex)[1];
+					var wk_st_regex_match = wk_st_wk_end_data.match(wkslistregex)[2];
 					var wk_st_int = parseInt(wk_st_regex_match, 10);
 					var wk_limit = wk_st_int - 4;
-					for(w = wk_st_int; w > wk_limit; w--){
+					for(w = wk_st_int; w < wk_limit; w--){
 						var wk_list_item = '<li data-week="' + w + '">';
 						wk_list_item += '<p>Week ' + w + '</p>';
 						wk_list_item += '</li>';
@@ -220,6 +220,7 @@ $(document).ready(function(){
 			}
 
 			$('#videos_list').trigger('mh370.weekListRender');
+			$('#videos_list').trigger('mh370.vidListRender');
 		}
 	});
 }); 
