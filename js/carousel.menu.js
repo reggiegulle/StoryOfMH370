@@ -23,8 +23,9 @@ $(document).ready(function(){
 		itemsTablet: [768, 3],
 		itemsMobile: [479, 2],
 		navigation: true,
-		pagination: false
-	})
+		pagination: false,
+		itemsScaleUp: true
+	});
 	
 	var owl_vids_car = $('#videos_carousel').data('owlCarousel');
 

@@ -23,9 +23,10 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title>Lorem Ipsum</title>
+		<title>The Story of MH370 In Online Videos</title>
 		
 		<meta name="Description" CONTENT=""/>
+		<link rel="icon" href="images/favicon.ico" type="image/x-icon" />
 		<!-- Bootstrap style-->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/bootstrap-theme.css" rel="stylesheet">
@@ -183,13 +184,13 @@
 							}
 						} */
 						if(!isset($week_order)){
-							for($w=1; $w < ($latest_wk+5); $w++){
+							for($w=1; $w < ($latest_wk+4); $w++){
 									if ($w%4 == 0){
 										echo '<li>WEEKS ' . ($w - 3) . '-' . $w . '</li>';
 								}
 							}
 						} else if ($week_order === 'n'){
-							for($w=($latest_wk+5); $w > 0 ; $w--){
+							for($w=($latest_wk+3); $w > 0 ; $w--){
 								if ($w%4 == 0){
 									echo '<li>WEEKS ' . $w . '-' . ($w - 3) . '</li>';
 								}
